@@ -1,2 +1,32 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-banner">
+  <div class="background-logo">
+    <%= video_tag 'http://localhost:3000/assets/Panda_Video_Overlay_LOOPED.mp4',
+                   poster: 'PA-LOGO_2020_poster_3072x1920.png',
+                   autoplay: false,
+                   muted: true,
+                   loop: true,
+                   controls: false,
+                   type: 'video/mp4',
+                   id: 'home-video' %>
+    <div id="video-opacity"></div>
+    <div id="home-banner-infos">
+      <div id="home-menu">
+        <div id="home-menu-links">
+          <%#= link_to gallery_path, class: 'menu-link' do %>
+            <p id="gallery-link">Galerie</p>
+          <%# end %>
+          <%#= link_to contact_path, class: 'menu-link' do %>
+            <p id="contact-link">Contact</p>
+          <%# end %>
+        </div>
+      </div>
+      <!-- <h1 id="home-banner-title">Chez Maurice Production</h1> -->
+      <%= image_tag "PA-LOGO_2020_900px.png", alt: "Chez-Maurice-2020", id: 'logo' %>
+      <!-- <h2 id="home-banner-catchphrase">Sublimez vos idées</h2> -->
+    </div>
+  </div>
+<div id="gallery-page">
+
+</div>
+</div>
+

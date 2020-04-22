@@ -29,6 +29,30 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+
+  // Autoplay home video
+  if (document.querySelector('#home-video')) {
+    const video = document.querySelector('#home-video');
+    // Jouer la video 2s apres chargement de la page
+    setTimeout('document.querySelector("#home-video").play()', 100);
+    // Onplay fade video in 2s
+    video.addEventListener('play', (event) => {
+      setTimeout('document.querySelector("#home-video").style.opacity = "1"', 99)
+      video.classList.add('fade-in-on-play');
+    });
+  } // if video end
+
+});
+
+
+const galleryButton = document.querySelector("#gallery-link");
+const contactButton = document.querySelector("#contact-link");
+const galleryPage = document.querySelector('#gallery-page');
+const contactPage = document.querySelector('#contact-page');
+
+galleryButton.addEventListener('click', (event) => {
+  galleryPage.classList.add = 'displayed';
+});
+
+contactButton.addEventListener('click', (event) => {
 });

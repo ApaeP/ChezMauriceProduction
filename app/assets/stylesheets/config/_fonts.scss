@@ -1,10 +1,6 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
-// Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
-
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
@@ -14,3 +10,23 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+// @font-face {
+//   font-family: "Headings";
+//   src: font-url('Heading-Pro-Bold-Italic.ttf') format('truetype');
+// }
+// $headings-bold-italic: "Headings Bold Italic";
+
+@font-face {
+  font-family: 'Headings Bold Italic';
+  // src: url('assets/fonts/headings-Bold-Italic.ttf');
+  src: url('~/public/fonts/headings-Bold-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+// Define fonts for body and headers
+$body-font: "Dosis", sans-serif;
+$headers-font: "Dosis", sans-serif;
+// $body-font: "Work Sans", "Helvetica", "sans-serif";
+// $headers-font: "Nunito", "Helvetica", "sans-serif";
