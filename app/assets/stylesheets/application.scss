@@ -15,6 +15,7 @@
 body {
   background-color: lightgrey;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 a {
@@ -26,5 +27,14 @@ a {
 }
 
 .main-container {
-  min-height: calc(100vh - 20vh)
+  // min-height: calc(100vh - 20vh)
+}
+
+html {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
 }

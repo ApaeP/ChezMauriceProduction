@@ -8,14 +8,26 @@
   }
 }
 
-#gallery {
+#gallery-page {
   min-height: 100vh;
+  // height: 120vh;
   width: 100vw;
   transform: translate(100%, -100%);
   position: absolute;
-  background-color: red;
+  opacity: 0;
+  background-color: lightgrey;
+  z-index: 100000;
+  transition: all 1s ease, top 0ms;
+  top: 2728px;
 }
 
-#gallery.displayed {
-  animation: appearFromRight 2s ease-in;
+#gallery-page.displayed {
+  transform: translate(0%, -100%);
+  z-index: 100000;
+  opacity: 1;
+  transition: all 1s ease, top 0ms;
+}
+
+#close-gallery-arrow {
+  cursor: pointer;
 }
