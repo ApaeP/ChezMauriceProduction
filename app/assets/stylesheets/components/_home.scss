@@ -103,6 +103,11 @@
 #homepage-logo {
   height: 30vh;
   margin: 0 auto 3vh auto;
+  transition: all 1s ease-in-out;
+  &:hover {
+    transform: scale(1.03);
+    transition: all 1s ease-in-out;
+  }
 }
 
 #home-banner-catchphrase {

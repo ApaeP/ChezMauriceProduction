@@ -26,6 +26,7 @@ import "bootstrap";
 import { autoplayVideoBackground } from '../components/background_video';
 import { galleryActions } from '../components/toggle_gallery';
 import { contactActions } from '../components/toggle_contact';
+import { infoActions } from '../components/toggle_info';
 import { mouseWheelActions } from '../components/mousewheel_actions';
 
 // =============================================================================
@@ -38,6 +39,8 @@ document.addEventListener('turbolinks:load', () => {
   galleryActions();
 
   contactActions();
+
+  infoActions();
 
   mouseWheelActions();
 

@@ -1,0 +1,30 @@
+#info-page {
+  min-height: 100vh;
+  // height: 120vh;
+  width: 100vw;
+  // transform: translate(100%, -100%);
+  position: absolute;
+  opacity: 0;
+  background-color: aquamarine;
+  z-index: 100000;
+  // transition: all 1s ease, translate-y 0ms ,top 0ms;
+  // top: 2728px;
+}
+
+#info-page.displayed {
+  transform: translate(0%, -100%);
+  z-index: 100000;
+  opacity: 1;
+  transition: all 1s ease, top 0ms;
+}
+
+#info-page.hidden {
+  transition: all 1s ease, top 0ms;
+  transform: translate(0, 100%);
+  z-index: 100000;
+  opacity: 0;
+}
+
+#close-info-arrow {
+  cursor: pointer;
+}

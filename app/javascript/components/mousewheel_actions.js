@@ -16,19 +16,20 @@ const mouseWheelActions = () => {
     if (event.deltaX < -50) {
     // If we scroll left
 
-      document.querySelector('#contact-link').click();
+      contactOpen.click();
 
 
     } else if (event.deltaX > 50) {
     // If we scroll right
 
 
-      document.querySelector('#gallery-link').click();
+      galleryOpen.click();
 
 
     } else if (event.deltaY > 50) {
     // If we scroll down
 
+      infoOpen.click();
 
 
     } else if (event.deltaY < -50) {
