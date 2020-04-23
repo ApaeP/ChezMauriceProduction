@@ -16,6 +16,7 @@ const mouseWheelActions = () => {
     if (event.deltaX < -50) {
     // If we scroll left
 
+      // Open contact
       contactOpen.click();
 
 

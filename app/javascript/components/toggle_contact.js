@@ -14,6 +14,25 @@ const contactActions = () => {
     contactPage.classList.add('displayed');
     // allow scroll on Y axis for contact-page
     document.querySelector("body").style.overflowY = 'scroll';
+
+      // document.querySelector('body').addEventListener('wheel', (event) => {
+      //   let maxScroll = contactPage.offsetHeight - window.innerHeight
+      //   // console.log(`Hauteur contact height = ${maxScroll}`);
+      //   // console.log(`height of window = ${window.innerHeight}`)
+      //   // console.log(`distance scrolled = ${window.pageYOffset}`);
+      //   if (window.pageYOffset > maxScroll && event.deltaY > 1) {
+      //     window.pageYOffset = maxScroll;
+      //     document.querySelector("body").style.overflowY = 'hidden';
+      //   }
+      // });
+      // // onScroll = function (e){
+      // //    var maxScroll=1200
+      // //    if(e.target.scrollLeft>maxScrollLeft){
+      // //      e.target.scrollLeft=maxScrollLeft
+      // //    }
+      // // }
+
+
     // pause on video background after transition is over
     setTimeout('document.querySelector("#home-video").pause()', 1000)
   });

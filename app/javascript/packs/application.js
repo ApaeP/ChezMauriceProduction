@@ -42,7 +42,7 @@ document.addEventListener('turbolinks:load', () => {
 
   infoActions();
 
-  mouseWheelActions();
+  // mouseWheelActions();
 
 });
 // =============================================================================
