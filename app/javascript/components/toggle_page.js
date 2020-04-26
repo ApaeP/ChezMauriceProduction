@@ -1,20 +1,29 @@
-const togglePage = (openLink, page, closeLinks) => {
+const togglePage = (openLinks, page, closeLinks) => {
 
-  // When link to page is clicked
-  openLink.addEventListener('click', (event) => {
+  openLinks.forEach((openLink) => {
 
-    // Set the page parameter "top" to the hight of the window
-    page.style.top = `${window.innerHeight}px`;
+    // When link to page is clicked
+    openLink.addEventListener('click', (event) => {
+      // Set the page parameter "top" to the hight of the window
+      page.style.top = `${window.innerHeight}px`;
 
-    // Display the page
-    if (page.classList.contains('hidden')) {
-      page.classList.remove('hidden');
-    }
-    page.classList.add('displayed');
+      // Hide a page if one is displayed
+      if (document.querySelector('.displayed')) {
+        let displayedPage = document.querySelector('.displayed')
+        displayedPage.classList.add('hidden');
+        displayedPage.classList.remove('displayed');
+      }
 
-    // Pause the video after display animation
-    setTimeout('document.querySelector("#home-video").pause()', 1000)
+      // Display the page
+      if (page.classList.contains('hidden')) {
+        page.classList.remove('hidden');
+      }
+      page.classList.add('displayed');
 
+      // Pause the video after display animation
+      setTimeout('document.querySelector("#home-video").pause()', 1000)
+
+    });
   });
 
   closeLinks.forEach((link) => {

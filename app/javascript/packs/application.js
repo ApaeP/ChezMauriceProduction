@@ -36,15 +36,15 @@ import { togglePage } from '../components/toggle_page';
 
 document.addEventListener('turbolinks:load', () => {
 
-  const infoButton = document.querySelector("#info-link");
+  const infoButton = document.querySelectorAll(".info-link");
   const infoPage = document.querySelector('#info-page');
   const closeInfo = document.querySelectorAll('.close-info-link')
 
-  const galleryButton = document.querySelector("#gallery-link");
+  const galleryButton = document.querySelectorAll(".gallery-link");
   const galleryPage = document.querySelector('#gallery-page');
   const closeGallery = document.querySelectorAll('.close-gallery-link')
 
-  const contactButton = document.querySelector("#contact-link");
+  const contactButton = document.querySelectorAll(".contact-link");
   const contactPage = document.querySelector('#contact-page');
   const closeContact = document.querySelectorAll('.close-contact-link')
 
