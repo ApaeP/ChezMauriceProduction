@@ -15,25 +15,7 @@
     <div id="video-opacity"></div>
 
     <div id="home-banner-overlay">
-      <div id="home-menu">
-        <div id="inner-menu">
-          <div class="center-menu-elements">
-            <%#= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", id: 'home-navbar-logo' %>
-            <div id="home-menu-links">
-              <p id="home-link">ACCUEIL</p>
-              <p id="gallery-link">PRODUCTIONS</p>
-              <p id="info-link">INFOS</p>
-              <p id="contact-link">CONTACT</p>
-              <div id="social-links">
-                <p><i class="fab fa-facebook"></i></p>
-                <p><i class="fab fa-instagram"></i></p>
-                <p><i class="fab fa-vimeo"></i></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <%= render 'shared/navbar' %>
       <!-- <h1 id="home-banner-title">CHEZ MAURICE PRODUCTION</h1> -->
       <%= image_tag "PA-LOGO_2020_900px_50p.png", alt: "Logo homepage", id: 'homepage-logo' %>
       <h2 id="home-banner-catchphrase">SUBLIMEZ VOS IDÉES</h2>
@@ -45,9 +27,36 @@
 
   <!-- Gallery page -->
   <div id="gallery-page">
-    <%= render 'shared/navbar' %>
+
+    <div id="home-menu">
+      <div id="inner-menu">
+        <div class="center-menu-elements">
+
+          <div class="left-menu-elements">
+
+            <%= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", class: 'home-navbar-logo close-gallery-link' %>
+          </div>
+
+          <div id="home-menu-links">
+            <p id="home-link" class="close-gallery-link">ACCUEIL</p>
+            <p id="gallery-link">PRODUCTIONS</p>
+            <p id="info-link">INFOS</p>
+            <p id="contact-link">CONTACT</p>
+          </div>
+
+          <div class="right-menu-elements">
+            <div id="social-links">
+              <p><i class="fab fa-facebook"></i></p>
+              <p><i class="fab fa-instagram"></i></p>
+              <p><i class="fab fa-vimeo"></i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="gallery-scrollable-content">
-            <%= image_tag "right_arrow.png", alt: "close-gallery-arrow", id: 'close-gallery-arrow' %>
+            <%#= image_tag "right_arrow.png", alt: "close-gallery-arrow", id: 'close-gallery-arrow' %>
             <h1>Gallery</h1>
             <p style="font-size: 2rem;">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend dui massa, quis ullamcorper sem facilisis et. Donec tincidunt justo a tellus placerat malesuada. Pellentesque ac urna laoreet, finibus quam sed, semper quam. Curabitur laoreet dui nisi, quis tempus dui posuere nec. Etiam ullamcorper quam in magna ultrices blandit. Quisque sed lacus non erat tincidunt egestas. Aenean eget fringilla tellus. Aliquam finibus turpis ac mi venenatis fermentum ac aliquet massa. Cras at augue quis lacus malesuada ultricies. Nulla mi mauris, aliquet sed arcu malesuada, blandit luctus libero. Pellentesque ultricies est tortor, vel mattis augue congue vel. Maecenas pretium ipsum ut risus ultricies imperdiet. Nunc sed molestie urna, quis ullamcorper quam. In vehicula tellus et malesuada laoreet. Aenean condimentum lacinia augue, nec cursus nunc fermentum at.
@@ -63,7 +72,34 @@
 
   <!-- Contact page -->
   <div id="contact-page">
-    <%= render 'shared/navbar' %>
+
+    <div id="home-menu">
+      <div id="inner-menu">
+        <div class="center-menu-elements">
+
+          <div class="left-menu-elements">
+
+            <%= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", class: 'home-navbar-logo close-contact-link' %>
+          </div>
+
+          <div id="home-menu-links">
+            <p id="home-link" class="close-contact-link">ACCUEIL</p>
+            <p id="gallery-link">PRODUCTIONS</p>
+            <p id="info-link">INFOS</p>
+            <p id="contact-link">CONTACT</p>
+          </div>
+
+          <div class="right-menu-elements">
+            <div id="social-links">
+              <p><i class="fab fa-facebook"></i></p>
+              <p><i class="fab fa-instagram"></i></p>
+              <p><i class="fab fa-vimeo"></i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="contact-scrollable-content">
       <%= image_tag "left_arrow.png", alt: "close-contact-arrow", id: 'close-contact-arrow' %>
       <h1>contact</h1>
@@ -81,7 +117,34 @@
 
   <!-- Info page -->
   <div id="info-page">
-    <%= render 'shared/navbar' %>
+
+    <div id="home-menu">
+      <div id="inner-menu">
+        <div class="center-menu-elements">
+
+          <div class="left-menu-elements">
+
+            <%= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", class: 'home-navbar-logo close-info-link' %>
+          </div>
+
+          <div id="home-menu-links">
+            <p id="home-link" class="close-info-link">ACCUEIL</p>
+            <p id="gallery-link">PRODUCTIONS</p>
+            <p id="info-link">INFOS</p>
+            <p id="contact-link">CONTACT</p>
+          </div>
+
+          <div class="right-menu-elements">
+            <div id="social-links">
+              <p><i class="fab fa-facebook"></i></p>
+              <p><i class="fab fa-instagram"></i></p>
+              <p><i class="fab fa-vimeo"></i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="info-scrollable-content">
       <%= image_tag "down_arrow.png", alt: "close-info-arrow", id: 'close-info-arrow' %>
       <h1>contact</h1>

@@ -42,51 +42,6 @@
   animation: 2s ease-in-out videoFadeIn;
 }
 
-#home-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 7vh;
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
-#inner-menu {
-  width: 75%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.center-menu-elements {
-  display: flex;
-  justify-content: space-between;
-  height: 90%;
-}
-
-#home-menu-links {
-  display: flex;
-  justify-content: space-evenly;
-  width: 60%;
-  margin: 0 auto;
-  p {
-    margin: auto 0;
-    cursor: pointer;
-  }
-}
-
-#social-links {
-  display: flex;
-  p {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-}
-
 #home-banner-overlay {
   display: flex;
   flex-direction: column;

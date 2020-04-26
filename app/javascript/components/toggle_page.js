@@ -1,4 +1,4 @@
-const togglePage = (openLink, page, closeLink) => {
+const togglePage = (openLink, page, closeLinks) => {
 
   // When link to page is clicked
   openLink.addEventListener('click', (event) => {
@@ -17,12 +17,14 @@ const togglePage = (openLink, page, closeLink) => {
 
   });
 
-  closeLink.addEventListener('click', (event) => {
-    // Play the background video
-    document.querySelector("#home-video").play();
-    // hide the page
-    page.classList.remove('displayed');
-    page.classList.add('hidden');
+  closeLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      // Play the background video
+      document.querySelector("#home-video").play();
+      // hide the page
+      page.classList.remove('displayed');
+      page.classList.add('hidden');
+    });
   });
 
 };

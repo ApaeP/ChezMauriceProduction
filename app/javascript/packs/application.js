@@ -38,15 +38,15 @@ document.addEventListener('turbolinks:load', () => {
 
   const infoButton = document.querySelector("#info-link");
   const infoPage = document.querySelector('#info-page');
-  const closeInfo = document.querySelector('#close-info-arrow')
+  const closeInfo = document.querySelectorAll('.close-info-link')
 
   const galleryButton = document.querySelector("#gallery-link");
   const galleryPage = document.querySelector('#gallery-page');
-  const closeGallery = document.querySelector('#close-gallery-arrow')
+  const closeGallery = document.querySelectorAll('.close-gallery-link')
 
   const contactButton = document.querySelector("#contact-link");
   const contactPage = document.querySelector('#contact-page');
-  const closeContact = document.querySelector('#close-contact-arrow')
+  const closeContact = document.querySelectorAll('.close-contact-link')
 
   knowWhatPageIsOn();
 
