@@ -1,15 +1,18 @@
 #contact-page {
   height: 100vh;
-  // height: 120vh;
   width: 100vw;
   transform: translate(-100%, -100%);
   position: absolute;
   overflow: scroll;
   opacity: 0;
   background-color: aquamarine;
-  z-index: 100000;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
   // transition: all 1s ease, translate-y 0ms ,top 0ms;
-  top: 900px;
+}
+
+#contact-page::-webkit-scrollbar {
+  width: 0px; /* For Chrome, Safari, and Opera */
 }
 
 #contact-page.displayed {
@@ -17,14 +20,12 @@
   z-index: 100000;
   opacity: 1;
   display: block;
-  // position: fixed;
-  // top: 0; right: 0; bottom: 0; left: 0;
   transition: all 1s ease, top 0ms;
 }
 
-.scrollable-content {
-  // overflow-y: scroll;
+#contact-scrollable-content {
   min-height: 100%;
+  width: 100%;
 }
 
 #contact-page.hidden {

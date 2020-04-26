@@ -23,24 +23,44 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
+import { knowWhatPageIsOn } from '../components/know_what_page';
 import { autoplayVideoBackground } from '../components/background_video';
-import { galleryActions } from '../components/toggle_gallery';
-import { contactActions } from '../components/toggle_contact';
-import { infoActions } from '../components/toggle_info';
 import { mouseWheelActions } from '../components/mousewheel_actions';
+import { togglePage } from '../components/toggle_page';
 
 // =============================================================================
 //                              ON TURBOLINKS LOAD
 // =============================================================================
+
+
+
 document.addEventListener('turbolinks:load', () => {
+
+  const infoButton = document.querySelector("#info-link");
+  const infoPage = document.querySelector('#info-page');
+  const closeInfo = document.querySelector('#close-info-arrow')
+
+  const galleryButton = document.querySelector("#gallery-link");
+  const galleryPage = document.querySelector('#gallery-page');
+  const closeGallery = document.querySelector('#close-gallery-arrow')
+
+  const contactButton = document.querySelector("#contact-link");
+  const contactPage = document.querySelector('#contact-page');
+  const closeContact = document.querySelector('#close-contact-arrow')
+
+  knowWhatPageIsOn();
 
   autoplayVideoBackground();
 
-  galleryActions();
+  togglePage(contactButton, contactPage, closeContact);
+  togglePage(galleryButton, galleryPage, closeGallery);
+  togglePage(infoButton, infoPage, closeInfo);
 
-  contactActions();
+  // galleryActions();
 
-  infoActions();
+  // contactActions();
+
+  // infoActions();
 
   // mouseWheelActions();
 
