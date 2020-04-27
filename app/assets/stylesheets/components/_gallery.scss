@@ -11,6 +11,12 @@
   // transition: all 1s ease, translate-y 0ms ,top 0ms;
 }
 
+.gallery-container {
+  width: 80%;
+  min-height: 93vh;
+  margin: 0 auto;
+}
+
 #gallery-page::-webkit-scrollbar {
   width: 0px; /* For Chrome, Safari, and Opera */
 }
@@ -26,6 +32,7 @@
 #gallery-scrollable-content {
   min-height: 93vh;
   width: 100%;
+  margin-top: 7vh;
 }
 
 #gallery-page.hidden {
