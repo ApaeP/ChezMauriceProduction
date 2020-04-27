@@ -1,3 +1,11 @@
+@media (max-width:600px) {
+
+}
+
+@media (min-width:601px) {
+
+}
+
 #gallery-page {
   height: 100vh;
   width: 100vw;
@@ -12,7 +20,7 @@
 }
 
 .gallery-container {
-  width: 80%;
+  width: 100%;
   min-height: 93vh;
   margin: 0 auto;
 }
@@ -44,4 +52,11 @@
 
 .close-gallery-link {
   cursor: pointer;
+}
+
+.card {
+  // background-color: yellow;
+  width: 25%;
+  // height: calc( attr(width) / 16 * 9);
+  // min-width: 150px;
 }

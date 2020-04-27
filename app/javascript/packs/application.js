@@ -27,6 +27,7 @@ import { knowWhatPageIsOn } from '../components/know_what_page';
 import { autoplayVideoBackground } from '../components/background_video';
 import { mouseWheelActions } from '../components/mousewheel_actions';
 import { togglePage } from '../components/toggle_page';
+import { resizeCardsHeight } from '../components/resize_cards_height'
 
 // =============================================================================
 //                              ON TURBOLINKS LOAD
@@ -55,6 +56,8 @@ document.addEventListener('turbolinks:load', () => {
   togglePage(contactButton, contactPage, closeContact);
   togglePage(galleryButton, galleryPage, closeGallery);
   togglePage(infoButton, infoPage, closeInfo);
+
+  // resizeCardsHeight();
 
   // galleryActions();
 
