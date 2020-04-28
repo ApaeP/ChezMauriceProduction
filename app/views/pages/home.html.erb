@@ -72,6 +72,8 @@
           <%= f.submit 'Enregistrer"' %>
         <% end %>
 
+        <%#= render html: @vimeo_video_html.html_safe %>
+
       </div>
 
       <div class="gallery-container">
@@ -79,7 +81,7 @@
         <div class="gallery-grid d-flex flex-wrap justify-content-center">
           <% @videos.each_with_index do |video, i| %>
             <div class="card card-<%= i %>">
-              <div data-vimeo-url="<%= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%= video.name %>"></div>
+              <div data-vimeo-url="<%= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="true" id="<%= video.name %>"></div>
               <p style="cursor: pointer; margin: 0 !important;" id="fs-btn-<%= i %>" data-id="<%= i %>">Plein ecran</p>
             </div>
           <% end %>
