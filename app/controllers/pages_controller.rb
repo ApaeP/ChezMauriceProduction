@@ -3,11 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @contact = Contact.new
-  end
-
-  def gallery
-  end
-
-  def contact
+    @video = Video.new
+    @videos = Video.all
   end
 end

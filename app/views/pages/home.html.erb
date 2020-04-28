@@ -64,14 +64,45 @@
 
     <div id="gallery-scrollable-content">
 
+      <div class="add-video">
+        <%= simple_form_for(@video, remote: true) do |f| %>
+          <%= f.input :name, label: false, placeholder: 'Un seul mot pour identifier la video' %>
+          <%= f.input :title, label: false, placeholder: 'Le titre de la vidéo' %>
+          <%= f.input :url, label: false, placeholder: 'Le lien vimeo de la video' %>
+          <%= f.submit 'Enregistrer"' %>
+        <% end %>
+
+      </div>
+
       <div class="gallery-container">
         <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 5vh;">NOS PRODUCTIONS</h3>
         <div class="gallery-grid d-flex flex-wrap justify-content-center">
-          <% 12.times do %>
-            <div class="card">
-              <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/392004135?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+          <% @videos.each_with_index do |video, i| %>
+            <div class="card card-<%= i %>">
+              <div data-vimeo-url="<%= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%= video.name %>"></div>
+              <p style="cursor: pointer; margin: 0 !important;" id="fs-btn-<%= i %>" data-id="<%= i %>">Plein ecran</p>
             </div>
           <% end %>
+          <script src="https://player.vimeo.com/api/player.js"></script>
+          <script>
+            let videoPlayers = new Array
+            let fullscreenButtons = new Array
+
+            <% @videos.each_with_index do |video, i| %>
+              videoPlayers.push(new Vimeo.Player('<%= video.name %>'));
+              fullscreenButtons.push(document.querySelector(`#fs-btn-${<%= i %>}`))
+            <% end %>
+
+            fullscreenButtons.forEach((fsButton) => {
+              fsButton.addEventListener('click', (event) => {
+
+                videoPlayers[parseInt(fsButton.dataset.id)].play();
+                document.querySelector(`.card-${fsButton.dataset.id} iframe`).requestFullscreen();
+
+              });
+            });
+
+          </script>
         </div>
       </div>
 
