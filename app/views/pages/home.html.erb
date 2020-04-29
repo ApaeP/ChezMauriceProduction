@@ -1,8 +1,6 @@
 <div class="general-layout">
 
-  <!-- ########################################################################################################################## -->
   <!-- HOME PAGE -->
-  <!-- ########################################################################################################################## -->
   <div class="homepage">
 
     <%= video_tag 'Panda_Video_Overlay_LOOPED.mp4',
@@ -26,13 +24,9 @@
 
 
   </div>
-  <!-- ########################################################################################################################## -->
   <!-- END OF HOME PAGE -->
-  <!-- ########################################################################################################################## -->
 
-  <!-- ########################################################################################################################## -->
   <!-- GALLERY PAGE -->
-  <!-- ########################################################################################################################## -->
   <div id="gallery-page">
 
     <div id="home-menu">
@@ -53,9 +47,18 @@
 
           <div class="right-menu-elements">
             <div id="social-links">
-              <p><i class="fab fa-facebook"></i></p>
-              <p><i class="fab fa-instagram"></i></p>
-              <p><i class="fab fa-vimeo"></i></p>
+              <%= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-facebook"></i></p>
+              <% end %>
+              <%= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-instagram"></i></p>
+              <% end %>
+              <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+              <p><i class="fab fa-linkedin"></i></p>
+              <% end %>
+              <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-vimeo"></i></p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -91,13 +94,9 @@
 
     </div>
   </div>
-  <!-- ########################################################################################################################## -->
   <!-- END OF GALLERY PAGE -->
-  <!-- ########################################################################################################################## -->
 
-  <!-- ########################################################################################################################## -->
   <!-- CONTACT PAGE -->
-  <!-- ########################################################################################################################## -->
   <div id="contact-page">
 
     <div id="home-menu">
@@ -118,9 +117,18 @@
 
           <div class="right-menu-elements">
             <div id="social-links">
-              <p><i class="fab fa-facebook"></i></p>
-              <p><i class="fab fa-instagram"></i></p>
-              <p><i class="fab fa-vimeo"></i></p>
+              <%= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-facebook"></i></p>
+              <% end %>
+              <%= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-instagram"></i></p>
+              <% end %>
+              <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+              <p><i class="fab fa-linkedin"></i></p>
+              <% end %>
+              <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-vimeo"></i></p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -169,13 +177,9 @@
 
 
   </div>
-  <!-- ########################################################################################################################## -->
   <!-- END OF CONTACT PAGE -->
-  <!-- ########################################################################################################################## -->
 
-  <!-- ########################################################################################################################## -->
   <!-- INFO PAGE -->
-  <!-- ########################################################################################################################## -->
   <div id="info-page">
 
     <div id="home-menu">
@@ -196,9 +200,18 @@
 
           <div class="right-menu-elements">
             <div id="social-links">
-              <p><i class="fab fa-facebook"></i></p>
-              <p><i class="fab fa-instagram"></i></p>
-              <p><i class="fab fa-vimeo"></i></p>
+              <%= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-facebook"></i></p>
+              <% end %>
+              <%= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-instagram"></i></p>
+              <% end %>
+              <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+              <p><i class="fab fa-linkedin"></i></p>
+              <% end %>
+              <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+                <p><i class="fab fa-vimeo"></i></p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -209,11 +222,9 @@
 
     </div>
   </div>
-  <!-- ########################################################################################################################## -->
   <!-- END OF INFO PAGE -->
-  <!-- ########################################################################################################################## -->
 
-</div>
+</div> <!-- END GENERAL LAYOUT -->
 
 
 <!-- MODAL VIDEO -->
@@ -223,82 +234,6 @@
   </div>
 </div>
 <!-- END MODAL VIDEO -->
-
-<script src="https://player.vimeo.com/api/player.js"></script>
-<script>
-  let modalButtons = document.querySelectorAll('.thumbnail-div')
-  const modalBackground = document.querySelector('.video-modal-background')
-  const modalContent = document.querySelector('.video-modal-content')
-
-  const play = (player) => {
-    player.play();
-  };
-
-  const openCloseVideoModal = () => {
-
-    // OPEN
-    modalButtons.forEach((videoButton) => {
-      videoButton.addEventListener('click', (event) => {
-
-        if (document.querySelector('#vimeo-video-player > iframe')) {
-
-        // If player already exists (after first click) => replace the src attribute of the iframe
-          document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?app_id=122963`)
-
-          // set the player in the scope
-          const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'))
-
-          setTimeout(play, 500, videoPlayer)
-
-        } else {
-        // If player doesnt exist yet (on first click) => create the player
-
-          const playerOptions = {
-            id: videoButton.dataset.videoid,
-            width: document.querySelector('#vimeo-video-player').offsetWidth
-          }
-          const videoPlayer = new Vimeo.Player('vimeo-video-player', playerOptions)
-
-          setTimeout(play, 500, videoPlayer)
-
-        } // End of condition
-
-        modalBackground.classList.toggle('modal-hidden')
-        modalBackground.classList.toggle('modal-visible')
-
-      }); // End of click event
-
-    }); // End of iteration
-
-    // CLOSE BY CLICKING BACKGROUND
-    modalBackground.addEventListener('click', (event) => {
-
-      modalBackground.classList.toggle('modal-hidden')
-      modalBackground.classList.toggle('modal-visible')
-
-      // set the player in the scope
-      const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'))
-
-      videoPlayer.pause()
-    });
-  };
-
-  openCloseVideoModal();
-
-</script>
-
-
-
-<!--
-  Redimmensionner la video par rapport a la div#vimeo-video-player:
-   1 - ecouter les changements de taile d'ecran si la div est affichée
-   2 - set l'option max width de la video a la taille de div#vimeo-video-player
-Quand le lecteur s'ouvre =
-  1 - Afficher le lecteur une fois que la video a commencé a charger
-  2 - Lancer la lecture
-  3 - Quand la video a terminé, cacher la modale -->
-
-
 
 
 

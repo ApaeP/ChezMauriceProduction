@@ -16,9 +16,18 @@
 
       <div class="right-menu-elements">
         <div id="social-links">
-          <p><i class="fab fa-facebook"></i></p>
-          <p><i class="fab fa-instagram"></i></p>
-          <p><i class="fab fa-vimeo"></i></p>
+          <%= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+            <p><i class="fab fa-facebook"></i></p>
+          <% end %>
+          <%= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+            <p><i class="fab fa-instagram"></i></p>
+          <% end %>
+          <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+          <p><i class="fab fa-linkedin"></i></p>
+          <% end %>
+          <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+            <p><i class="fab fa-vimeo"></i></p>
+          <% end %>
         </div>
       </div>
     </div>
