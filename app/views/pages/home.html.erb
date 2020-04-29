@@ -78,31 +78,14 @@
         <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 5vh;">NOS PRODUCTIONS</h3>
         <div class="gallery-grid d-flex flex-wrap justify-content-center">
           <% @videos.each_with_index do |video, i| %>
-            <div class="card card-<%= i %>">
-              <div data-vimeo-url="<%= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%= video.name %>"></div>
-              <p style="cursor: pointer; margin: 0 !important;" id="fs-btn-<%= i %>" data-id="<%= i %>">Plein ecran</p>
+            <div class="card card-<%= i %>" >
+
+              <div class="thumbnail-div" data-videoid="<%= video.vimeo.id %>" style="background-image: url(<%= video.vimeo.thumbnail %>)"></div>
+
+              <!-- <div data-vimeo-url="<%#= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%#= video.name %>"></div> -->
             </div>
           <% end %>
-          <script src="https://player.vimeo.com/api/player.js"></script>
-          <script>
-            let videoPlayers = new Array
-            let fullscreenButtons = new Array
 
-            <% @videos.each_with_index do |video, i| %>
-              videoPlayers.push(new Vimeo.Player('<%= video.name %>'));
-              fullscreenButtons.push(document.querySelector(`#fs-btn-${<%= i %>}`))
-            <% end %>
-
-            fullscreenButtons.forEach((fsButton) => {
-              fsButton.addEventListener('click', (event) => {
-
-                videoPlayers[parseInt(fsButton.dataset.id)].play();
-                document.querySelector(`.card-${fsButton.dataset.id} iframe`).requestFullscreen();
-
-              });
-            });
-
-          </script>
         </div>
       </div>
 
@@ -231,4 +214,112 @@
   <!-- ########################################################################################################################## -->
 
 </div>
+
+
+<!-- MODAL VIDEO -->
+<div class="video-modal-background modal-hidden">
+  <div class="video-modal-content" id="vimeo-video-player">
+    <!-- <iframe id="video-frame" src="" width="" height="auto" frameborder="0" autoplay="1" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+  </div>
+</div>
+<!-- END MODAL VIDEO -->
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+  let modalButtons = document.querySelectorAll('.thumbnail-div')
+  const modalBackground = document.querySelector('.video-modal-background')
+  const modalContent = document.querySelector('.video-modal-content')
+
+  const play = (player) => {
+    player.play();
+  };
+
+  const openCloseVideoModal = () => {
+
+    // OPEN
+    modalButtons.forEach((videoButton) => {
+      videoButton.addEventListener('click', (event) => {
+
+        if (document.querySelector('#vimeo-video-player > iframe')) {
+
+        // If player already exists (after first click) => replace the src attribute of the iframe
+          document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?app_id=122963`)
+
+          // set the player in the scope
+          const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'))
+
+          setTimeout(play, 500, videoPlayer)
+
+        } else {
+        // If player doesnt exist yet (on first click) => create the player
+
+          const playerOptions = {
+            id: videoButton.dataset.videoid,
+            width: document.querySelector('#vimeo-video-player').offsetWidth
+          }
+          const videoPlayer = new Vimeo.Player('vimeo-video-player', playerOptions)
+
+          setTimeout(play, 500, videoPlayer)
+
+        } // End of condition
+
+        modalBackground.classList.toggle('modal-hidden')
+        modalBackground.classList.toggle('modal-visible')
+
+      }); // End of click event
+
+    }); // End of iteration
+
+    // CLOSE BY CLICKING BACKGROUND
+    modalBackground.addEventListener('click', (event) => {
+
+      modalBackground.classList.toggle('modal-hidden')
+      modalBackground.classList.toggle('modal-visible')
+
+      // set the player in the scope
+      const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'))
+
+      videoPlayer.pause()
+    });
+  };
+
+  openCloseVideoModal();
+
+</script>
+
+
+
+<!--
+  Redimmensionner la video par rapport a la div#vimeo-video-player:
+   1 - ecouter les changements de taile d'ecran si la div est affichée
+   2 - set l'option max width de la video a la taille de div#vimeo-video-player
+Quand le lecteur s'ouvre =
+  1 - Afficher le lecteur une fois que la video a commencé a charger
+  2 - Lancer la lecture
+  3 - Quand la video a terminé, cacher la modale -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

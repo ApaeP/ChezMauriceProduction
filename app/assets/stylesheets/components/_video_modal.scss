@@ -1,0 +1,28 @@
+.video-modal-background {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  z-index: 99999;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-hidden {
+  transition: visibility 0s, opacity 0.7s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal-visible {
+  transition: visibility 0s, opacity 0.7s ease;
+  visibility: visible;
+  opacity: 1;
+}
+
+#vimeo-video-player {
+  width: 90%;
+  margin: 0 auto;
+}

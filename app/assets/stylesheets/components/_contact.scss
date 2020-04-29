@@ -23,7 +23,7 @@
 
 #contact-page.displayed {
   transform: translate(0%, -100%);
-  z-index: 100000;
+  z-index: 30;
   opacity: 1;
   display: block;
   transition: all 1s ease, top 0ms;
@@ -38,7 +38,7 @@
 #contact-page.hidden {
   transition: all 1s ease, top 0ms;
   transform: translate(-100%, -100%);
-  z-index: 100000;
+  z-index: 30;
   opacity: 0;
 }
 
