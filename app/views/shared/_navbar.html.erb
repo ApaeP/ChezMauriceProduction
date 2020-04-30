@@ -12,6 +12,9 @@
         <p class="menu-link gallery-link">PRODUCTIONS</p>
         <p class="menu-link info-link">À PROPOS</p>
         <p class="menu-link contact-link">CONTACT</p>
+        <% if user_signed_in? %>
+          <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link" %>
+        <% end %>
       </div>
 
       <div class="right-menu-elements">
