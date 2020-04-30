@@ -2,6 +2,15 @@ const play = (player) => {
   player.play();
 };
 
+const closeModal = () => {
+  const modalBackground = document.querySelector('.video-modal-background');
+  modalBackground.classList.toggle('modal-hidden');
+  modalBackground.classList.toggle('modal-visible');
+  // set the player in the function scope
+  const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
+  videoPlayer.pause();
+};
+
 const openCloseVideoModal = () => {
   const modalButtons = document.querySelectorAll('.thumbnail-overlay');
   const modalBackground = document.querySelector('.video-modal-background');
@@ -47,19 +56,19 @@ const openCloseVideoModal = () => {
 
     }); // End of click event
 
-  }); // End of iteration
+  }); // End of OPEN
 
-  // CLOSE BY CLICKING BACKGROUND
+  // CLOSE
   modalBackground.addEventListener('click', (event) => {
-
-    modalBackground.classList.toggle('modal-hidden');
-    modalBackground.classList.toggle('modal-visible');
-
-    // set the player in the scope
-    const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
-
-    videoPlayer.pause();
+    closeModal();
   });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+
 };
 
 export { openCloseVideoModal };
@@ -67,7 +76,7 @@ export { openCloseVideoModal };
 
 
 //   Redimmensionner la video par rapport a la div#vimeo-video-player:
-//    1 - ecouter les changements de taile d'ecran si la div est affichée
+//    1 - ecouter les changements de taille d'ecran si la div est affichée
 //    2 - set l'option max width de la video a la taille de div#vimeo-video-player
         // document.querySelector('#vimeo-video-player > iframe').setAttribute('width', '100%')
 //   Quand le lecteur s'ouvre =

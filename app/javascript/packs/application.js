@@ -27,15 +27,12 @@ import { knowWhatPageIsOn } from '../components/know_what_page';
 import { autoplayVideoBackground } from '../components/background_video';
 import { mouseWheelActions } from '../components/mousewheel_actions';
 import { togglePage } from '../components/toggle_page';
-// import { resizeCardsHeight } from '../components/resize_cards_height';
 import { openCloseVideoModal } from '../components/video_modal';
+// import { resizeCardsHeight } from '../components/resize_cards_height';
 
 // =============================================================================
 //                              ON TURBOLINKS LOAD
 // =============================================================================
-
-
-
 document.addEventListener('turbolinks:load', () => {
 
   const infoButton = document.querySelectorAll(".info-link");
@@ -60,16 +57,7 @@ document.addEventListener('turbolinks:load', () => {
 
   openCloseVideoModal();
 
-  // resizeCardsHeight();
-
-  // galleryActions();
-
-  // contactActions();
-
-  // infoActions();
-
   // mouseWheelActions();
-
 });
 // =============================================================================
 //                          END OF ON TURBOLINKS LOAD

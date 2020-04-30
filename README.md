@@ -1,1 +1,8 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Chez Maurice. Production
+Website made by Paul Portier (Github ApaeP)
+
+Ruby (2.6.5)
+Ruby on Rails (6.0.2)
+HTML5
+SASS
+JavaScript (Vanilla, JQuery)

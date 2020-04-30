@@ -233,14 +233,44 @@
 
 <!-- MODAL VIDEO -->
 <div class="video-modal-background modal-hidden">
+  <div class="video-modal-title">
+
+  </div>
   <div class="video-modal-content" id="vimeo-video-player">
     <!-- <iframe id="video-frame" src="" width="" height="auto" frameborder="0" autoplay="1" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+  </div>
+  <div class="video-modal-description">
+
   </div>
 </div>
 <!-- END MODAL VIDEO -->
 
 
 
+
+
+
+
+
+<script type="text/javascript">
+
+  // know when dom is loaded
+  console.log('start')
+  window.onload = function(){
+    console.log('page chargée')
+  }
+
+  // know what page is current
+    if (window.location.href.includes('production')) {
+      console.log('je suis en prod');
+    } else if (window.location.href.includes('information')) {
+      console.log('je suis dans infos');
+    } else if (window.location.href.includes('contact')) {
+      console.log('je suis dans contact');
+    } else if (window.location.href.includes('accueil') || window.location.href == 'http://localhost:3000/') {
+      console.log('je suis dans acceuil');
+    }
+</script>
 
 
 
