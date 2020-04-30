@@ -5,6 +5,8 @@ class Video < ApplicationRecord
   # Gemify has_vimeo
   has_vimeo_video :url, message: "Seulement les liens de videos Vimeo sont acceptés"
 
+  has_one_attached :photo
+
   after_validation :downcase_and_delete_special_chars
 
   def downcase_and_delete_special_chars

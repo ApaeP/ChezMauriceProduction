@@ -69,9 +69,11 @@
 
       <div class="add-video">
         <%= simple_form_for(@video, remote: true) do |f| %>
-          <%= f.input :name, label: false, placeholder: 'Un seul mot pour identifier la video' %>
-          <%= f.input :title, label: false, placeholder: 'Le titre de la vidéo' %>
-          <%= f.input :url, label: false, placeholder: 'Le lien vimeo de la video' %>
+          <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
+          <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
+          <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
+          <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (format 16/9 - 1000px de large max - 400Ko max)' %>
+          <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
           <%= f.submit 'Enregistrer"' %>
         <% end %>
 
@@ -81,10 +83,12 @@
         <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 5vh;">NOS PRODUCTIONS</h3>
         <div class="gallery-grid d-flex flex-wrap justify-content-center">
           <% @videos.each_with_index do |video, i| %>
-            <div class="card card-<%= i %>" >
+            <div class="video-card card-<%= i %>" >
 
               <div class="thumbnail-div" data-videoid="<%= video.vimeo.id %>" style="background-image: url(<%= video.vimeo.thumbnail %>)"></div>
-
+              <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>">
+                <p class="thumbnail-overlay-title"><%= video.title.upcase %></p>
+              </div>
               <!-- <div data-vimeo-url="<%#= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%#= video.name %>"></div> -->
             </div>
           <% end %>

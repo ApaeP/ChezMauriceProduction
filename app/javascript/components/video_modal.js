@@ -3,7 +3,7 @@ const play = (player) => {
 };
 
 const openCloseVideoModal = () => {
-  const modalButtons = document.querySelectorAll('.thumbnail-div');
+  const modalButtons = document.querySelectorAll('.thumbnail-overlay');
   const modalBackground = document.querySelector('.video-modal-background');
   const modalContent = document.querySelector('.video-modal-content');
 
