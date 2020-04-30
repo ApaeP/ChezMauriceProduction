@@ -1,9 +1,10 @@
-const togglePage = (openLinks, page, closeLinks) => {
+const togglePage = (openLinks, page, closeLinks, location) => {
 
   openLinks.forEach((openLink) => {
 
     // When link to page is clicked
     openLink.addEventListener('click', (event) => {
+      history.pushState('open', "", `?${location}`)
       // Set the page parameter "top" to the hight of the window
       page.style.top = `${window.innerHeight}px`;
 
@@ -28,6 +29,7 @@ const togglePage = (openLinks, page, closeLinks) => {
 
   closeLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
+      history.pushState('close', "", "?accueil")
       // Play the background video
       document.querySelector("#home-video").play();
       // hide the page

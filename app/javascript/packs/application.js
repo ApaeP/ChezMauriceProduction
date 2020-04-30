@@ -54,9 +54,9 @@ document.addEventListener('turbolinks:load', () => {
 
   autoplayVideoBackground();
 
-  togglePage(contactButton, contactPage, closeContact);
-  togglePage(galleryButton, galleryPage, closeGallery);
-  togglePage(infoButton, infoPage, closeInfo);
+  togglePage(contactButton, contactPage, closeContact, "contact");
+  togglePage(galleryButton, galleryPage, closeGallery, "production");
+  togglePage(infoButton, infoPage, closeInfo, "information");
 
   openCloseVideoModal();
 
