@@ -3,8 +3,8 @@
   <!-- HOME PAGE -->
   <div class="homepage">
 
-    <%= video_tag 'Panda_Video_Overlay_LOOPED.mp4',
-                   poster: 'PA-LOGO_2020_poster_3072x1920.png',
+    <%= video_tag 'bckgrnd_video.mp4',
+                   # poster: 'PA-LOGO_2020_poster_3072x1920.png',
                    autoplay: false,
                    playsinline: true,
                    muted: true,
@@ -43,6 +43,9 @@
             <p class="menu-link gallery-link">PRODUCTIONS</p>
             <p class="menu-link info-link">À PROPOS</p>
             <p class="menu-link contact-link">CONTACT</p>
+            <% if user_signed_in? %>
+              <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link" %>
+            <% end %>
           </div>
 
           <div class="right-menu-elements">
@@ -67,28 +70,22 @@
 
     <div id="gallery-scrollable-content">
 
-      <div class="add-video">
-        <%= simple_form_for(@video, remote: true) do |f| %>
-          <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
-          <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
-          <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
-          <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (format 16/9 - 1000px de large max - 400Ko max)' %>
-          <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
-          <%= f.submit 'Enregistrer"' %>
-        <% end %>
-
-      </div>
-
       <div class="gallery-container">
-        <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 5vh;">NOS PRODUCTIONS</h3>
+        <% if user_signed_in? %>
+          <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 2vh;">NOS PRODUCTIONS</h3>
+          <h5 id="add-video-button">AJOUTER UNE VIDEO</h5>
+        <% else %>
+          <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 5vh;">NOS PRODUCTIONS</h3>
+        <% end %>
         <div class="gallery-grid d-flex flex-wrap justify-content-center">
           <% @videos.each_with_index do |video, i| %>
             <div class="video-card card-<%= i %>" >
 
-              <div class="thumbnail-div" data-videoid="<%= video.vimeo.id %>" style="background-image: url(<%= video.vimeo.thumbnail %>)"></div>
-              <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>">
+              <div class="thumbnail-div" style="background-image: url(<%= video.vimeo.thumbnail %>)"></div>
+              <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
                 <p class="thumbnail-overlay-title"><%= video.title.upcase %></p>
               </div>
+
               <!-- <div data-vimeo-url="<%#= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%#= video.name %>"></div> -->
             </div>
           <% end %>
@@ -117,6 +114,9 @@
             <p class="menu-link gallery-link">PRODUCTIONS</p>
             <p class="menu-link info-link">À PROPOS</p>
             <p class="menu-link contact-link">CONTACT</p>
+            <% if user_signed_in? %>
+              <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link" %>
+            <% end %>
           </div>
 
           <div class="right-menu-elements">
@@ -200,6 +200,9 @@
             <p class="menu-link gallery-link">PRODUCTIONS</p>
             <p class="menu-link info-link">À PROPOS</p>
             <p class="menu-link contact-link">CONTACT</p>
+            <% if user_signed_in? %>
+              <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link" %>
+            <% end %>
           </div>
 
           <div class="right-menu-elements">
@@ -245,6 +248,33 @@
 </div>
 <!-- END MODAL VIDEO -->
 
+<!-- MODAL CREATE VIDEO -->
+  <div class="create-video-modal-background modal-hidden">
+    <div class="add-video">
+
+      <h2 id="create-video-button">AJOUTER UNE VIDEO</h2>
+
+      <%= simple_form_for(@video, remote: true) do |f| %>
+        <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
+        <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
+        <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
+        <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (format 16/9 - 1000px de large max - 400Ko max)' %>
+        <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
+        <%= f.submit 'Enregistrer' %>
+      <% end %>
+
+    </div>
+  </div>
+<!-- END MODAL CREATE VIDEO -->
+
+<!-- MODAL EDIT VIDEO -->
+  <div class="edit-modal-video-background modal-hidden">
+    <div>
+
+    </div>
+  </div>
+<!-- END MODAL EDIT VIDEO -->
+
 
 
 
@@ -262,7 +292,7 @@
 
   // know what page is current
     if (window.location.href.includes('production')) {
-      console.log('je suis en prod');
+      console.log('je suis dans productions');
     } else if (window.location.href.includes('information')) {
       console.log('je suis dans infos');
     } else if (window.location.href.includes('contact')) {

@@ -28,6 +28,7 @@ import { autoplayVideoBackground } from '../components/background_video';
 import { mouseWheelActions } from '../components/mousewheel_actions';
 import { togglePage } from '../components/toggle_page';
 import { openCloseVideoModal } from '../components/video_modal';
+import { openCloseCreateVideoModal } from '../components/create_video_modal'
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
 // =============================================================================
@@ -47,7 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   const contactPage = document.querySelector('#contact-page');
   const closeContact = document.querySelectorAll('.close-contact-link')
 
-  knowWhatPageIsOn();
+  // knowWhatPageIsOn();
 
   autoplayVideoBackground();
 
@@ -55,7 +56,13 @@ document.addEventListener('turbolinks:load', () => {
   togglePage(galleryButton, galleryPage, closeGallery, "production");
   togglePage(infoButton, infoPage, closeInfo, "information");
 
-  openCloseVideoModal();
+  if (document.querySelector('.video-modal-background')) {
+    openCloseVideoModal();
+  }
+
+  if (document.querySelector('.create-video-modal-background')) {
+    openCloseCreateVideoModal();
+  }
 
   // mouseWheelActions();
 });

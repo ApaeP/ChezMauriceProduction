@@ -3,7 +3,7 @@
   height: 100vh;
   width: 100vw;
   top: 0;
-  z-index: 99999;
+  z-index: 50;
   background-color: rgba(0, 0, 0, 0.95);
   display: flex;
   flex-direction: column;
@@ -23,6 +23,36 @@
 }
 
 #vimeo-video-player {
-  width: 80%;
+  height: 60vh;
   margin: 0 auto;
+}
+
+.video-modal-title {
+  height: 16vh;
+  width: 65%;
+  margin: 2vh auto;
+  color: lightgrey;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.video-modal-description {
+  height: 14vh;
+  width: 65%;
+  margin: 3vh auto;
+  color: lightgrey;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.video-modal-description::-webkit-scrollbar {
+  width: 0px; /* For Chrome, Safari, and Opera */
 }
