@@ -65,7 +65,29 @@ document.addEventListener('turbolinks:load', () => {
   }
 
   // mouseWheelActions();
+
+  const startTime = Date.now();
+  console.log(`starts at ${startTime}`)
+
+  window.onload = function(){
+    console.log(`page loaded after ${Date.now() - startTime} milliseconds`);
+  }
+
+  // know what page is current
+  if (window.location.href.includes('production')) {
+    galleryPage.style.top = `${window.innerHeight}px`;
+    galleryPage.classList.add('displayed');
+  } else if (window.location.href.includes('information')) {
+    infoPage.style.top = `${window.innerHeight}px`;
+    infoPage.classList.add('displayed');
+  } else if (window.location.href.includes('contact')) {
+    contactPage.style.top = `${window.innerHeight}px`;
+    contactPage.classList.add('displayed');
+  } else if (window.location.href.includes('accueil') || window.location.href == 'http://localhost:3000/') {
+  }
 });
 // =============================================================================
 //                          END OF ON TURBOLINKS LOAD
 // =============================================================================
+
+  // know when dom is loaded
