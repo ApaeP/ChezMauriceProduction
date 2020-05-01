@@ -13,6 +13,11 @@ const togglePage = (openLinks, page, closeLinks, location) => {
         let displayedPage = document.querySelector('.displayed')
         displayedPage.classList.add('hidden');
         displayedPage.classList.remove('displayed');
+      } else if (document.querySelector('.reload-displayed')) {
+        let reloadDisplayedPage = document.querySelector('.reload-displayed');
+        reloadDisplayedPage.classList.add('hidden');
+        reloadDisplayedPage.classList.remove('.reload-displayed');
+        document.querySelector("#home-video").pause();
       }
 
       // Display the page

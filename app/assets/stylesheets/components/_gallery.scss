@@ -37,6 +37,13 @@
   transition: all 1s ease, top 0ms;
 }
 
+#gallery-page.reload-displayed {
+  transform: translate(0%, -100%);
+  z-index: 20;
+  opacity: 1;
+  display: block;
+}
+
 #gallery-scrollable-content {
   min-height: 93vh;
   width: 100%;

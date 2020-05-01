@@ -29,6 +29,13 @@
   transition: all 1s ease, top 0ms;
 }
 
+#contact-page.reload-displayed {
+  transform: translate(0%, -100%);
+  z-index: 30;
+  opacity: 1;
+  display: block;
+}
+
 #contact-scrollable-content {
   min-height: 93vh;
   width: 100%;

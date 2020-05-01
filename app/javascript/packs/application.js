@@ -23,12 +23,12 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-import { knowWhatPageIsOn } from '../components/know_what_page';
 import { autoplayVideoBackground } from '../components/background_video';
-import { mouseWheelActions } from '../components/mousewheel_actions';
 import { togglePage } from '../components/toggle_page';
 import { openCloseVideoModal } from '../components/video_modal';
 import { openCloseCreateVideoModal } from '../components/create_video_modal'
+import { setPageOnReload } from '../components/set_page_on_reload'
+// import { mouseWheelActions } from '../components/mousewheel_actions';
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
 // =============================================================================
@@ -48,13 +48,11 @@ document.addEventListener('turbolinks:load', () => {
   const contactPage = document.querySelector('#contact-page');
   const closeContact = document.querySelectorAll('.close-contact-link')
 
-  // knowWhatPageIsOn();
-
-  autoplayVideoBackground();
-
   togglePage(contactButton, contactPage, closeContact, "contact");
   togglePage(galleryButton, galleryPage, closeGallery, "production");
   togglePage(infoButton, infoPage, closeInfo, "information");
+
+  autoplayVideoBackground();
 
   if (document.querySelector('.video-modal-background')) {
     openCloseVideoModal();
@@ -64,7 +62,7 @@ document.addEventListener('turbolinks:load', () => {
     openCloseCreateVideoModal();
   }
 
-  // mouseWheelActions();
+  setPageOnReload();
 
   const startTime = Date.now();
   console.log(`starts at ${startTime}`)
@@ -73,18 +71,6 @@ document.addEventListener('turbolinks:load', () => {
     console.log(`page loaded after ${Date.now() - startTime} milliseconds`);
   }
 
-  // know what page is current
-  if (window.location.href.includes('production')) {
-    galleryPage.style.top = `${window.innerHeight}px`;
-    galleryPage.classList.add('displayed');
-  } else if (window.location.href.includes('information')) {
-    infoPage.style.top = `${window.innerHeight}px`;
-    infoPage.classList.add('displayed');
-  } else if (window.location.href.includes('contact')) {
-    contactPage.style.top = `${window.innerHeight}px`;
-    contactPage.classList.add('displayed');
-  } else if (window.location.href.includes('accueil') || window.location.href == 'http://localhost:3000/') {
-  }
 });
 // =============================================================================
 //                          END OF ON TURBOLINKS LOAD
