@@ -1,4 +1,8 @@
 const setPageOnReload = () => {
+  const galleryPage = document.querySelector('#gallery-page')
+  const infoPage = document.querySelector('#info-page')
+  const contactPage = document.querySelector('#contact-page')
+
   if (window.location.href.includes('production')) {
     galleryPage.style.top = `${window.innerHeight}px`;
     galleryPage.classList.add('reload-displayed');
