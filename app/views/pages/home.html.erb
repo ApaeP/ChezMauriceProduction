@@ -258,7 +258,7 @@
         <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
         <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
         <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
-        <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (format 16/9 - 1000px de large max - 400Ko max)' %>
+        <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (idéalement : PNG - 16/9 - 700px de large - 72ppp)' %>
         <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
         <%= f.submit 'Enregistrer' %>
       <% end %>
@@ -268,11 +268,20 @@
 <!-- END MODAL CREATE VIDEO -->
 
 <!-- MODAL EDIT VIDEO -->
-  <div class="edit-modal-video-background modal-hidden">
-    <div>
-
+<% @videos.each do |video| %>
+  <div class="edit-video-modal-background modal-hidden">
+    <div class="edit-video">
+      <%= simple_form_for(video, remote: true) do |f| %>
+        <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
+        <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
+        <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
+        <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (idéalement : PNG - 16/9 - 700px de large - 72ppp)' %>
+        <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
+        <%= f.submit 'Enregistrer' %>
+      <% end %>
     </div>
   </div>
+<% end %>
 <!-- END MODAL EDIT VIDEO -->
 
 
