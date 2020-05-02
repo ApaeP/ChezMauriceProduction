@@ -149,15 +149,31 @@
 
       <div class="contact-container">
 
-        <div class="contact-page-top">
+<!--         <div class="contact-page-top">
           <div class="contact-top-left">
             <h1>CHEZ MAURICE. <br>PRODUCTION</h1>
           </div>
           <div class="contact-top-right">
 
           </div>
+        </div> -->
+
+        <div class="contact-page-infos-and-map">
+          <div class="contact-page-infos-and-map-left">
+            <h2>CHEZ MAURICE. PRODUCTION</h2>
+            <p>
+              77 avenue Philippe Auguste<br>
+              75011, PARIS<br>
+              <a href="tel:0033661738763" class="title-contact-link">Tel : +33 6 61 73 87 63</a><br>
+              <%= mail_to "chezmauriceproduction@contact.com", "Email : chezmauriceproduction@contact.com", class: "title-contact-link" %>
+
+            </p>
+          </div>
+          <div class="contact-page-infos-and-map-right">
+            <div id='map' style='width: 100%; height: 100%;'></div>
+          </div>
         </div>
-        <div class="contact-page-mid">
+        <div class="contact-page-form">
           <%= simple_form_for(@contact) do |f| %>
             <%= f.input :name, label: false, placeholder: 'Nom', input_html: { class: 'form-contact-input' } %>
             <%= f.input :company, label: false, placeholder: 'Votre société', input_html: { class: 'form-contact-input' } %>
@@ -168,64 +184,8 @@
             <%= f.submit "Envoyer" %>
           <% end %>
         </div>
-        <div class="contact-page-bottom">
-          <div class="contact-bottom-left">
-            <p>
-              CHEZ MAURICE. PRODUCTION<br>
-              77 avenue Philippe Auguste<br>
-              75011, PARIS<br>
-            </p>
-          </div>
-          <div class="contact-bottom-right">
-            <div id='map' style='width: 100%; height: 100%;'></div>
-          </div>
-        </div>
 
       </div>
-
-<script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoiY2hlem1hdXJpY2UiLCJhIjoiY2s5b2pqazIyMDFhMjNncDlxbTAzcGU1NyJ9.qS_hauRluV4nopWAd7q0Fg';
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/light-v10',
-    center: [2.391959, 48.854435],
-    zoom: 12
-  });
-
-  map.on("load", function () {
-    /* Image: An image is loaded and added to the map. */
-    map.loadImage("<%= image_path 'favicon.png' %>", function(error, image) {
-      if (error) throw error;
-      map.addImage("custom-marker", image);
-      /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
-      map.addLayer({
-        id: "markers",
-        type: "symbol",
-        /* Source: A data source specifies the geographic coordinate where the image marker gets placed. */
-        source: {
-          type: "geojson",
-          data: {
-            type: 'FeatureCollection',
-            features: [
-            {
-              type: 'Feature',
-              properties: {},
-              geometry: {
-                type: "Point",
-                coordinates: [2.391959, 48.854435]
-              }
-            }
-            ]
-          }
-        },
-        layout: {
-          "icon-image": "custom-marker",
-        }
-      });
-    });
-  });
-
-</script>
 
     </div> <!-- <div id="contact-scrollable-content"> -->
 
@@ -334,9 +294,12 @@
 <% end %>
 <!-- END MODAL EDIT VIDEO -->
 
-
-
-
+<div id="loading-hider">
+  <div id="loading-hider-container">
+    <h1>CHEZ MAURICE. PRODUCTION</h1>
+    <%= render 'shared/loader_svg' %>
+  </div>
+</div>
 
 
 

@@ -28,6 +28,7 @@ import { togglePage } from '../components/toggle_page';
 import { openCloseVideoModal } from '../components/video_modal';
 import { openCloseCreateVideoModal } from '../components/create_video_modal'
 import { setPageOnReload } from '../components/set_page_on_reload'
+import { initMap } from '../components/init_mapbox'
 // import { mouseWheelActions } from '../components/mousewheel_actions';
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
@@ -54,6 +55,8 @@ document.addEventListener('turbolinks:load', () => {
 
   autoplayVideoBackground();
 
+  initMap();
+
   if (document.querySelector('.video-modal-background')) {
     openCloseVideoModal();
   }
@@ -68,7 +71,9 @@ document.addEventListener('turbolinks:load', () => {
   console.log(`starts at ${startTime}`)
 
   window.onload = function(){
-    console.log(`page loaded after ${Date.now() - startTime} milliseconds`);
+    const timeToLOad = Date.now() - startTime;
+    console.log(timeToLOad);
+    document.querySelector('#loading-hider').classList.add('load-hide')
   }
 
 });
