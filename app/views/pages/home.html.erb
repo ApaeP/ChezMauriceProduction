@@ -90,6 +90,9 @@
               <% end %>
               <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
                 <p class="thumbnail-overlay-title"><%= video.title.upcase %></p>
+                <% if user_signed_in? %>
+                  <p class="modify-video-button" data-videoid="<%= i %>">MODIFIER</p>
+                <% end %>
               </div>
 
               <!-- <div data-vimeo-url="<%#= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%#= video.name %>"></div> -->
@@ -319,6 +322,13 @@
   if (document.querySelector('#welcome-video-container')) {
     setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
   }
+
+  document.querySelectorAll('.modify-video-button').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      console.log('MODFY CLICK');
+      event.preventDefault()
+    });
+  });
 </script>
 
 
