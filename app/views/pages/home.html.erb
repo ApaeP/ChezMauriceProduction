@@ -86,7 +86,7 @@
               <% if video.photo.attached? %>
                 <div class="thumbnail-div" style="background-image: url(<%= url_for(video.photo) %>)"></div>
               <% else %>
-                <div class="thumbnail-div" style="background-image: url(<%= video.vimeo.thumbnail %>)"></div>
+                <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
               <% end %>
               <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
                 <p class="thumbnail-overlay-title"><%= video.title.upcase %></p>
@@ -294,18 +294,32 @@
 <% end %>
 <!-- END MODAL EDIT VIDEO -->
 
-<div id="loading-hider">
+<!-- <div id="loading-hider">
   <div id="loading-hider-container">
     <h1>CHEZ MAURICE. PRODUCTION</h1>
-    <%= render 'shared/loader_svg' %>
+    <%#= render 'shared/loader_svg' %>
   </div>
-</div>
+</div> -->
 
+<% if @first_visit %>
+  <div id="welcome-video-container">
+    <%= video_tag 'geh.mp4',
+                   # poster: 'PA-LOGO_2020_poster_3072x1920.png',
+                   autoplay: true,
+                   playsinline: true,
+                   muted: true,
+                   loop: false,
+                   controls: false,
+                   type: 'video/mp4',
+                   id: 'welcome-video' %>
+  </div>
+<% end %>
 
-
-
-
-
+<script>
+  if (document.querySelector('#welcome-video-container')) {
+    setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
+  }
+</script>
 
 
 

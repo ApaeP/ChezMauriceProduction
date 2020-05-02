@@ -35,6 +35,7 @@ import { initMap } from '../components/init_mapbox'
 // =============================================================================
 //                              ON TURBOLINKS LOAD
 // =============================================================================
+const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
 
   const infoButton = document.querySelectorAll(".info-link");
@@ -67,13 +68,11 @@ document.addEventListener('turbolinks:load', () => {
 
   setPageOnReload();
 
-  const startTime = Date.now();
-  console.log(`starts at ${startTime}`)
 
   window.onload = function(){
     const timeToLOad = Date.now() - startTime;
-    console.log(timeToLOad);
-    document.querySelector('#loading-hider').classList.add('load-hide')
+    console.log("Time to load website: " + timeToLOad + "ms");
+    // document.querySelector('#loading-hider').classList.add('load-hide')
   }
 
 });
