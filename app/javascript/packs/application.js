@@ -30,6 +30,7 @@ import { openCloseCreateVideoModal } from '../components/create_video_modal';
 import { openCloseEditVideoModal } from '../components/edit_video_modal';
 import { setPageOnReload } from '../components/set_page_on_reload';
 import { initMap } from '../components/init_mapbox';
+import { initSortable } from '../components/sortable'
 // import { mouseWheelActions } from '../components/mousewheel_actions';
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
@@ -80,6 +81,7 @@ document.addEventListener('turbolinks:load', () => {
     });
   });
 
+  initSortable();
 
   window.onload = function(){
     const timeToLOad = Date.now() - startTime;

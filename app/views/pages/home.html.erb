@@ -78,7 +78,7 @@
           <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 5vh;">NOS PRODUCTIONS</h3>
         <% end %>
         <div class="gallery-grid d-flex flex-wrap justify-content-center">
-          <% @videos.each_with_index do |video, i| %>
+          <% @videos.order(:number).each_with_index do |video, i| %>
             <div class="video-card card-<%= i %>" >
 
               <!-- background-image: url('<%#= cl_image_path @video.photo.key, height: 300, width: 400, crop: :fill %>')" -->
@@ -89,7 +89,7 @@
                 <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
               <% end %>
               <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
-                <p class="thumbnail-overlay-title"><%= video.title.upcase %></p>
+                <p class="thumbnail-overlay-title"><%= video.number %> - <%= video.title.upcase %></p>
                 <% if user_signed_in? %>
                   <p class="modify-video-button" data-videoid="<%= i %>">Modifier</p>
                   <%= link_to "Supprimer", video_path(video), class: 'delete-video-btn', method: :delete, data: { confirm: "Voulez-vous vraiment supprimer la vidéo \"#{video.title}\"?" } %>
@@ -101,6 +101,22 @@
           <% end %>
 
         </div>
+      </div>
+
+      <div class="sortable-list-container">
+        <ul id="sortable-ul">
+          <% @videos.order(:number).each_with_index do |video, i| %>
+            <li><%= video.title %></li>
+          <% end %>
+        </ul>
+      </div>
+    <!-- ------------------------------- Hidden form for reorder ------------------------------- -->
+      <div class="d-none">
+        <%= simple_form_for :numero, url: update_rank_video_path(@videos.last), method: :post, remote: true do |f| %>
+            <%= f.input :oldIndex %>
+            <%= f.input :newIndex %>
+            <%= f.button :submit, class: "update-rank-btn" %>
+        <% end %>
       </div>
 
     </div>
