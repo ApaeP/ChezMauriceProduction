@@ -1,44 +1,35 @@
 const mouseWheelActions = () => {
 
-  const contactPage = document.querySelector('#contact-page');
-  const galleryPage = document.querySelector('#gallery-page');
-  const infoPage = document.querySelector('#info-page');
-
-  const contactOpen = document.querySelector('#contact-link')
-  const galleryOpen = document.querySelector('#gallery-link')
-  const infoOpen = document.querySelector('#info-link')
-
-  const closeContact = document.querySelector('#close-contact-arrow');
-  const closeGallery = document.querySelector('#close-gallery-arrow');
-  const closeInfo = document.querySelector('#close-info-arrow');
+  const contactOpen = document.querySelector('#contact-link');
+  const galleryOpen = document.querySelector('#gallery-link');
+  const infoOpen = document.querySelector('.info-link');
+  const accueilBtn = document.querySelector('.close-info-link');
 
   window.addEventListener('wheel', (event) => {
     if (event.deltaX < -50) {
     // If we scroll left
-
-      // Open contact
-      contactOpen.click();
 
 
     } else if (event.deltaX > 50) {
     // If we scroll right
 
 
-      galleryOpen.click();
-
-
     } else if (event.deltaY > 50) {
     // If we scroll down
-
-      infoOpen.click();
-
+      if (window.location.href.includes('accueil') || !window.location.href.includes("?")) {
+        infoOpen.click();
+        // window.location.href
+      }
 
     } else if (event.deltaY < -50) {
     // If we scroll up
-
+      if (window.location.href.includes('information')) {
+        accueilBtn.click();
+      }
     }
 
   });
 };
 
 export { mouseWheelActions };
+

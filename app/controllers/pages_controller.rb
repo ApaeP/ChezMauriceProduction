@@ -6,4 +6,8 @@ class PagesController < ApplicationController
     @video = Video.new
     @videos = Video.all.order(:number)
   end
+
+  def legal
+
+  end
 end

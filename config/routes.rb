@@ -7,5 +7,6 @@ Rails.application.routes.draw do
       post 'update_rank'
     end
   end
+  get 'mentions-legales', to: 'pages#legal'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

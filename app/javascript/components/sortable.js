@@ -2,7 +2,6 @@
 import Sortable from 'sortablejs/modular/sortable.core.esm.js';
 
 const initSortable = () => {
-  console.log('coucou sort')
   const el = document.querySelector('#sortable-ul');
   Sortable.create(el, {
     onEnd: function (evt) {

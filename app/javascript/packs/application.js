@@ -31,7 +31,7 @@ import { openCloseEditVideoModal } from '../components/edit_video_modal';
 import { setPageOnReload } from '../components/set_page_on_reload';
 import { initMap } from '../components/init_mapbox';
 import { initSortable } from '../components/sortable'
-// import { mouseWheelActions } from '../components/mousewheel_actions';
+import { mouseWheelActions } from '../components/mousewheel_actions';
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
 // =============================================================================
@@ -71,6 +71,12 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelector('.edit-video-modal-background')) {
     openCloseEditVideoModal();
   }
+
+  if (document.querySelector('#welcome-video-container')) {
+    setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
+  }
+
+  mouseWheelActions();
 
   setPageOnReload();
 

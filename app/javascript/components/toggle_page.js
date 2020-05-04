@@ -28,7 +28,6 @@ const togglePage = (openLinks, page, closeLinks, location) => {
 
       // Pause the video after display animation
       setTimeout('document.querySelector("#home-video").pause()', 1000)
-
     });
   });
 
