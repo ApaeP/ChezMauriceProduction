@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   def home
     @contact = Contact.new
     @video = Video.new
-    @videos = Video.all.order('created_at DESC')
+    @videos = Video.all.order(:number)
   end
 end
