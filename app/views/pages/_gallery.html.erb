@@ -16,7 +16,7 @@
         <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
       <% end %>
       <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
-        <p class="thumbnail-overlay-title"><%= video.number %> - <%= video.title.upcase %></p>
+        <p class="thumbnail-overlay-title"><%= video.title.upcase %></p>
         <% if user_signed_in? %>
           <p class="modify-video-button" data-videoid="<%= i %>">Modifier</p>
           <%= link_to "Supprimer", video_path(video), class: 'delete-video-btn', method: :delete, data: { confirm: "Voulez-vous vraiment supprimer la vidéo \"#{video.title}\"?" } %>
@@ -28,18 +28,23 @@
   <% end %>
 
 </div>
-<div class="sortable-list-container">
-  <ul id="sortable-ul">
-    <% videos.order(:number).each_with_index do |video, i| %>
-      <li><%= video.number %>°) - <%= video.title %></li>
+
+<% if user_signed_in? %>
+
+<h3 style="text-align: center; margin: 1.5rem 0;">Réorganiser les vidéos</h3>
+  <div class="sortable-list-container">
+    <ol id="sortable-ul">
+      <% videos.order(:number).each_with_index do |video, i| %>
+        <li><%= video.number %> - <%= video.title %></li>
+      <% end %>
+    </ol>
+  </div>
+  <!-- ------------------------------- Hidden form for reorder ------------------------------- -->
+  <div class="d-none">
+    <%= simple_form_for :numero, url: update_rank_video_path(videos.last), method: :post, remote: true do |f| %>
+        <%= f.input :oldIndex %>
+        <%= f.input :newIndex %>
+        <%= f.button :submit, class: "update-rank-btn" %>
     <% end %>
-  </ul>
-</div>
-<!-- ------------------------------- Hidden form for reorder ------------------------------- -->
-<div class="d-none">
-  <%= simple_form_for :numero, url: update_rank_video_path(videos.last), method: :post, remote: true do |f| %>
-      <%= f.input :oldIndex %>
-      <%= f.input :newIndex %>
-      <%= f.button :submit, class: "update-rank-btn" %>
-  <% end %>
-</div>
+  </div>
+<% end %>

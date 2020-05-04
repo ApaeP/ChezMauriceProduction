@@ -109,3 +109,19 @@
   overflow: hidden;
 }
 
+.sortable-list-container {
+  width: max-content;
+  margin: 2vh auto;
+  li {
+    cursor: grab;
+    border: 1px solid lightgray;
+    padding: 5px 15px;
+    margin: 2px;
+    border-radius: 5px;
+    list-style: none;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
