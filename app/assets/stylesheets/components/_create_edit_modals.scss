@@ -11,9 +11,27 @@
 }
 
 .add-video {
-  padding: 10vh;
+  // padding: 10vh;
   background-color: rgba(255, 255, 255, 0.95);
   margin: 10vh 20vh;
+  h2 {
+    text-align: center;
+  }
+}
+
+.close-add-button {
+  display: flex;
+  justify-content: flex-end;
+  p {
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+}
+
+.add-form {
+  padding: 5vh 10vh 10vh 10vh;
+
 }
 
 #add-video-button {
@@ -68,18 +86,40 @@
 .modify-video-button {
   text-align: center;
   cursor: pointer;
+  min-width: 50%;
   width: min-content;
   margin: 0.5rem auto 0 auto;
-  border: 0.1px solid rgba(255, 255, 255, 0.4);
+  border: 0.1px solid white;
   border-radius: 3px;
   padding: 2px 9px;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 0.4) !important;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
   transition: all 0.3s ease-in-out;
   &:hover {
     transition: all 0.3s ease-in-out;
-    color: rgba(0, 0, 0, 0.4);
-    background-color: rgba(255, 255, 255, 0.4);
-    border: 0.1px solid rgba(0, 0, 0, 0.4);
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0.1px solid black;
+  }
+}
+
+.delete-video-btn {
+  text-align: center;
+  cursor: pointer;
+  min-width: 50%;
+  width: min-content;
+  margin: 0.5rem auto 0 auto;
+  border: 0.1px solid white;
+  border-radius: 3px;
+  padding: 2px 9px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transition: all 0.3s ease-in-out;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0.1px solid black;
+    text-decoration: none;
   }
 }

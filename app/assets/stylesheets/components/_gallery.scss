@@ -98,9 +98,13 @@
     opacity: 1;
   }
   p {
-    width: 100%;
+    // width: 100%;
     color: white;
     margin-bottom: 0 !important;
   }
+}
+
+.thumbnail-overlay-title {
+  overflow: hidden;
 }
 

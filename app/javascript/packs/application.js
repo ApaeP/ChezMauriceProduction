@@ -73,6 +73,13 @@ document.addEventListener('turbolinks:load', () => {
 
   setPageOnReload();
 
+  document.querySelectorAll('.delete-video-btn').forEach((deleteBtn) => {
+    deleteBtn.addEventListener('click', (event) => {
+      document.querySelector('.video-modal-background').classList.toggle('modal-visible');
+      document.querySelector('.video-modal-background').classList.toggle('modal-hidden');
+    });
+  });
+
 
   window.onload = function(){
     const timeToLOad = Date.now() - startTime;
