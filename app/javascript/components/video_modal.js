@@ -22,29 +22,31 @@ const openCloseVideoModal = () => {
   modalButtons.forEach((videoButton) => {
     videoButton.addEventListener('click', (event) => {
 
-      if (document.querySelector('#vimeo-video-player > iframe')) {
-      // If player already exists (after first click) => replace the src attribute of the iframe
+      if (!document.querySelector('.edit-video-modal-background.modal-visible')) {
+        if (document.querySelector('#vimeo-video-player > iframe')) {
+        // If player already exists (after first click) => replace the src attribute of the iframe
 
-      document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
+        document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
 
-        // set the player in the scope
-        const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
+          // set the player in the scope
+          const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
 
-        setTimeout(play, 500, videoPlayer);
+          setTimeout(play, 500, videoPlayer);
 
-      } else {
-      // If player doesnt exist yet (on first click) => create the player
+        } else {
+        // If player doesnt exist yet (on first click) => create the player
 
-      const playerOptions = {
-        id: videoButton.dataset.videoid,
-        height: document.querySelector('.video-modal-content').offsetHeight,
-        autoplay: true
-      };
-      const videoPlayer = new Vimeo.Player('vimeo-video-player', playerOptions);
+        const playerOptions = {
+          id: videoButton.dataset.videoid,
+          height: document.querySelector('.video-modal-content').offsetHeight,
+          autoplay: true
+        };
+        const videoPlayer = new Vimeo.Player('vimeo-video-player', playerOptions);
 
-        setTimeout(play, 500, videoPlayer);
+          setTimeout(play, 500, videoPlayer);
 
-      }; // End of condition
+        }; // End of condition
+      }
 
       // fill title and description
       modalTitle.innerHTML = videoButton.dataset.videotitle;

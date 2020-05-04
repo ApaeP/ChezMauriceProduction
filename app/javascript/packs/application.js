@@ -26,9 +26,10 @@ import "bootstrap";
 import { autoplayVideoBackground } from '../components/background_video';
 import { togglePage } from '../components/toggle_page';
 import { openCloseVideoModal } from '../components/video_modal';
-import { openCloseCreateVideoModal } from '../components/create_video_modal'
-import { setPageOnReload } from '../components/set_page_on_reload'
-import { initMap } from '../components/init_mapbox'
+import { openCloseCreateVideoModal } from '../components/create_video_modal';
+import { openCloseEditVideoModal } from '../components/edit_video_modal';
+import { setPageOnReload } from '../components/set_page_on_reload';
+import { initMap } from '../components/init_mapbox';
 // import { mouseWheelActions } from '../components/mousewheel_actions';
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
@@ -64,6 +65,10 @@ document.addEventListener('turbolinks:load', () => {
 
   if (document.querySelector('.create-video-modal-background')) {
     openCloseCreateVideoModal();
+  }
+
+  if (document.querySelector('.edit-video-modal-background')) {
+    openCloseEditVideoModal();
   }
 
   setPageOnReload();

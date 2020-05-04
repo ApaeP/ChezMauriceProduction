@@ -46,9 +46,23 @@
 }
 
 .edit-video {
-  padding: 10vh;
   background-color: rgba(255, 255, 255, 0.95);
   margin: 10vh 20vh;
+}
+
+.close-edit-button {
+  display: flex;
+  justify-content: flex-end;
+  p {
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+}
+
+
+.edit-form {
+  padding: 5vh 10vh 10vh 10vh;
 }
 
 .modify-video-button {
