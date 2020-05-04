@@ -71,53 +71,10 @@
     <div id="gallery-scrollable-content">
 
       <div class="gallery-container">
-        <% if user_signed_in? %>
-          <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 2vh;">NOS RÉALISATIONS</h3>
-          <h5 id="add-video-button">AJOUTER UNE VIDEO</h5>
-        <% else %>
-          <h3 style="text-align: center; margin-top: 12vh; margin-bottom: 5vh;">NOS RÉALISATIONS</h3>
-        <% end %>
-        <div class="gallery-grid d-flex flex-wrap justify-content-center">
-          <% @videos.order(:number).each_with_index do |video, i| %>
-            <div class="video-card card-<%= i %>" >
-
-              <!-- background-image: url('<%#= cl_image_path @video.photo.key, height: 300, width: 400, crop: :fill %>')" -->
-              <!-- background-image: url('<%#= url_for(elem.photo) %>'); -->
-              <% if video.photo.attached? %>
-                <div class="thumbnail-div" style="background-image: url(<%= url_for(video.photo) %>)"></div>
-              <% else %>
-                <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
-              <% end %>
-              <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
-                <p class="thumbnail-overlay-title"><%= video.number %> - <%= video.title.upcase %></p>
-                <% if user_signed_in? %>
-                  <p class="modify-video-button" data-videoid="<%= i %>">Modifier</p>
-                  <%= link_to "Supprimer", video_path(video), class: 'delete-video-btn', method: :delete, data: { confirm: "Voulez-vous vraiment supprimer la vidéo \"#{video.title}\"?" } %>
-                <% end %>
-              </div>
-
-              <!-- <div data-vimeo-url="<%#= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%#= video.name %>"></div> -->
-            </div>
-          <% end %>
-
-        </div>
+        <%= render 'gallery', videos: @videos %>
       </div>
 
-      <div class="sortable-list-container">
-        <ul id="sortable-ul">
-          <% @videos.order(:number).each_with_index do |video, i| %>
-            <li><%= video.number %>°) - <%= video.title %></li>
-          <% end %>
-        </ul>
-      </div>
-    <!-- ------------------------------- Hidden form for reorder ------------------------------- -->
-      <div class="d-none">
-        <%= simple_form_for :numero, url: update_rank_video_path(@videos.last), method: :post, remote: true do |f| %>
-            <%= f.input :oldIndex %>
-            <%= f.input :newIndex %>
-            <%= f.button :submit, class: "update-rank-btn" %>
-        <% end %>
-      </div>
+      <%= render 'shared/footer' %>
 
     </div>
   </div>
@@ -168,47 +125,11 @@
     <div id="contact-scrollable-content">
 
       <div class="contact-container">
-
-        <div class="contact-page-infos-and-map">
-          <div class="contact-page-infos-and-map-left">
-            <h2>Cher Maurice,</h2>
-            <h4>Je voudrais te parler de mon projet...</h4>
-          </div>
-          <div class="contact-page-infos-and-map-right">
-            <div id='map' style='width: 100%; height: 100%;'></div>
-          </div>
-        </div>
-        <div class="contact-bottom">
-          <div class="contact-page-form">
-            <%= simple_form_for(@contact) do |f| %>
-              <%= f.input :name, label: false, placeholder: 'Nom*', input_html: { class: 'form-contact-input' } %>
-              <%= f.input :email, label: false, placeholder: 'Email*', input_html: { class: 'form-contact-input' } %>
-              <%= f.input :content, as: :text, label: false, placeholder: 'Message*', input_html: { rows: 5, class: 'form-contact-input' } %>
-              <div class="form-last-line">
-                <%= f.submit "Envoyer" %>
-                <p class="mandatory-notice">*Champs obligatoires</p>
-              </div>
-            <% end %>
-            <p class="legal-notice">Les informations recueillies sur ce formulaire sont uniquement utilisées pour traiter votre demande et vous apporter une
-                                    réponse adaptée. Conformément à la loi « informatique et libertés », vous pouvez exercer votre droit d'accès aux données
-                                    vous concernant et les faire rectifier en contactant par email à <%= mail_to "chezmauriceproduction@contact.com", "chezmauriceproduction@contact.com", class: "legal-link" %>. Vous pouvez également,
-                                    pour des motifs légitimes, vous opposer au traitement des données vous concernant. <br>
-                                    En savoir plus sur la <%= link_to "politique de confidentialité des données", mentions_legales_path, target: '_blank', class: 'legal-link' %>. </p>
-          </div>
-          <div class="contact-page-address">
-            <p>
-              77 avenue Philippe Auguste<br>
-              75011, PARIS<br>
-              <a href="tel:0033661738763" class="title-contact-link">06 61 73 87 63</a><br>
-              <%= mail_to "chezmauriceproduction@contact.com", "chezmauriceproduction@contact.com", class: "title-contact-link" %>
-
-            </p>
-
-          </div>
-
-        </div>
+        <%= render 'contact', contact: @contact %>
 
       </div>
+
+      <%= render 'shared/footer' %>
 
     </div> <!-- <div id="contact-scrollable-content"> -->
 
@@ -259,7 +180,10 @@
     </div>
 
     <div id="info-scrollable-content">
-
+      <div class="info-container">
+        <%= render 'infos' %>
+      </div>
+        <%= render 'shared/footer' %>
     </div>
   </div>
   <!-- END OF INFO PAGE -->
@@ -346,8 +270,6 @@
                    id: 'welcome-video' %>
   </div>
 <% end %>
-
-
 
 
 

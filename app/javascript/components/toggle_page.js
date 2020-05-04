@@ -1,3 +1,20 @@
+const setChangeHref = () => {
+  // const accueilLink = document.querySelector('#')
+  // const prodLink = document.querySelector('#')
+  // const infoLink = document.querySelector('#')
+  // const contactLink = document.querySelector('#')
+
+  if (window.location.href.includes('production')) {
+    console.log('prod')
+  } else if (window.location.href.includes('information')) {
+    console.log('info')
+  } else if (window.location.href.includes('contact')) {
+    console.log('contact')
+  } else if (window.location.href.includes('accueil') || !window.location.href.includes("?")) {
+    console.log('accueil')
+  }
+};
+
 const togglePage = (openLinks, page, closeLinks, location) => {
 
   openLinks.forEach((openLink) => {
@@ -5,6 +22,7 @@ const togglePage = (openLinks, page, closeLinks, location) => {
     // When link to page is clicked
     openLink.addEventListener('click', (event) => {
       history.pushState('open', "", `?${location}`)
+      setChangeHref();
       // Set the page parameter "top" to the hight of the window
       page.style.top = `${window.innerHeight}px`;
 
@@ -34,6 +52,7 @@ const togglePage = (openLinks, page, closeLinks, location) => {
   closeLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
       history.pushState('close', "", "?accueil")
+      setChangeHref();
       // Play the background video
       document.querySelector("#home-video").play();
       // hide the page

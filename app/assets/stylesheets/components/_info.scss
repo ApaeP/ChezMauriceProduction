@@ -15,6 +15,11 @@
   width: 0px; /* For Chrome, Safari, and Opera */
 }
 
+.info-container {
+  min-height: 75vh;
+  padding: 5vh 0;
+}
+
 #info-page.displayed {
   transform: translate(0%, -100%);
   z-index: 10;
@@ -31,7 +36,8 @@
 }
 
 #info-scrollable-content {
-  min-height: 93vh;
+  margin-top: 10vh;
+  min-height: 90vh;
   width: 100%;
 }
 

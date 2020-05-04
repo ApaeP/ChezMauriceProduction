@@ -25,8 +25,9 @@
 
 .gallery-container {
   width: 100%;
-  min-height: 93vh;
-  margin: 0 auto;
+  min-height: 75vh;
+  margin: 10vh auto 0 auto;
+  padding: 5vh 0;
 }
 
 #gallery-page.displayed {
@@ -45,9 +46,9 @@
 }
 
 #gallery-scrollable-content {
-  min-height: 93vh;
+  min-height: 90vh;
   width: 100%;
-  margin-top: 7vh;
+  // margin-top: 10vh;
 }
 
 #gallery-page.hidden {

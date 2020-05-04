@@ -56,9 +56,12 @@ document.addEventListener('turbolinks:load', () => {
   togglePage(galleryButton, galleryPage, closeGallery, "production");
   togglePage(infoButton, infoPage, closeInfo, "information");
 
+
   autoplayVideoBackground();
 
-  initMap();
+  if (document.querySelector('#map')) {
+    initMap();
+  }
 
   if (document.querySelector('.video-modal-background')) {
     openCloseVideoModal();
@@ -76,7 +79,9 @@ document.addEventListener('turbolinks:load', () => {
     setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
   }
 
-  mouseWheelActions();
+  if (document.querySelector('.homepage')) {
+    mouseWheelActions();
+  }
 
   setPageOnReload();
 
@@ -87,7 +92,9 @@ document.addEventListener('turbolinks:load', () => {
     });
   });
 
-  initSortable();
+  if (document.querySelector('#sortable-ul')) {
+    initSortable();
+  }
 
   window.onload = function(){
     const timeToLOad = Date.now() - startTime;
@@ -95,9 +102,13 @@ document.addEventListener('turbolinks:load', () => {
     // document.querySelector('#loading-hider').classList.add('load-hide')
   }
 
+  document.querySelectorAll('.return-from-legal').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      window.close();
+    });
+  });
+
 });
 // =============================================================================
 //                          END OF ON TURBOLINKS LOAD
 // =============================================================================
-
-  // know when dom is loaded
