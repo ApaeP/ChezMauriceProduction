@@ -6,6 +6,8 @@ ruby '2.6.5'
 gem "has_vimeo_video"
 gem 'cloudinary'
 gem 'turbolinks_render'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'pg_search'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'

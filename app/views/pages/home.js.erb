@@ -1,0 +1,6 @@
+function replaceVideos (innerHTML) {
+  const videos = document.querySelector('.gallery-grid');
+  videos.innerHTML = innerHTML;
+}
+
+replaceVideos("<%= j render 'videos', videos: videos %>");

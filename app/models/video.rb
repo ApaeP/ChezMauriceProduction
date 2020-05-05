@@ -1,4 +1,6 @@
 class Video < ApplicationRecord
+  include PgSearch::Model
+
   has_one_attached :photo
 
   validates :name, presence: true, uniqueness: true
@@ -7,6 +9,13 @@ class Video < ApplicationRecord
   # Gemify has_vimeo
   has_vimeo_video :url, message: "Seulement les liens de videos Vimeo sont acceptés"
 
+  acts_as_taggable_on :category
+
+  pg_search_scope :global_search,
+  against: [:category],
+  using: { tsearch: { any_word: true } }
+
+  $categories = ['Corporate', 'Publicité']
 
   after_validation :downcase_and_delete_special_chars
 

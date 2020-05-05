@@ -2,6 +2,8 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+import Rails from '@rails/ujs';
+// Rails.start();
 
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -111,6 +113,15 @@ document.addEventListener('turbolinks:load', () => {
       window.close();
     });
   });
+
+  const checkBoxes = document.querySelectorAll('.form-check-input');
+  const form = document.querySelector('.simple_form.search');
+
+  for (const check of checkBoxes) {
+    check.addEventListener('change', function() {
+      Rails.fire(form, 'submit');
+    });
+  }
 
 });
 // =============================================================================
