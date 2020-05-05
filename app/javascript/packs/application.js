@@ -54,6 +54,8 @@ document.addEventListener('turbolinks:load', () => {
   const contactPage = document.querySelector('#contact-page');
   const closeContact = document.querySelectorAll('.close-contact-link')
 
+  // setPageOnReload();
+
   togglePage(contactButton, contactPage, closeContact, "contact");
   togglePage(galleryButton, galleryPage, closeGallery, "production");
   togglePage(infoButton, infoPage, closeInfo, "information");
@@ -61,7 +63,6 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelector('.contact-page-form')) {
     authorizeForm();
     focusContactForm();
-
     contentFieldHasContent();
   }
 
@@ -92,7 +93,9 @@ document.addEventListener('turbolinks:load', () => {
     mouseWheelActions();
   }
 
-  setPageOnReload();
+  if (document.querySelector('#sortable-ul')) {
+    initSortable();
+  }
 
   document.querySelectorAll('.delete-video-btn').forEach((deleteBtn) => {
     deleteBtn.addEventListener('click', (event) => {
@@ -101,9 +104,6 @@ document.addEventListener('turbolinks:load', () => {
     });
   });
 
-  if (document.querySelector('#sortable-ul')) {
-    initSortable();
-  }
 
   window.onload = function(){
     const timeToLOad = Date.now() - startTime;
