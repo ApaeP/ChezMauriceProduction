@@ -54,7 +54,7 @@ document.addEventListener('turbolinks:load', () => {
   const contactPage = document.querySelector('#contact-page');
   const closeContact = document.querySelectorAll('.close-contact-link')
 
-  // setPageOnReload();
+  setPageOnReload();
 
   togglePage(contactButton, contactPage, closeContact, "contact");
   togglePage(galleryButton, galleryPage, closeGallery, "production");

@@ -1,3 +1,15 @@
+const displayHomePage = () => {
+  if (document.querySelector('.reload-displayed')) {
+    const displayedPage = document.querySelector('.reload-displayed');
+    displayedPage.classList.add('hidden');
+    displayedPage.classList.remove('reload-displayed');
+  } else if (document.querySelector('.displayed')) {
+    const displayedPage = document.querySelector('.displayed');
+    displayedPage.classList.add('hidden');
+    displayedPage.classList.remove('displayed');
+  }
+}
+
 const setPageOnReload = () => {
   const galleryPage = document.querySelector('#gallery-page')
   const infoPage = document.querySelector('#info-page')
@@ -12,9 +24,9 @@ const setPageOnReload = () => {
   } else if (window.location.href.includes('contact')) {
     contactPage.style.top = `${window.innerHeight}px`;
     contactPage.classList.add('reload-displayed');
-  } // else if (window.location.href.includes('accueil') || window.location.href == 'http://localhost:3000/') {
-  //   console.log('Accueil');
-  // }
+  } else if (window.location.href.includes('accueil') || window.location.href == "http://www.chezmauriceproduction.com/") {
+    displayHomePage();
+  }
 };
 
 export { setPageOnReload };
