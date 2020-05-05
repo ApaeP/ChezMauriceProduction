@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "https://chez-maurice-prod.herokuapp.com/" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -89,6 +89,25 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Mailer
+  config.action_mailer.delivery_method = :smtp
+  host = 'herokuapp.com' #replace with your own url
+  config.action_mailer.default_url_options = { host: host }
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV['GMAIL_USER'],
+    :password             => ENV['GMAIL_PASSWORD'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.default_options = { from: 'chezmauriceproddev@gmail.com' }
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector

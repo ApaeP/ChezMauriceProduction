@@ -1,8 +1,6 @@
-<%# coding: utf-8 %>
-<% Encoding.default_external = "UTF-8" %>
 <% if @contact.errors.any? %>
   alert("Erreur(s): <%= @contact.errors.full_messages.join('; ') %>")
 <% else %>
-  console.log('contact sent')
-  document.querySelector('.contact-page-form').innerHTML = '<div class="sent-notice-image"><h4>Message envoyé!</h4><%= image_tag "sent-letter.png", class: "sent-notice-image-photo" %></div>';
+  const height = document.querySelector('.contact-page-form').offsetHeight
+  document.querySelector('.contact-page-form').innerHTML = `<div class="sent-notice-image" style="height: ${height}px"><h4>Message envoyé!</h4><%= image_tag "sent-letter.png", class: "sent-notice-image-photo" %></div>`;
 <% end %>
