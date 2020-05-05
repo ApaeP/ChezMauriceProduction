@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <% unless current_page?(root_path) %>
+    <%# unless current_page?(root_path) %>
       <%#= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
       <div class="main-container">
@@ -29,7 +29,6 @@
       </div>
 
       <%= render "shared/footer" %>
-    <% end %>
-    <%= yield %>
+    <%# end %>
   </body>
 </html>

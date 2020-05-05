@@ -60,11 +60,11 @@ document.addEventListener('turbolinks:load', () => {
 
   if (document.querySelector('.contact-page-form')) {
     authorizeForm();
+    focusContactForm();
+
+    contentFieldHasContent();
   }
 
-  focusContactForm();
-
-  contentFieldHasContent();
 
   autoplayVideoBackground();
 
@@ -113,7 +113,11 @@ document.addEventListener('turbolinks:load', () => {
 
   document.querySelectorAll('.return-from-legal').forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      window.close();
+      if (window.close()) {
+
+      } else {
+        window.location.href = "http://stackoverflow.com";
+      }
     });
   });
 

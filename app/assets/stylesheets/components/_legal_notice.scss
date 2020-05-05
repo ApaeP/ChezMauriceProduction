@@ -1,8 +1,28 @@
 .return-from-legal {
   cursor: pointer;
   color: black;
+  min-width: 210px;
+  margin: 0 auto;
+  padding: 1vh;
+  width: 10vw;
   &:hover {
     text-decoration: underline;
     color: rgba(0, 0, 0, 0.7);
   }
+}
+
+.legal-container {
+  width: 70vw;
+  padding: 3vh;
+  max-width: 850px;
+  min-height: 85vh;
+  margin: 0 auto;
+}
+
+#legal-title {
+  color: black;
+}
+
+#legal-paragraph {
+  color: black;
 }
