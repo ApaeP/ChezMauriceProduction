@@ -3,9 +3,9 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      p "CONTACT SAVED"
+
     else
-      p "CONTACT FORBIDDEN"
+
     end
   end
 

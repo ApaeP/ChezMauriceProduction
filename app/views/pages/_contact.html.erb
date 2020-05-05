@@ -9,12 +9,12 @@
 </div>
 <div class="contact-bottom">
   <div class="contact-page-form">
-    <%= simple_form_for(contact) do |f| %>
+    <%= simple_form_for(contact, remote: true) do |f| %>
       <%= f.input :name, label: false, placeholder: 'Nom*', input_html: { class: 'form-contact-input' } %>
-      <%= f.input :email, label: false, placeholder: 'Email*', input_html: { class: 'form-contact-input' } %>
+      <%= f.input :email, label: false, placeholder: 'Email*', input_html: { class: 'form-contact-input email-contact' } %>
       <%= f.input :content, as: :text, label: false, placeholder: 'Message*', input_html: { rows: 5, class: 'form-contact-input' } %>
       <div class="form-last-line">
-        <%= f.submit "Envoyer" %>
+        <%= f.submit "Envoyer", id: "send-contact-btn", disabled: true %>
         <p class="mandatory-notice">*Champs obligatoires</p>
       </div>
     <% end %>
@@ -36,3 +36,7 @@
   </div>
 
 </div>
+
+<script>
+
+</script>
