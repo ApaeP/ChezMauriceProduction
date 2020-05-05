@@ -14,7 +14,7 @@
       <%= f.input :email, label: false, placeholder: 'Email*', input_html: { class: 'form-contact-input email-contact' } %>
       <%= f.input :content, as: :text, label: false, placeholder: 'Message*', input_html: { rows: 5, class: 'form-contact-input' } %>
       <div class="form-last-line">
-        <%= f.submit "Envoyer", id: "send-contact-btn", disabled: true %>
+        <%= f.submit "Envoyer", id: "send-contact-btn", class: 'submit-form-btn', disabled: true %>
         <p class="mandatory-notice">*Champs obligatoires</p>
       </div>
     <% end %>
