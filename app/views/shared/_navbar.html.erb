@@ -3,17 +3,19 @@
     <div class="center-menu-elements">
 
       <div class="left-menu-elements">
-
-        <%#= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", id: 'home-navbar-logo' %>
+        <% unless current_page?(root_path) %>
+          <%= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", id: 'home-navbar-logo' %>
+        <% end %>
       </div>
 
       <div id="home-menu-links">
-        <p class="current-menu-link home-link current-link">ACCUEIL</p>
-        <p class="menu-link gallery-link">NOS RÉALISATIONS</p>
-        <p class="menu-link info-link">À PROPOS</p>
-        <p class="menu-link contact-link">CONTACT</p>
+
+        <%= link_to "ACCUEIL", root_path, class: 'menu-link' %>
+        <%= link_to "NOS RÉALISATIONS", realisations_path, class: 'menu-link' %>
+        <%= link_to "À PROPOS", a_propos_path, class: 'menu-link' %>
+        <%= link_to "CONTACT", contacter_path, class: 'menu-link' %>
         <% if user_signed_in? %>
-          <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link" %>
+          <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link", class: 'menu-link' %>
         <% end %>
       </div>
 
@@ -33,6 +35,7 @@
           <% end %>
         </div>
       </div>
+
     </div>
   </div>
 </div>

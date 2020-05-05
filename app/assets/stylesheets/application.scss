@@ -13,9 +13,9 @@
 @import "pages/index";
 
 body {
-  // background-color: lightgrey;
+  background-color: lightgrey;
   overflow-x: hidden;
-  overflow-y: hidden;
+  // overflow-y: hidden;
   color: rgba(0, 0, 0, 0.8);
 }
 
@@ -37,6 +37,15 @@ html {
 }
 
 html::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
+}
+
+body {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+body::-webkit-scrollbar {
     width: 0px; /* For Chrome, Safari, and Opera */
 }
 

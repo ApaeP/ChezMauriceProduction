@@ -24,16 +24,16 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { autoplayVideoBackground } from '../components/background_video';
-import { togglePage } from '../components/toggle_page';
 import { openCloseVideoModal } from '../components/video_modal';
 import { openCloseCreateVideoModal } from '../components/create_video_modal';
 import { openCloseEditVideoModal } from '../components/edit_video_modal';
-import { setPageOnReload } from '../components/set_page_on_reload';
 import { initMap } from '../components/init_mapbox';
 import { initSortable } from '../components/sortable'
-import { mouseWheelActions } from '../components/mousewheel_actions';
 import { authorizeForm, contentFieldHasContent } from '../components/form_validation'
 import { focusContactForm } from '../components/focus_contact'
+// import { togglePage } from '../components/toggle_page';
+// import { setPageOnReload } from '../components/set_page_on_reload';
+// import { mouseWheelActions } from '../components/mousewheel_actions';
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
 // =============================================================================
@@ -42,28 +42,40 @@ import { focusContactForm } from '../components/focus_contact'
 const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
 
-  const infoButton = document.querySelectorAll(".info-link");
-  const infoPage = document.querySelector('#info-page');
-  const closeInfo = document.querySelectorAll('.close-info-link')
+  if (document.querySelector('.main-container')) {
+    document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('#home-menu-banner').offsetHeight)}px`;
+    document.querySelector('.main-container').style.marginTop = `${document.querySelector('#home-menu-banner').offsetHeight}px`
 
-  const galleryButton = document.querySelectorAll(".gallery-link");
-  const galleryPage = document.querySelector('#gallery-page');
-  const closeGallery = document.querySelectorAll('.close-gallery-link')
+    window.addEventListener('resize', (event) => {
+      document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('#home-menu-banner').offsetHeight)}px`;
+      document.querySelector('.main-container').style.marginTop = `${document.querySelector('#home-menu-banner').offsetHeight}px`
+    });
+  }
 
-  const contactButton = document.querySelectorAll(".contact-link");
-  const contactPage = document.querySelector('#contact-page');
-  const closeContact = document.querySelectorAll('.close-contact-link')
+  // const infoButton = document.querySelectorAll(".info-link");
+  // const infoPage = document.querySelector('#info-page');
+  // const closeInfo = document.querySelectorAll('.close-info-link')
 
-  setPageOnReload();
+  // const galleryButton = document.querySelectorAll(".gallery-link");
+  // const galleryPage = document.querySelector('#gallery-page');
+  // const closeGallery = document.querySelectorAll('.close-gallery-link')
 
-  togglePage(contactButton, contactPage, closeContact, "contact");
-  togglePage(galleryButton, galleryPage, closeGallery, "production");
-  togglePage(infoButton, infoPage, closeInfo, "information");
+  // const contactButton = document.querySelectorAll(".contact-link");
+  // const contactPage = document.querySelector('#contact-page');
+  // const closeContact = document.querySelectorAll('.close-contact-link')
+
+  // setPageOnReload();
+
+  // togglePage(contactButton, contactPage, closeContact, "contact");
+  // togglePage(galleryButton, galleryPage, closeGallery, "production");
+  // togglePage(infoButton, infoPage, closeInfo, "information");
 
   if (document.querySelector('.contact-page-form')) {
-    authorizeForm();
-    focusContactForm();
-    contentFieldHasContent();
+    window.onload = function(){
+      authorizeForm();
+      focusContactForm();
+      contentFieldHasContent();
+    }
   }
 
 
@@ -89,9 +101,9 @@ document.addEventListener('turbolinks:load', () => {
     setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
   }
 
-  if (document.querySelector('.homepage')) {
-    mouseWheelActions();
-  }
+  // if (document.querySelector('.homepage')) {
+  //   mouseWheelActions();
+  // }
 
   if (document.querySelector('#sortable-ul')) {
     initSortable();

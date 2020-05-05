@@ -2,13 +2,21 @@ class PagesController < ApplicationController
   # skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @contact = Contact.new
+  end
+
+  def legal
+  end
+
+  def gallery
     @video = Video.new
     @videos = Video.all.order(:number)
   end
 
-  def legal
+  def contact
+    @contact = Contact.new
+  end
 
+  def infos
   end
 
 end
