@@ -32,6 +32,7 @@ import { setPageOnReload } from '../components/set_page_on_reload';
 import { initMap } from '../components/init_mapbox';
 import { initSortable } from '../components/sortable'
 import { mouseWheelActions } from '../components/mousewheel_actions';
+import { authorizeForm } from '../components/form_validation'
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
 // =============================================================================
@@ -56,6 +57,9 @@ document.addEventListener('turbolinks:load', () => {
   togglePage(galleryButton, galleryPage, closeGallery, "production");
   togglePage(infoButton, infoPage, closeInfo, "information");
 
+  if (document.querySelector('.contact-page-form')) {
+    authorizeForm();
+  }
 
   autoplayVideoBackground();
 
