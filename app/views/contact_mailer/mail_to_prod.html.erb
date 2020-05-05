@@ -4,6 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    mail to production
+    <h5>Demande de contact n°<%= @contact.id %></h5>
+    <h6>De la part de <%= @contact.name %> (mail: <%= @contact.email %></h6>
+    <p>Demande de contact: <br>
+        <%= @contact.content %></p>
   </body>
 </html>

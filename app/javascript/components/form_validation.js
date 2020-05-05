@@ -1,6 +1,7 @@
 const allInputs = document.querySelectorAll('.form-contact-input');
 const allInputsArr = Array.from(allInputs);
-const mailInput = document.querySelector('.email-contact')
+const mailInput = document.querySelector('.email-contact');
+const contentInput = document.querySelector('#content-input');
 
 const mailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const submitBtn = document.querySelector('#send-contact-btn');
@@ -20,6 +21,28 @@ const enableBtn = () => {
     submitBtn.disabled = true;
   }
 };
+
+const contentFieldHasContent = () => {
+  contentInput.addEventListener('input', (e) => {
+    if (isFilled(contentInput)) {
+      if (contentInput.classList.contains('red')) {
+        contentInput.classList.remove('red');
+        contentInput.classList.add('green');
+      } else {
+        contentInput.classList.add('green')
+      }
+    } else {
+      if (contentInput.classList.contains('green')) {
+        contentInput.classList.remove('green');
+        contentInput.classList.add('red');
+      } else {
+        contentInput.classList.add('red')
+      }
+    }
+  })
+};
+
+
 
 const authorizeForm = () => {
 
@@ -55,4 +78,4 @@ const authorizeForm = () => {
 
 };
 
-export { authorizeForm };
+export { authorizeForm, contentFieldHasContent };

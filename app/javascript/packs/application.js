@@ -32,7 +32,8 @@ import { setPageOnReload } from '../components/set_page_on_reload';
 import { initMap } from '../components/init_mapbox';
 import { initSortable } from '../components/sortable'
 import { mouseWheelActions } from '../components/mousewheel_actions';
-import { authorizeForm } from '../components/form_validation'
+import { authorizeForm, contentFieldHasContent } from '../components/form_validation'
+import { focusContactForm } from '../components/focus_contact'
 // import { resizeCardsHeight } from '../components/resize_cards_height';
 
 // =============================================================================
@@ -60,6 +61,10 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelector('.contact-page-form')) {
     authorizeForm();
   }
+
+  focusContactForm();
+
+  contentFieldHasContent();
 
   autoplayVideoBackground();
 

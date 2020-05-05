@@ -10,11 +10,11 @@
 <div class="contact-bottom">
   <div class="contact-page-form">
     <%= simple_form_for(contact, remote: true) do |f| %>
-      <%= f.input :name, label: false, placeholder: 'Nom*', input_html: { class: 'form-contact-input' } %>
-      <%= f.input :email, label: false, placeholder: 'Email*', input_html: { class: 'form-contact-input email-contact' } %>
-      <%= f.input :content, as: :text, label: false, placeholder: 'Message*', input_html: { rows: 5, class: 'form-contact-input' } %>
+      <%= f.input :name, label: false, placeholder: 'Nom*', input_html: { class: 'form-contact-input contact-form-element', id: 'name-input' } %>
+      <%= f.input :email, label: false, placeholder: 'Email*', input_html: { class: 'form-contact-input email-contact contact-form-element', id: 'email-input' } %>
+      <%= f.input :content, as: :text, label: false, placeholder: 'Message*', input_html: { rows: 5, class: 'form-contact-input contact-form-element', id: 'content-input' } %>
       <div class="form-last-line">
-        <%= f.submit "Envoyer", id: "send-contact-btn", class: 'submit-form-btn', disabled: true %>
+        <%= f.submit "Envoyer", id: "send-contact-btn", class: 'submit-form-btn contact-form-element', disabled: true %>
         <p class="mandatory-notice">*Champs obligatoires</p>
       </div>
     <% end %>

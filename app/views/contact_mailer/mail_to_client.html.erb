@@ -4,6 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    mail to client
+    <h5>Bonjour <%= @contact.name %>,</h5>
+    <p>Vous avez contacté <%= link_to "Chez Maurice Production", "https://www.chezmauriceproduction.com/" %>. <br>
+      <br>
+      Votre demande: <%= @contact.content %> <br> <br>
+
+      Celle-ci a bien été pris en compte, nous vous répondrons dans les plus brefs délais. <br> <br>
+
+      Bien à vous, <br>
+      Toute l'équipe de Chez Maurice Porduction</p>
+
   </body>
 </html>
