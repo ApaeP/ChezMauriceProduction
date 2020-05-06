@@ -52,33 +52,6 @@ document.addEventListener('turbolinks:load', () => {
     });
   }
 
-  // const infoButton = document.querySelectorAll(".info-link");
-  // const infoPage = document.querySelector('#info-page');
-  // const closeInfo = document.querySelectorAll('.close-info-link')
-
-  // const galleryButton = document.querySelectorAll(".gallery-link");
-  // const galleryPage = document.querySelector('#gallery-page');
-  // const closeGallery = document.querySelectorAll('.close-gallery-link')
-
-  // const contactButton = document.querySelectorAll(".contact-link");
-  // const contactPage = document.querySelector('#contact-page');
-  // const closeContact = document.querySelectorAll('.close-contact-link')
-
-  // setPageOnReload();
-
-  // togglePage(contactButton, contactPage, closeContact, "contact");
-  // togglePage(galleryButton, galleryPage, closeGallery, "production");
-  // togglePage(infoButton, infoPage, closeInfo, "information");
-
-  if (document.querySelector('.contact-page-form')) {
-    window.onload = function(){
-      authorizeForm();
-      focusContactForm();
-      contentFieldHasContent();
-    }
-  }
-
-
   autoplayVideoBackground();
 
   if (document.querySelector('#map')) {
@@ -100,10 +73,6 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelector('#welcome-video-container')) {
     setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
   }
-
-  // if (document.querySelector('.homepage')) {
-  //   mouseWheelActions();
-  // }
 
   if (document.querySelector('#sortable-ul')) {
     initSortable();
@@ -132,6 +101,17 @@ document.addEventListener('turbolinks:load', () => {
       }
     });
   });
+
+  // if (document.querySelector('.contact-container')) {
+  //   window.onload = function(){
+  //     setTimeout(authorizeForm, 300)
+  //     setTimeout(focusContactForm, 300)
+  //     setTimeout(contentFieldHasContent, 300)
+  //     // authorizeForm();
+  //     // focusContactForm();
+  //     // contentFieldHasContent();
+  //   }
+  // }
 
 });
 // =============================================================================

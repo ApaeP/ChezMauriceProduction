@@ -3,19 +3,19 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
-    if @video.save!
-      p "SAVED"
+    if @video.save
+      redirect_to realisations_path
     else
-      p "NOT SAVED"
+
     end
   end
 
   def update
     @video.update(video_params)
     if @video.save!
-      redirect_back(fallback_location: root_path)
+      redirect_to realisations_path
     else
-      p "NOT SAVED"
+      format.js
     end
   end
 

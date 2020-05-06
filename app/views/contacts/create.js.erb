@@ -1,6 +1,6 @@
 <% if @contact.errors.any? %>
-  alert("Erreur(s): <%= @contact.errors.full_messages.join('; ') %>")
+  alert("Erreur(s):\n - <%= @contact.errors.full_messages.join('\n - ') %>");
 <% else %>
-  const height = document.querySelector('.contact-page-form').offsetHeight
+  const height = document.querySelector('.contact-page-form').offsetHeight;
   document.querySelector('.contact-page-form').innerHTML = `<div class="sent-notice-image" style="height: ${height}px"><h4>Message envoyé!</h4><%= image_tag "sent-letter.png", class: "sent-notice-image-photo" %></div>`;
 <% end %>

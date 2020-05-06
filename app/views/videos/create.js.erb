@@ -1,0 +1,6 @@
+<% if @video.errors.any? %>
+  alert("Erreur(s):\n - <%= @video.errors.full_messages.join('\n - ') %>");
+<% else %>
+
+<% end %>
+

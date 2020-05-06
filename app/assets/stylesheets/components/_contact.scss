@@ -1,57 +1,11 @@
-#contact-page {
-  height: 100vh;
-  width: 100vw;
-  // transform: translate(-100%, -100%);
-  // position: absolute;
-  overflow: scroll;
-  // opacity: 0;
-  color: black;
-  background-color: white;
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-  // transition: all 1s ease, translate-y 0ms ,top 0ms;
-}
-
 .contact-container {
   width: 80%;
-  min-height: 75vh;
-  margin: 10vh auto 0 auto;
+  // min-height: 75vh;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 5vh 0;
-}
-
-#contact-page::-webkit-scrollbar {
-  width: 0px; /* For Chrome, Safari, and Opera */
-}
-
-#contact-page.displayed {
-  transform: translate(0%, -100%);
-  z-index: 30;
-  opacity: 1;
-  display: block;
-  transition: all 1s ease, top 0ms;
-}
-
-#contact-page.reload-displayed {
-  transform: translate(0%, -100%);
-  z-index: 30;
-  opacity: 1;
-  display: block;
-}
-
-#contact-scrollable-content {
-  min-height: 90vh;
-  width: 100%;
-  margin-top: 10vh;
-}
-
-#contact-page.hidden {
-  transition: all 1s ease, top 0ms;
-  transform: translate(-100%, -100%);
-  z-index: 30;
-  opacity: 0;
 }
 
 #close-contact-arrow {
@@ -162,22 +116,25 @@
   padding: 5px 25px !important;
   border-radius: 5px;
   color: white;
-  &:disabled {
-    border: 1px solid rgba(65, 102, 222, 0.05);
-    background-color: rgba(65, 102, 222, 0.2);
-  }
-  &:hover:disabled {
-    border: 1px solid rgba(65, 102, 222, 0.2);
-    background-color: rgba(65, 102, 222, 0.5);
-  }
-  &:hover:enabled {
+  // &:disabled {
+  //   border: 1px solid rgba(65, 102, 222, 0.05);
+  //   background-color: rgba(65, 102, 222, 0.2);
+  // }
+  // &:hover:disabled {
+  //   border: 1px solid rgba(65, 102, 222, 0.2);
+  //   background-color: rgba(65, 102, 222, 0.5);
+  // }
+  transition: all 0.5s ease;
+  &:hover {
     border: 1px solid rgba(65, 102, 222, 0.3);
     background-color: rgba(65, 102, 222, 0.7);
+    transition: all 0.5s ease;
   }
 }
 
-
-
+.form-control {
+  background-color: rgba(255, 255, 255, 0);
+}
 
 
 

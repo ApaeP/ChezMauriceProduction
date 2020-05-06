@@ -9,9 +9,13 @@ class Video < ApplicationRecord
 
 
   after_validation :downcase_and_delete_special_chars
+  # before_save :add_number_for_organize
 
   def downcase_and_delete_special_chars
     self.name = self.name.downcase.gsub(/[^0-9A-Za-z]/, '')
   end
 
+  # def add_number_for_organize
+  #   self.number = Video.all.length.to_i + 1
+  # end
 end
