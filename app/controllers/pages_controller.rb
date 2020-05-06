@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   def gallery
     @video = Video.new
     @videos = Video.all.order(:number)
+    @categories = Category.all
   end
 
   def contact

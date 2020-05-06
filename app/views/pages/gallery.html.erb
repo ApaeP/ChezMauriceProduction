@@ -5,6 +5,11 @@
   <% else %>
     <h3 class="gallery-title visitor">NOS RÉALISATIONS</h3>
   <% end %>
+  <button id="coroporate-btn">CORPORATE</button>
+  <%= simple_form_for :search, url: realisations_path, method: "GET" do |f| %>
+    <%= f.input :categories, as: :check_boxes, collection: @categories, input_html: { multiple: true } %>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
   <div class="gallery-grid">
     <% @videos.order(:number).each_with_index do |video, i| %>
       <div class="video-card card-<%= i %>" >
@@ -76,6 +81,7 @@
           <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
           <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
           <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
+          <%= f.association :categories, as: :check_boxes %>
           <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (idéalement : PNG - 16/9 - 700px de large - 72ppp)' %>
           <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
           <%= f.submit 'Enregistrer' %>
@@ -97,6 +103,7 @@
           <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
           <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
           <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
+          <%= f.association :categories, as: :check_boxes %>
           <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (idéalement : PNG - 16/9 - 700px de large - 72ppp)' %>
           <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
           <%= f.submit 'Enregistrer' %>
