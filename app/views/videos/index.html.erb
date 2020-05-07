@@ -1,0 +1,96 @@
+<div class="gallery-container">
+  <% if user_signed_in? %>
+    <h3 class="gallery-title user">NOS RÉALISATIONS</h3>
+    <h5 id="add-video-button">AJOUTER UNE VIDEO</h5>
+  <% else %>
+    <h3 class="gallery-title visitor">NOS RÉALISATIONS</h3>
+  <% end %>
+
+  <!-- <button id="coroporate-btn">CORPORATE</button> -->
+  <%#= simple_form_for :search, url: realisations_path, method: "GET", remote: true, html: { id: 'search-form' } do |f| %>
+    <%#= f.input :cat, as: :check_boxes, collection: @categories  %>
+    <%#= f.submit "rechercher", class: "btn btn-primary" %>
+  <%# end %>
+  <!-- Parameters: {"search"=>{"categories"=>["", "1"]}, "commit"=>"Search"} -->
+  <div class="category-links-container">
+    <p class="made-up-srch-btns" data-cat="all">TOUTES</p>
+    <% @allcategories.each do |cat| %>
+      <p class="made-up-srch-btns" data-cat="<%= cat.name.downcase.first(4) %>"><%= cat.name.upcase %></p>
+    <% end %>
+  </div>
+
+  <%= form_tag realisations_path, method: :get, remote: true, id: 'search-form' do %>
+    <%= radio_button :search, :cat, "all", id: "all-radio-btn", class: 'search-radio-btns' %>
+    <%#= label :search, "Toutes", class: 'search-labels', data: { cat: "all"} %>
+    <% @allcategories.each do |cat| %>
+      <%= radio_button :search, :cat, cat.name, id: "#{cat.name.downcase.first(4)}-radio-btn", class: 'search-radio-btns' %>
+      <%#= label :search, cat.name, class: 'search-labels', data: { cat: "#{cat.name.downcase.first(4)}"} %>
+    <% end %>
+
+    <%= submit_tag "rechercher", class: "btn btn-primary", id: 'search-button' %>
+  <% end -%>
+  <!-- Parameters: {"search"=>{"cat"=>["Corporate"]}, "commit"=>"rechercher"} -->
+
+  <div class="gallery-grid">
+    <%= render 'gallery_elems', videos: @videos %>
+  </div>
+
+  <% if user_signed_in? %>
+    <h3 style="text-align: center; margin: 1.5rem 0;">Réorganiser les vidéos</h3>
+    <div class="sortable-list-container">
+      <ol id="sortable-ul">
+        <% @videos.order(:number).each_with_index do |video, i| %>
+          <li><%= i + 1 %> - <%= video.title %></li>
+        <% end %>
+      </ol>
+    </div>
+    <!-- ------------------------------- Hidden form for reorder ------------------------------- -->
+    <div class="d-none">
+      <%= simple_form_for :numero, url: update_rank_video_path(@videos.last), method: :post, remote: true do |f| %>
+          <%= f.input :oldIndex %>
+          <%= f.input :newIndex %>
+          <%= f.button :submit, class: "update-rank-btn" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<!-- MODAL CREATE VIDEO -->
+<div class="create-video-modal-background modal-hidden">
+  <div class="add-video">
+    <div class="close-add-button">
+      <p class="close-add-btn"><i class="far fa-times-circle"></i></p>
+    </div>
+    <h2 id="create-video-button">AJOUTER UNE VIDEO</h2>
+
+    <div class="add-form">
+      <%= simple_form_for(@video) do |f| %>
+        <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
+        <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
+        <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
+        <%= f.association :categories, as: :check_boxes %>
+        <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (idéalement : PNG - 16/9 - 700px de large - 72ppp)' %>
+        <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
+        <%= f.submit 'Enregistrer' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- END MODAL CREATE VIDEO -->
+
+<!-- MODAL VIDEO -->
+<div class="video-modal-background modal-hidden">
+  <div class="video-modal-title">
+
+  </div>
+  <div class="video-modal-content" id="vimeo-video-player">
+    <!-- <iframe id="video-frame" src="" width="" height="auto" frameborder="0" autoplay="1" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+  </div>
+  <div class="video-modal-description">
+
+  </div>
+</div>
+<!-- END MODAL VIDEO -->
+
+
+

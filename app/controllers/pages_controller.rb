@@ -7,12 +7,6 @@ class PagesController < ApplicationController
   def legal
   end
 
-  def gallery
-    @video = Video.new
-    @videos = Video.all.order(:number)
-    @categories = Category.all
-  end
-
   def contact
     @contact = Contact.new
   end

@@ -1,6 +1,6 @@
 class Video < ApplicationRecord
   has_one_attached :photo
-  has_many :video_categories
+  has_many :video_categories, dependent: :destroy
   has_many :categories, through: :video_categories
 
   validates :name, presence: true, uniqueness: true
