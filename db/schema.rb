@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_181410) do
+ActiveRecord::Schema.define(version: 2020_05_06_123814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 2020_05_04_181410) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -56,6 +62,15 @@ ActiveRecord::Schema.define(version: 2020_05_04_181410) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "video_categories", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_video_categories_on_category_id"
+    t.index ["video_id"], name: "index_video_categories_on_video_id"
+  end
+
   create_table "videos", force: :cascade do |t|
     t.string "name"
     t.string "title"
@@ -67,4 +82,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_181410) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "video_categories", "categories"
+  add_foreign_key "video_categories", "videos"
 end

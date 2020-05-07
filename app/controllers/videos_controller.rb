@@ -1,6 +1,29 @@
 class VideosController < ApplicationController
   before_action :find_video, only: [:update, :update_rank, :destroy]
 
+  def index
+    @video = Video.new
+    if params[:search].present? && params[:search][:cat] != "all"
+      association_objects_ids = Category.find_by(name: params[:search][:cat]).video_categories.pluck(:id)
+      videos_array = []
+      association_objects_ids.each do |id|
+        videos_array << VideoCategory.find(id).video
+      end
+
+      video_numbers_array = []
+      videos_array.each do |selected_vid|
+        video_numbers_array << selected_vid.number
+      end
+
+      @videos = videos_array.sort_by.with_index{|_,i| video_numbers_array[i]}
+      # reorder vids
+    else
+      @categories = Category.all
+      @videos = Video.all.order(:number)
+    end
+    @allcategories = Category.all
+  end
+
   def create
     @video = Video.new(video_params)
     if @video.save
@@ -70,6 +93,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:name, :title, :url, :description, :photo)
+    params.require(:video).permit(:name, :title, :url, :description, :photo, category_ids: [])
   end
 end

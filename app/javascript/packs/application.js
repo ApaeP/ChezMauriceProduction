@@ -24,9 +24,9 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { autoplayVideoBackground } from '../components/background_video';
-import { openCloseVideoModal } from '../components/video_modal';
+import { openCloseVideoModal } from '../components/video_modal_V2';
 import { openCloseCreateVideoModal } from '../components/create_video_modal';
-import { openCloseEditVideoModal } from '../components/edit_video_modal';
+import { openCloseEditVideoModal } from '../components/edit_video_modal_V2';
 import { initMap } from '../components/init_mapbox';
 import { initSortable } from '../components/sortable'
 import { authorizeForm, contentFieldHasContent } from '../components/form_validation'
@@ -41,6 +41,19 @@ import { focusContactForm } from '../components/focus_contact'
 // =============================================================================
 const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
+
+  const madeUpBtns = document.querySelectorAll('.made-up-srch-btns');
+  const searchRadioBtns = document.querySelectorAll('.search-radio-btns');
+  const searchLabels = document.querySelectorAll('.search-labels');
+
+  madeUpBtns.forEach((label) => {
+    label.addEventListener('click', (event) => {
+    // $(document).on('click', label, function(e){
+      let id = label.dataset.cat;
+      document.querySelector(`#${id}-radio-btn`).click();
+      document.querySelector('#search-button').click();
+    });
+  });
 
   if (document.querySelector('.main-container')) {
     document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('#home-menu-banner').offsetHeight)}px`;

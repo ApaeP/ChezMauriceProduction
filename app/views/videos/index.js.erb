@@ -1,0 +1,102 @@
+document.querySelector('.gallery-grid').style.transition = 'opacity 1s ease';
+document.querySelector('.gallery-grid').style.opacity = 0;
+
+if (typeof partial === 'undefined') {
+  var partial = "<%= j render 'gallery_elems', videos: @videos %>";
+} else {
+  partial = "<%= j render 'gallery_elems', videos: @videos %>";
+}
+
+setTimeout('document.querySelector(".gallery-grid").innerHTML = partial', 10);
+// document.querySelector('.gallery-grid').innerHTML = "<%#= j render 'gallery_elems', videos: @videos %>";
+document.querySelector('.gallery-grid').style.transition = 'opacity 1s ease';
+document.querySelector('.gallery-grid').style.opacity = 1;
+
+
+
+
+// const videoModalBackground = document.querySelector('.video-modal-background');
+// const modalButtons = document.querySelectorAll('.thumbnail-overlay');
+// const modalTitle = document.querySelector('.video-modal-title');
+// const modalDescription = document.querySelector('.video-modal-description');
+
+// const playAjax = (player) => {
+//   player.play();
+// };
+
+// const closeModalAjax = () => {
+//   console.log('closetry');
+//   document.querySelector('.video-modal-background').classList.remove('modal-visible');
+//   document.querySelector('.video-modal-background').classList.add('modal-hidden');
+//   // set the player in the function scope
+//   const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
+//   videoPlayer.pause();
+// };
+
+// const openCloseVideoModalAjax = () => {
+//   // const modalContent = document.querySelector('.video-modal-content');
+
+//   // OPEN
+//   document.querySelectorAll('.thumbnail-overlay').forEach((videoButton) => {
+//     videoButton.addEventListener('click', (event) => {
+//     // $(document).on('click', videoButton, function(event){
+//       // $('.video-modal-background').toggleClass('modal-hidden');
+//       // $('.video-modal-background').toggleClass('modal-visible');
+
+//       if (!document.querySelector('.edit-video-modal-background.modal-visible')) {
+//         if (document.querySelector('#vimeo-video-player > iframe')) {
+//         // If player already exists (after first click) => replace the src attribute of the iframe
+
+//         document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
+//         // $('#vimeo-video-player > iframe').attr('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
+
+//           // set the player in the scope
+//           const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
+//           // const videoPlayer = new Vimeo.Player($('#vimeo-video-player > iframe'));
+
+//           setTimeout(playAjax, 500, videoPlayer);
+
+//         } else {
+//         // If player doesnt exist yet (on first click) => create the player
+
+//         const playerOptions = {
+//           id: videoButton.dataset.videoid,
+//           height: document.querySelector('.video-modal-content').offsetHeight,
+//           // height: $('.video-modal-content').offsetHeight,
+//           autoplay: true
+//         };
+//         const videoPlayer = new Vimeo.Player('vimeo-video-player', playerOptions);
+
+//           setTimeout(playAjax, 500, videoPlayer);
+
+//         }; // End of condition
+//       }
+
+//       // fill title and description
+//       document.querySelector('.video-modal-title').innerHTML = videoButton.dataset.videotitle;
+//       document.querySelector('.video-modal-description').innerHTML = videoButton.dataset.videodesc;
+
+//       // toggle modal
+//       document.querySelector('.video-modal-background').classList.toggle('modal-hidden');
+//       document.querySelector('.video-modal-background').classList.toggle('modal-visible');
+
+//     }); // End of click event
+
+//   }); // End of OPEN
+
+//   // CLOSE
+//   document.querySelector('.video-modal-background').addEventListener('click', (event) => {
+//     closeModalAjax();
+//   });
+
+//   document.addEventListener('keydown', (event) => {
+//     if (event.key === 'Escape' && document.querySelector('.video-modal-background').classList.contains('modal-visible')) {
+//       closeModalAjax();
+//     }
+//   });
+
+// };
+
+// openCloseVideoModalAjax();
+
+

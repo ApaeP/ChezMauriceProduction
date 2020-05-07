@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   get 'mentions-legales', to: 'pages#legal'
   get 'a-propos', to: 'pages#infos'
-  get 'realisations', to: 'pages#gallery'
+  get 'realisations', to: 'videos#index'
   get 'contacter', to: 'pages#contact'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

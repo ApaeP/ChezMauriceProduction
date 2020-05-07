@@ -1,4 +1,4 @@
-let play = (player) => {
+const play = (player) => {
   player.play();
 };
 
@@ -21,15 +21,20 @@ const openCloseVideoModal = () => {
   // OPEN
   modalButtons.forEach((videoButton) => {
     videoButton.addEventListener('click', (event) => {
+    // $(document).on('click', videoButton, function(event){
+      // $('.video-modal-background').toggleClass('modal-hidden');
+      // $('.video-modal-background').toggleClass('modal-visible');
 
       if (!document.querySelector('.edit-video-modal-background.modal-visible')) {
         if (document.querySelector('#vimeo-video-player > iframe')) {
         // If player already exists (after first click) => replace the src attribute of the iframe
 
         document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
+        // $('#vimeo-video-player > iframe').attr('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
 
           // set the player in the scope
           const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
+          // const videoPlayer = new Vimeo.Player($('#vimeo-video-player > iframe'));
 
           setTimeout(play, 500, videoPlayer);
 
@@ -39,6 +44,7 @@ const openCloseVideoModal = () => {
         const playerOptions = {
           id: videoButton.dataset.videoid,
           height: document.querySelector('.video-modal-content').offsetHeight,
+          // height: $('.video-modal-content').offsetHeight,
           autoplay: true
         };
         const videoPlayer = new Vimeo.Player('vimeo-video-player', playerOptions);
@@ -74,6 +80,25 @@ const openCloseVideoModal = () => {
 };
 
 export { openCloseVideoModal };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
