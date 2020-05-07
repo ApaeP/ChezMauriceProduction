@@ -1,5 +1,7 @@
 <% videos.each_with_index do |video, i| %>
-  <div class="video-card card-<%= i %>" >
+  <% arr = [] %>
+  <% video.categories.each { |cat| arr << cat.name.downcase.first(4) } %>
+  <div class="video-card card-<%= i %>" data-cats="all <%= arr.join(' ') %>">
     <% if video.photo.attached? %>
       <div class="thumbnail-div" style="background-image: url(<%= url_for(video.photo) %>)"></div>
     <% else %>

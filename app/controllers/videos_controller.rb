@@ -3,24 +3,24 @@ class VideosController < ApplicationController
 
   def index
     @video = Video.new
-    if params[:search].present? && params[:search][:cat] != "all"
-      @videos = Category.find_by(name: params[:search][:cat]).videos.order(:number)
-      # association_objects_ids = Category.find_by(name: params[:search][:cat]).video_categories.pluck(:id)
-      # videos_array = []
-      # association_objects_ids.each do |id|
-      #   videos_array << VideoCategory.find(id).video
-      # end
+    # if params[:search].present? && params[:search][:cat] != "all"
+    #   @videos = Category.find_by(name: params[:search][:cat]).videos.order(:number)
+    #   # association_objects_ids = Category.find_by(name: params[:search][:cat]).video_categories.pluck(:id)
+    #   # videos_array = []
+    #   # association_objects_ids.each do |id|
+    #   #   videos_array << VideoCategory.find(id).video
+    #   # end
 
-      # video_numbers_array = []
-      # videos_array.each do |selected_vid|
-      #   video_numbers_array << selected_vid.number
-      # end
+    #   # video_numbers_array = []
+    #   # videos_array.each do |selected_vid|
+    #   #   video_numbers_array << selected_vid.number
+    #   # end
 
-      # @videos = videos_array.sort_by.with_index{|_,i| video_numbers_array[i]}
-    else
-      @categories = Category.all
-      @videos = Video.all.order(:number)
-    end
+    #   # @videos = videos_array.sort_by.with_index{|_,i| video_numbers_array[i]}
+    # else
+    #   @categories = Category.all
+    @videos = Video.all.order(:number)
+    # end
     @allcategories = Category.all
   end
 

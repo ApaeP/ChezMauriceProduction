@@ -19,16 +19,16 @@
     <% end %>
   </div>
 
-  <%= form_tag realisations_path, method: :get, remote: true, id: 'search-form' do %>
-    <%= radio_button :search, :cat, "all", id: "all-radio-btn", class: 'search-radio-btns' %>
+  <%#= form_tag realisations_path, method: :get, remote: true, id: 'search-form' do %>
+    <%#= radio_button :search, :cat, "all", id: "all-radio-btn", class: 'search-radio-btns' %>
     <%#= label :search, "Toutes", class: 'search-labels', data: { cat: "all"} %>
-    <% @allcategories.each do |cat| %>
-      <%= radio_button :search, :cat, cat.name, id: "#{cat.name.downcase.first(4)}-radio-btn", class: 'search-radio-btns' %>
+    <%# @allcategories.each do |cat| %>
+      <%#= radio_button :search, :cat, cat.name, id: "#{cat.name.downcase.first(4)}-radio-btn", class: 'search-radio-btns' %>
       <%#= label :search, cat.name, class: 'search-labels', data: { cat: "#{cat.name.downcase.first(4)}"} %>
-    <% end %>
+    <%# end %>
 
-    <%= submit_tag "rechercher", class: "btn btn-primary", id: 'search-button' %>
-  <% end -%>
+    <%#= submit_tag "rechercher", class: "btn btn-primary", id: 'search-button' %>
+  <%# end -%>
   <!-- Parameters: {"search"=>{"cat"=>["Corporate"]}, "commit"=>"rechercher"} -->
 
   <div class="gallery-grid">
