@@ -15,7 +15,6 @@ const openCloseVideoModal = () => {
   // OPEN
   document.querySelector('html').addEventListener('click', (event) => {
     if (event.target.classList.contains('thumbnail-overlay') || event.target.classList.contains('thumbnail-overlay-title')) {
-      console.log('opening video modal');
       if (!document.querySelector('.edit-video-modal-background.modal-visible')) {
         if (document.querySelector('#vimeo-video-player > iframe')) {
           document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${event.target.dataset.videoid}?autoplay=1?app_id=122963`);
@@ -44,13 +43,11 @@ const openCloseVideoModal = () => {
 
   // CLOSE
   document.querySelector('.video-modal-background').addEventListener('click', (event) => {
-    console.log('closing video modal');
     closeModal();
   });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && document.querySelector('.video-modal-background').classList.contains('modal-visible')) {
-      console.log('closing video modal');
       closeModal();
     }
   });
