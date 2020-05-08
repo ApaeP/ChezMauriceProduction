@@ -7,8 +7,25 @@
   }
 }
 
+@media (max-width:650px) { // 600 pour tous autres
+  .home-container {
+    height: calc(100vh - 65px);
+  }
+  #home-video {
+    height: calc(100% - 65px);
+  }
+}
+
+@media (min-width:651px) { // 601 pour tous autres
+  .home-container {
+    height: 100vh;
+  }
+  #home-video {
+    height: 100%;
+  }
+}
+
 .home-container {
-  height: 100vh;
   width: 100vw;
   // position: fixed;
   // background-color: black;
@@ -23,24 +40,19 @@
   // overflow: hidden;
 }
 
-#banner-bckgrnd-white {
-  height: 10vh;
-  background-color: rgba(255, 255, 255, 0.5);
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 49;
-}
-
 #home-video {
   width: 100%;
   height: 100%;
+  height: calc(100% - 65px);
   opacity: 0;
   object-fit: cover;
   position: absolute;
   z-index: 0;
 }
 
+.fade-in-on-play {
+  animation: 2s ease-in-out videoFadeIn;
+}
 // #video-opacity {
 //   height: 100%;
 //   width: 100%;
@@ -49,38 +61,35 @@
 //   // background-color: rgba(255, 255, 255, 0.3);
 // }
 
-.fade-in-on-play {
-  animation: 2s ease-in-out videoFadeIn;
-}
 
-#home-banner-overlay {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-}
+// #home-banner-overlay {
+//   display: flex;
+//   flex-direction: column;
+//   text-align: center;
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+//   justify-content: center;
+// }
 
-#home-banner-title {
-  color: white;
-  margin-bottom: 3vh;
-}
+// #home-banner-title {
+//   color: white;
+//   margin-bottom: 3vh;
+// }
 
-#homepage-logo {
-  height: 30vh;
-  margin: 0 auto;
-  transition: all 1s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
-    transition: all 1s ease-in-out;
-  }
-}
+// #homepage-logo {
+//   height: 30vh;
+//   margin: 0 auto;
+//   transition: all 1s ease-in-out;
+//   &:hover {
+//     transform: scale(1.05);
+//     transition: all 1s ease-in-out;
+//   }
+// }
 
-#home-banner-catchphrase {
-  color: rgba(255, 255, 255, 0.8);
-}
+// #home-banner-catchphrase {
+//   color: rgba(255, 255, 255, 0.8);
+// }
 
 
 

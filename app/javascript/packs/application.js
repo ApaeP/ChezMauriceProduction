@@ -43,6 +43,21 @@ import { filterIndex } from '../components/filter_index';
 const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
 
+    if (document.querySelector('#home-div')) {
+      $("#info-link").click(function() {
+        $('html,body').animate({
+          scrollTop: window.innerHeight - document.querySelector('#home-menu-banner').offsetHeight},
+          1200
+        );
+      });
+      $("#accueil-link").click(function() {
+        $('html,body').animate({
+          scrollTop: $("#home-div").offset().top},
+          1200
+        );
+      });
+    }
+
   // const searchLabels = document.querySelectorAll('.search-labels');
   // const searchRadioBtns = document.querySelectorAll('.search-radio-btns');
 

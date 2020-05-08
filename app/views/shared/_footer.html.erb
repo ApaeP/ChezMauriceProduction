@@ -1,30 +1,30 @@
-<div class="footer">
-  <div class="footer-top">
+<div class="footer-lrg">
+  <div class="footer-lrg-top">
 
-    <div class="footer-left">
-      <div class="footer-left-content">
+    <div class="footer-lrg-left">
+      <div class="footer-lrg-left-content">
         <h5>CHEZ MAURICE PRODUCTION</h5>
-        <p>77, avenue Philippe Auguste75011 Paris <br>
-           <%= mail_to "chezmauriceproduction@contact.com", "chezmauriceproduction@contact.com", class: "legal-link" %> <br>
+        <p>77, avenue Philippe Auguste 75011 Paris <br>
+           <%= mail_to "contact@chezmauriceproduction.com", "contact@chezmauriceproduction.com", class: "legal-link" %> <br>
            <a href="tel:0033661738763" class="title-contact-link">06 61 73 87 63</a></p>
       </div>
     </div>
 
-    <div class="footer-right d-grid">
+    <div class="footer-lrg-right d-grid">
       <!-- <div class="frl"> -->
-        <%= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer' do %>
-          <p><i class="fab fa-facebook"></i> Facebook</p>
-        <% end %>
-        <%= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer' do %>
-          <p><i class="fab fa-instagram"></i> Instagram</p>
-        <% end %>
+        <%#= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer' do %>
+          <!-- <p><i class="fab fa-facebook"></i> Facebook</p> -->
+        <%# end %>
+        <%#= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer' do %>
+          <!-- <p><i class="fab fa-instagram"></i> Instagram</p> -->
+        <%# end %>
       <!-- </div> -->
 
       <!-- <div class="frr"> -->
-        <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer' do %>
-        <p><i class="fab fa-linkedin"></i> LinkedIn</p>
+        <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer-lrg' do %>
+          <p><i class="fab fa-linkedin"></i> LinkedIn</p>
         <% end %>
-        <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer' do %>
+        <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer-lrg' do %>
           <p><i class="fab fa-vimeo"></i> Vimeo</p>
         <% end %>
       <!-- </div> -->
@@ -32,8 +32,34 @@
 
   </div>
 
-  <div class="footer-bottom">
+  <div class="footer-lrg-bottom">
     <p>© 2020 Chez Maurice Production – <%= link_to "politique de confidentialité des données", mentions_legales_path, target: '_blank', class: 'legal-link-footer' %></p>
   </div>
 
+</div>
+
+<!-- <div class="footer-med">
+
+</div> -->
+
+<div class="footer-sml">
+  <div class="footer-sml-address">
+    <p id="title-sml">CHEZ MAURICE PRODUCTION</p>
+    <p id="title-address">
+      77, avenue Philippe Auguste 75011 Paris <br>
+      <%= mail_to "contact@chezmauriceproduction.com", "contact@chezmauriceproduction.com", class: "legal-link" %> <br>
+      <a href="tel:0033661738763" class="title-contact-link">06 61 73 87 63</a>
+    </p>
+  </div>
+  <div class="footer-sml-sn-links">
+    <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer-lrg' do %>
+      <p><i class="fab fa-linkedin"></i> LinkedIn</p>
+    <% end %>
+    <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links-footer-lrg' do %>
+      <p><i class="fab fa-vimeo"></i> Vimeo</p>
+    <% end %>
+  </div>
+  <div class="footer-sml-copyright">
+      <p>© 2020 Chez Maurice Production – <%= link_to "politique de confidentialité des données", mentions_legales_path, target: '_blank', class: 'legal-link-footer' %></p>
+  </div>
 </div>

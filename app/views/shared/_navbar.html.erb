@@ -1,44 +1,88 @@
-<div id="banner-bckgrnd-white"></div>
-<div id="home-menu-banner">
-  <div id="inner-menu">
-    <div class="center-menu-elements">
+<div class="navbar-container">
+  <div id="banner-bckgrnd-white"></div>
+  <div id="home-menu-banner">
+    <div id="inner-menu">
+      <div class="center-menu-elements">
 
-      <div class="left-menu-elements">
-        <% unless current_page?(root_path) %>
-          <%= link_to root_path do %>
-            <%= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", id: 'home-navbar-logo' %>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div id="home-menu-links">
-
-        <%= link_to "ACCUEIL", root_path, class: 'menu-link', id: 'accueil-link' %>
-        <%= link_to "RÉALISATIONS", realisations_path, class: 'menu-link', id: 'prod-link' %>
-        <%#= link_to "À PROPOS", a_propos_path, class: 'menu-link', id: 'info-link' %>
-        <%= link_to "CONTACT", contacter_path, class: 'menu-link', id: 'contact-link' %>
-        <% if user_signed_in? %>
-          <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link", class: 'menu-link' %>
-        <% end %>
-      </div>
-
-      <div class="right-menu-elements">
-        <div id="social-links">
-          <%= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
-            <p><i class="fab fa-facebook"></i></p>
-          <% end %>
-          <%= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
-            <p><i class="fab fa-instagram"></i></p>
-          <% end %>
-          <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
-          <p><i class="fab fa-linkedin"></i></p>
-          <% end %>
-          <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
-            <p><i class="fab fa-vimeo"></i></p>
+        <div class="left-menu-elements">
+          <% unless current_page?(root_path) %>
+            <%= link_to root_path do %>
+              <%= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", id: 'home-navbar-logo' %>
+            <% end %>
           <% end %>
         </div>
-      </div>
 
+        <div id="home-menu-links">
+
+          <% if current_page?(root_path) %>
+            <p id="accueil-link" class="menu-link">ACCUEIL</p>
+          <% else %>
+            <%= link_to "ACCUEIL", root_path, class: 'menu-link', id: 'accueil-link' %>
+          <% end %>
+          <%= link_to "RÉALISATIONS", realisations_path, class: 'menu-link', id: 'prod-link' %>
+          <%#= link_to "À PROPOS", a_propos_path, class: 'menu-link', id: 'info-link' %>
+          <% if current_page?(root_path) %>
+            <p id="info-link" class="menu-link">À PROPOS</p>
+          <% else %>
+            <%= link_to "À PROPOS", "http://localhost:3000/#info-div", class: 'menu-link', id: 'info-link' %>
+          <% end %>
+          <%= link_to "CONTACT", contacter_path, class: 'menu-link', id: 'contact-link' %>
+          <% if user_signed_in? %>
+            <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link", class: 'menu-link' %>
+          <% end %>
+        </div>
+
+        <div class="right-menu-elements">
+          <div id="social-links">
+            <%#= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+              <!-- <p><i class="fab fa-facebook"></i></p> -->
+            <%# end %>
+            <%#= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+              <!-- <p><i class="fab fa-instagram"></i></p> -->
+            <%# end %>
+            <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+            <p><i class="fab fa-linkedin"></i></p>
+            <% end %>
+            <%= link_to "https://vimeo.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
+              <p><i class="fab fa-vimeo"></i></p>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="navbar-phone-container">
+  <nav role="navigation">
+    <div id="menuToggle">
+      <div>
+      <input type="checkbox" />
+      <span></span>
+      <span></span>
+      <span></span>
+      <ul id="menu">
+        <li><%= link_to "ACCUEIL", root_path %></li>
+        <li><%= link_to "RÉALISATIONS", realisations_path %></li>
+        <% if current_page?(root_path) %>
+            <li><%= link_to "À PROPOS", "#info-div" %></li>
+          <% else %>
+            <li><%= link_to "À PROPOS", "http://localhost:3000/#info-div" %></li>
+          <% end %>
+        <li><%= link_to "CONTACT", contacter_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "DECONNEXION", destroy_user_session_path %></li>
+        <% end %>
+      </ul>
+   </div>
+  </nav>
+  <div id="phone-menu-overlay">
+    <div id="phone-menu-overlay-content">
+      <div style="display: flex; flex-direction: column; justify-content: center">
+      <p id="phone-menu-title">CHEZ MAURICE PRODUCTION</p>
+      </div>
+      <%= image_tag "PA-LOGO_2020_300px.png", alt: "phone-nav-logo", id: "phone-nav-logo" %>
     </div>
   </div>
 </div>

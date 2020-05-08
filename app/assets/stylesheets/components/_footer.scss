@@ -1,4 +1,40 @@
-.footer {
+@media (max-width:900px) {
+  .footer-lrg {
+    display: none;
+  }
+  .footer-med {
+    display: none;
+  }
+  .footer-sml {
+    display: block;
+  }
+}
+
+// @media (min-width: 426px) and (max-width: 850px) { // 600 pour tous autres
+//   .footer-lrg {
+//     display: none;
+//   }
+//   .footer-med {
+//     display: block;
+//   }
+//   .footer-sml {
+//     display: none;
+//   }
+// }
+
+@media (min-width:901px) { // 601 pour tous autres
+  .footer-lrg {
+    display: block;
+  }
+  .footer-med {
+    display: none;
+  }
+  .footer-sml {
+    display: none;
+  }
+}
+// ======================================== FOOTER LARGE ============================================
+.footer-lrg {
   height: 15vh;
   min-height: 150px;
   width: 100vw;
@@ -6,7 +42,7 @@
   font-weight: 300;
 }
 
-.footer-top {
+.footer-lrg-top {
   height: 13vh;
   min-height: 130px;
   display: flex;
@@ -14,16 +50,16 @@
   p {
     margin-bottom: 0 !important;
   }
-  .footer-right {
+  .footer-lrg-right {
     display: flex;
     width: 50%;
     justify-content: center;
   }
-  .footer-left {
+  .footer-lrg-left {
     width: 50%;
     display: flex;
     justify-content: center;
-    .footer-left-content {
+    .footer-lrg-left-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -34,7 +70,7 @@
   }
 }
 
-.footer-bottom {
+.footer-lrg-bottom {
   height: 2vh;
   min-height: 20px;
   font-size: 0.85rem;
@@ -45,7 +81,7 @@
   }
 }
 
-.sn-links-footer {
+.sn-links-footer-lrg {
   font-size: 1rem;
   color: black;
   display: flex;
@@ -60,7 +96,7 @@
 }
 
 .frl {
- width: 50%;
+  width: 50%;
 }
 
 .frr {
@@ -74,3 +110,113 @@
     text-decoration: none;
   }
 }
+// ======================================== FOOTER LARGE END ========================================
+
+
+// // ======================================== FOOTER MEDIUM ============================================
+// .footer-med {
+//   height: 200px;
+//   background-color: rgba(0, 0, 0, 0.03);
+//   width: 100vw;
+// }
+// // ======================================== FOOTER MEDIUM END ========================================
+
+
+// ======================================== FOOTER SMALL ============================================
+.footer-sml {
+  height: 180px;
+  background-color: rgba(0, 0, 0, 0.03);
+  width: 100vw;
+  padding-top: 7px;
+}
+
+.footer-sml-address {
+
+}
+
+#title-sml {
+  color: black;
+  font-weight: 300;
+  margin-bottom: 0;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#title-address {
+  color: black;
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-align: center;
+  // width: max-content;
+  // margin: 5px auto;
+  a {
+    color: black;
+  }
+}
+
+.footer-sml-sn-links {
+  color: black;
+  display: flex;
+  justify-content: center;
+  font-weight: 300;
+  a {
+    font-size: 0.9rem;
+  }
+}
+
+.footer-sml-copyright {
+  color: black;
+  font-weight: 100;
+  font-size: 0.7rem;
+  text-align: center;
+  position: absolute;
+  // margin: 23px 0 0 0;
+  p {
+    text-align: center;
+    width: 100vw;
+  }
+}
+// ======================================== FOOTER SMALL END ========================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

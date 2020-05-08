@@ -1,8 +1,20 @@
-// .navigation-bar {
-//   height: 10vh;
-//   background-color: black;
-// }
+@media (max-width:850px) { // 600 pour tous autres
+  .navbar-container {
+    display: none;
+  }
+  .navbar-phone-container {
+    display: block;
+  }
+}
 
+@media (min-width:851px) { // 601 pour tous autres
+  .navbar-container {
+    display: block;
+  }
+  .navbar-phone-container {
+    display: none;
+  }
+}
 #home-menu-banner {
   display: flex;
   flex-direction: column;
@@ -14,6 +26,16 @@
   min-height: 100px;
   z-index: 50;
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+#banner-bckgrnd-white {
+  height: 10vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  min-height: 100px;
+  z-index: 49;
 }
 
 #home-menu {
