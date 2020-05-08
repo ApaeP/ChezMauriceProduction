@@ -46,7 +46,7 @@ document.addEventListener('turbolinks:load', () => {
     if (document.querySelector('#home-div')) {
       $("#info-link").click(function() {
         $('html,body').animate({
-          scrollTop: window.innerHeight - document.querySelector('#home-menu-banner').offsetHeight},
+          scrollTop: window.innerHeight - document.querySelector('.navbar-height').offsetHeight},
           1200
         );
       });
@@ -74,12 +74,12 @@ document.addEventListener('turbolinks:load', () => {
   }
 
   if (document.querySelector('.main-container')) {
-    document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('#home-menu-banner').offsetHeight)}px`;
-    document.querySelector('.main-container').style.marginTop = `${document.querySelector('#home-menu-banner').offsetHeight}px`
+    document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
+    // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
 
     window.addEventListener('resize', (event) => {
-      document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('#home-menu-banner').offsetHeight)}px`;
-      document.querySelector('.main-container').style.marginTop = `${document.querySelector('#home-menu-banner').offsetHeight}px`
+      document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
+      // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
     });
   }
 

@@ -15,6 +15,16 @@
     display: none;
   }
 }
+
+.navbar-container {
+  height: 10vh;
+  min-height: 100px;
+}
+
+.navbar-height {
+  height: 100%;
+}
+
 #home-menu-banner {
   display: flex;
   flex-direction: column;
