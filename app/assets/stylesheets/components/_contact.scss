@@ -1,11 +1,93 @@
+@media (max-width:600px) {
+  .contact-container {
+    width: 100%;
+    padding: 5vh 6vw;
+  }
+  .contact-page-infos-and-map {
+    flex-direction: column;
+    .contact-page-infos-and-map-left {
+      width: 100%;
+    }
+    .contact-page-infos-and-map-right {
+      // width: 100vw;
+      // height: 20vh;
+    }
+  }
+  .contact-sml {
+    display: block;
+    width: 100%;
+    height: 20vh;
+  }
+  .contact-lg {
+    display: none;
+  }
+  #contact-catchtitle {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  #contact-catchphrase {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+}
+
+@media (min-width:601px) and (max-width: 800px) {
+  .contact-container {
+    width: 90%;
+  }
+  .contact-page-infos-and-map {
+    flex-direction: column;
+    .contact-page-infos-and-map-left {
+      width: 50%;
+    }
+    .contact-page-infos-and-map-right {
+      width: 50%;
+    }
+  }
+}
+
+@media (min-width:801px) {
+  .contact-container {
+    width: 80%;
+    padding: 5vh 0;
+  }
+  .contact-page-infos-and-map {
+    .contact-page-infos-and-map-left {
+      width: 50%
+    }
+    .contact-page-infos-and-map-right {
+      width: 50%;
+    }
+  }
+  .contact-sml {
+    display: none;
+  }
+  .contact-lg {
+    display: block;
+  }
+  #contact-catchtitle {
+    font-size: 4.5rem;
+  }
+
+  #contact-catchphrase {
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
+}
+
+#map {
+  height: 100%;
+  width: 100%
+}
+
 .contact-container {
-  width: 80%;
+  // width: 80%;
   // min-height: 75vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5vh 0;
 }
 
 #close-contact-arrow {
@@ -24,12 +106,29 @@
 }
 
 #contact-catchtitle {
-  font-size: 4.5rem;
+  // font-size: 4.5rem;
 }
 
 #contact-catchphrase {
-  font-size: 2.2rem;
+  // font-size: 2.2rem;
   font-weight: 300;
+}
+
+.contact-page-infos-and-map {
+  min-height: 25vh;
+  display: flex;
+  margin-bottom: 2vh;
+  // margin-top: 5vh;
+  .contact-page-infos-and-map-left {
+    // width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .contact-page-infos-and-map-right {
+    // width: 50%;
+    background-color: grey;
+  }
 }
 
 .contact-bottom {
@@ -88,22 +187,6 @@
 }
 
 
-.contact-page-infos-and-map {
-  min-height: 25vh;
-  display: flex;
-  margin-bottom: 2vh;
-  // margin-top: 5vh;
-  .contact-page-infos-and-map-left {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  .contact-page-infos-and-map-right {
-    width: 50%;
-    background-color: grey;
-  }
-}
 
 .title-contact-link {
   color: black;

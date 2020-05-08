@@ -27,7 +27,7 @@ import { autoplayVideoBackground } from '../components/background_video';
 import { openCloseVideoModal } from '../components/video_modal_V1';
 import { openCloseCreateVideoModal } from '../components/create_video_modal';
 import { openCloseEditVideoModal } from '../components/edit_video_modal_V1';
-import { initMap } from '../components/init_mapbox';
+import { initMap, initMap2 } from '../components/init_mapbox';
 import { initSortable } from '../components/sortable';
 import { authorizeForm, contentFieldHasContent } from '../components/form_validation';
 import { focusContactForm } from '../components/focus_contact';
@@ -75,11 +75,17 @@ document.addEventListener('turbolinks:load', () => {
 
   if (document.querySelector('.main-container')) {
     document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
-    // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
+    if (window.innerHeight >= 850) {
+      document.querySelector('.main-container-home').style.top = 0;
+      // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
+    }
 
     window.addEventListener('resize', (event) => {
       document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
-      // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
+      if (window.innerHeight >= 850) {
+        document.querySelector('.main-container-home').style.top = 0;
+        // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offssetHeight}px`
+      }
     });
   }
 
@@ -87,6 +93,7 @@ document.addEventListener('turbolinks:load', () => {
 
   if (document.querySelector('#map')) {
     initMap();
+    initMap2();
   }
 
   if (document.querySelector('.video-modal-background')) {
