@@ -13,10 +13,15 @@
   <%# end %>
   <!-- Parameters: {"search"=>{"categories"=>["", "1"]}, "commit"=>"Search"} -->
   <div class="category-links-container">
-    <p class="made-up-srch-btns" data-cat="all">TOUTES</p>
-    <% @allcategories.each do |cat| %>
-      <p class="made-up-srch-btns" data-cat="<%= cat.name.downcase.first(4) %>"><%= cat.name.upcase %></p>
-    <% end %>
+    <p class="made-up-srch-btns srch-all" data-cat="all">TOUTES</p>
+    <p class="made-up-srch-btns srch-bran" data-cat="bran">BRAND CONTENT</p>
+    <p class="made-up-srch-btns srch-corp" data-cat="corp">CORPORATE</p>
+    <p class="made-up-srch-btns srch-even" data-cat="évén">ÉVÉNEMENTIEL</p>
+    <p class="made-up-srch-btns srch-inte" data-cat="inte">INTERVIEW</p>
+    <p class="made-up-srch-btns srch-prod" data-cat="prod">PRODUIT</p>
+    <%# @allcategories.each do |cat| %>
+      <!-- <p class="made-up-srch-btns" data-cat="<%#= cat.name.downcase.first(4) %>"><%#= cat.name.upcase %></p> -->
+    <%# end %>
   </div>
 
   <%#= form_tag realisations_path, method: :get, remote: true, id: 'search-form' do %>
