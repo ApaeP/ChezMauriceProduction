@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
   get 'mentions-legales', to: 'pages#legal'
-  get 'a-propos', to: 'pages#infos'
+  # get 'a-propos', to: 'pages#infos'
   get 'realisations', to: 'videos#index'
   get 'contacter', to: 'pages#contact'
 

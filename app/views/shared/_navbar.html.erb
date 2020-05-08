@@ -1,18 +1,21 @@
+<div id="banner-bckgrnd-white"></div>
 <div id="home-menu-banner">
   <div id="inner-menu">
     <div class="center-menu-elements">
 
       <div class="left-menu-elements">
         <% unless current_page?(root_path) %>
-          <%= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", id: 'home-navbar-logo' %>
+          <%= link_to root_path do %>
+            <%= image_tag "PA-LOGO_2020_300px.png", alt: "navbar-logo", id: 'home-navbar-logo' %>
+          <% end %>
         <% end %>
       </div>
 
       <div id="home-menu-links">
 
         <%= link_to "ACCUEIL", root_path, class: 'menu-link', id: 'accueil-link' %>
-        <%= link_to "NOS RÉALISATIONS", realisations_path, class: 'menu-link', id: 'prod-link' %>
-        <%= link_to "À PROPOS", a_propos_path, class: 'menu-link', id: 'info-link' %>
+        <%= link_to "RÉALISATIONS", realisations_path, class: 'menu-link', id: 'prod-link' %>
+        <%#= link_to "À PROPOS", a_propos_path, class: 'menu-link', id: 'info-link' %>
         <%= link_to "CONTACT", contacter_path, class: 'menu-link', id: 'contact-link' %>
         <% if user_signed_in? %>
           <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link", class: 'menu-link' %>

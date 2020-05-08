@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     @contact = Contact.new
   end
 
-  def infos
-  end
+  # def infos
+  # end
 
 end
