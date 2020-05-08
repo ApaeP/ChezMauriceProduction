@@ -28,9 +28,10 @@ import { openCloseVideoModal } from '../components/video_modal_V1';
 import { openCloseCreateVideoModal } from '../components/create_video_modal';
 import { openCloseEditVideoModal } from '../components/edit_video_modal_V1';
 import { initMap } from '../components/init_mapbox';
-import { initSortable } from '../components/sortable'
-import { authorizeForm, contentFieldHasContent } from '../components/form_validation'
-import { focusContactForm } from '../components/focus_contact'
+import { initSortable } from '../components/sortable';
+import { authorizeForm, contentFieldHasContent } from '../components/form_validation';
+import { focusContactForm } from '../components/focus_contact';
+import { filterIndex } from '../components/filter_index';
 // import { togglePage } from '../components/toggle_page';
 // import { setPageOnReload } from '../components/set_page_on_reload';
 // import { mouseWheelActions } from '../components/mousewheel_actions';
@@ -42,11 +43,8 @@ import { focusContactForm } from '../components/focus_contact'
 const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
 
-  const madeUpBtns = document.querySelectorAll('.made-up-srch-btns');
-  const searchRadioBtns = document.querySelectorAll('.search-radio-btns');
-  const searchLabels = document.querySelectorAll('.search-labels');
-  const videoCards = document.querySelectorAll('.video-card');
-  const videoCardsArr = Array.from(videoCards);
+  // const searchLabels = document.querySelectorAll('.search-labels');
+  // const searchRadioBtns = document.querySelectorAll('.search-radio-btns');
 
   // madeUpBtns.forEach((label) => {
   //   label.addEventListener('click', (event) => {
@@ -56,21 +54,9 @@ document.addEventListener('turbolinks:load', () => {
   //     document.querySelector('#search-button').click();
   //   });
   // });
-  madeUpBtns.forEach((label) => {
-    label.addEventListener('click', (event) => {
-    // $(document).on('click', label, function(e){
-      const searchedCat = label.dataset.cat
-      const selectedCardsArray = []
-      videoCardsArr.forEach((card) => {
-        if (card.dataset.cats.includes(searchedCat)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      })
-
-    });
-  });
+  if (document.querySelectorAll('.video-card')) {
+    filterIndex();
+  }
 
   if (document.querySelector('.main-container')) {
     document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('#home-menu-banner').offsetHeight)}px`;
@@ -127,10 +113,49 @@ document.addEventListener('turbolinks:load', () => {
       if (window.close()) {
 
       } else {
-        window.location.href = "http://stackoverflow.com";
+        window.location.href = "http://www.chezmauriceproduction.com/";
       }
     });
   });
+
+
+  if (window.location.href.includes('realisations')) {
+    if (document.querySelector('.current-menu-link')) {
+      document.querySelector('.current-menu-link').classList.remove('.current-menu-link');
+      document.querySelector('#prod-link').classList.remove('menu-link');
+      document.querySelector('#prod-link').classList.add('current-menu-link');
+    } else {
+      document.querySelector('#prod-link').classList.remove('menu-link');
+      document.querySelector('#prod-link').classList.add('current-menu-link');
+    }
+  } else if (window.location.href.includes('a-propos')) {
+    if (document.querySelector('.current-menu-link')) {
+      document.querySelector('.current-menu-link').classList.remove('.current-menu-link');
+      document.querySelector('#info-link').classList.remove('menu-link');
+      document.querySelector('#info-link').classList.add('current-menu-link');
+    } else {
+      document.querySelector('#info-link').classList.remove('menu-link');
+      document.querySelector('#info-link').classList.add('current-menu-link');
+    }
+  } else if (window.location.href.includes('contacter')) {
+    if (document.querySelector('.current-menu-link')) {
+      document.querySelector('.current-menu-link').classList.remove('.current-menu-link');
+      document.querySelector('#contact-link').classList.remove('menu-link');
+      document.querySelector('#contact-link').classList.add('current-menu-link');
+    } else {
+      document.querySelector('#contact-link').classList.remove('menu-link');
+      document.querySelector('#contact-link').classList.add('current-menu-link');
+    }
+  } else if (window.location.href.includes('accueil') || window.location.href == "http://www.chezmauriceproduction.com/" || window.location.href == "http://chezmauriceproduction.com/" || window.location.href == "http://localhost:3000/") {
+    if (document.querySelector('.current-menu-link')) {
+      document.querySelector('.current-menu-link').classList.remove('.current-menu-link');
+      document.querySelector('#accueil-link').classList.remove('menu-link');
+      document.querySelector('#accueil-link').classList.add('current-menu-link');
+    } else {
+      document.querySelector('#accueil-link').classList.remove('menu-link');
+      document.querySelector('#accueil-link').classList.add('current-menu-link');
+    }
+  }
 
   // if (document.querySelector('.contact-container')) {
   //   window.onload = function(){

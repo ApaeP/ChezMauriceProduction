@@ -92,6 +92,12 @@
   position: relative;
   color: rgba(0, 0, 0, 0.8);
   cursor: default !important;
+  height: 1.5rem;
+  margin: auto 0;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
 }
 
 .current-menu-link:before {

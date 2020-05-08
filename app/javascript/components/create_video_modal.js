@@ -17,6 +17,14 @@ const openCloseCreateVideoModal = () => {
       createVideoModalBackground.classList.toggle('modal-visible');
     });
 
+    document.addEventListener('click', (event) => {
+      if (event.target.classList.contains('close-add-btn') || event.target.classList.contains('close-add-btn-i') || event.target.classList.contains('close-add-button') || event.target.classList.contains('create-video-modal-background')) {
+        const openedAddModal = document.querySelector('.create-video-modal-background.modal-visible');
+        openedAddModal.classList.toggle('modal-hidden');
+        openedAddModal.classList.toggle('modal-visible');
+      }
+    });
+
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && createVideoModalBackground.classList.contains('modal-visible')) {
         createVideoModalBackground.classList.toggle('modal-hidden');

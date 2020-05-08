@@ -1,8 +1,8 @@
 <div class="contact-container">
   <div class="contact-page-infos-and-map">
     <div class="contact-page-infos-and-map-left">
-      <h2>Cher Maurice,</h2>
-      <h4>Je voudrais te parler de mon projet...</h4>
+      <h2 id="contact-catchtitle">Cher Maurice,</h2>
+      <h4 id="contact-catchphrase">Je voudrais te parler de mon projet...</h4>
     </div>
     <div class="contact-page-infos-and-map-right">
       <div id='map' style='width: 100%; height: 100%;'></div>
@@ -11,9 +11,9 @@
   <div class="contact-bottom">
     <div class="contact-page-form">
       <%= simple_form_for(@contact, remote: true) do |f| %>
+        <%= f.input :content, as: :text, label: false, placeholder: 'Message*', input_html: { rows: 5, class: 'form-contact-input contact-form-element', id: 'content-input' } %>
         <%= f.input :name, label: false, placeholder: 'Nom*', input_html: { class: 'form-contact-input contact-form-element', id: 'name-input' } %>
         <%= f.input :email, label: false, placeholder: 'Email*', input_html: { class: 'form-contact-input email-contact contact-form-element', id: 'email-input' } %>
-        <%= f.input :content, as: :text, label: false, placeholder: 'Message*', input_html: { rows: 5, class: 'form-contact-input contact-form-element', id: 'content-input' } %>
         <div class="form-last-line">
           <%= f.submit "Envoyer", id: "send-contact-btn", class: 'submit-form-btn contact-form-element' %>
           <p class="mandatory-notice">*Champs obligatoires</p>

@@ -11,6 +11,14 @@ const openCloseEditVideoModal = () => {
     });
   });
 
+  document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('close-edit-btn-p') || event.target.classList.contains('close-edit-btn-i') || event.target.classList.contains('edit-video-modal-background')) {
+      const openedEditModal = document.querySelector('.edit-video-modal-background.modal-visible');
+      openedEditModal.classList.toggle('modal-hidden');
+      openedEditModal.classList.toggle('modal-visible');
+    }
+  });
+
   document.querySelectorAll('.close-edit-btn-p').forEach((closeBtn) => {
     closeBtn.addEventListener('click', (event) => {
       const openedEditModal = document.querySelector('.edit-video-modal-background.modal-visible');

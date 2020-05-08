@@ -10,10 +10,10 @@
 
       <div id="home-menu-links">
 
-        <%= link_to "ACCUEIL", root_path, class: 'menu-link' %>
-        <%= link_to "NOS RÉALISATIONS", realisations_path, class: 'menu-link' %>
-        <%= link_to "À PROPOS", a_propos_path, class: 'menu-link' %>
-        <%= link_to "CONTACT", contacter_path, class: 'menu-link' %>
+        <%= link_to "ACCUEIL", root_path, class: 'menu-link', id: 'accueil-link' %>
+        <%= link_to "NOS RÉALISATIONS", realisations_path, class: 'menu-link', id: 'prod-link' %>
+        <%= link_to "À PROPOS", a_propos_path, class: 'menu-link', id: 'info-link' %>
+        <%= link_to "CONTACT", contacter_path, class: 'menu-link', id: 'contact-link' %>
         <% if user_signed_in? %>
           <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link", class: 'menu-link' %>
         <% end %>

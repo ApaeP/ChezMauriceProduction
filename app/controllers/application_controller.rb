@@ -30,9 +30,9 @@ class ApplicationController < ActionController::Base
     { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
-  def first_time_visit
-     cookies.permanent[:first_visit] = 1
-     @first_visit = true
-  end
+  # def first_time_visit
+  #    cookies.permanent[:first_visit] = 1
+  #    @first_visit = true
+  # end
 end
 
