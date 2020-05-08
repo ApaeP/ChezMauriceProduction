@@ -14,6 +14,9 @@
   #home-video {
     height: calc(100vh - 65px);
   }
+  #footer-for-lg {
+    display: none;
+  }
 }
 
 @media (min-width:851px) { // 601 pour tous autres
@@ -27,6 +30,9 @@
     top: 0;
     position: absolute;
     height: 100vh;
+  }
+  #footer-for-lg {
+    display: block;
   }
 }
 

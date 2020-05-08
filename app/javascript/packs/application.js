@@ -75,17 +75,17 @@ document.addEventListener('turbolinks:load', () => {
 
   if (document.querySelector('.main-container')) {
     document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
-    if (window.innerHeight >= 850) {
-      document.querySelector('.main-container-home').style.top = 0;
-      // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
-    }
+    // if (window.innerHeight >= 850) {
+    //   document.querySelector('.main-container-home').style.top = 0;
+    //   // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
+    // }
 
     window.addEventListener('resize', (event) => {
       document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
-      if (window.innerHeight >= 850) {
-        document.querySelector('.main-container-home').style.top = 0;
-        // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offssetHeight}px`
-      }
+      // if (window.innerHeight >= 850) {
+      //   document.querySelector('.main-container-home').style.top = 0;
+      //   // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offssetHeight}px`
+      // }
     });
   }
 

@@ -1,10 +1,11 @@
-@media (max-width:600px) {
+@media (max-width:1125px) {
   .contact-container {
     width: 100%;
     padding: 5vh 6vw;
   }
   .contact-page-infos-and-map {
     flex-direction: column;
+    height: 15vh;
     .contact-page-infos-and-map-left {
       width: 100%;
     }
@@ -13,10 +14,22 @@
       // height: 20vh;
     }
   }
+  .contact-bottom {
+    flex-direction: column;
+  }
+  .contact-page-form {
+
+  }
+  .contact-page-address {
+    text-align: center;
+  }
+
   .contact-sml {
     display: block;
     width: 100%;
     height: 20vh;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
   }
   .contact-lg {
     display: none;
@@ -32,33 +45,48 @@
   }
 }
 
-@media (min-width:601px) and (max-width: 800px) {
-  .contact-container {
-    width: 90%;
-  }
-  .contact-page-infos-and-map {
-    flex-direction: column;
-    .contact-page-infos-and-map-left {
-      width: 50%;
-    }
-    .contact-page-infos-and-map-right {
-      width: 50%;
-    }
-  }
-}
+// @media (min-width:601px) and (max-width: 1125px) {
+//   .contact-container {
+//     width: 90%;
+//   }
+//   .contact-page-infos-and-map {
+//     flex-direction: column;
+//     .contact-page-infos-and-map-left {
+//       width: 50%;
+//     }
+//     .contact-page-infos-and-map-right {
+//       width: 50%;
+//     }
+//   }
+//   .contact-lg {
+//     display: block;
+//   }
+// }
 
-@media (min-width:801px) {
+@media (min-width:1126px) {
   .contact-container {
     width: 80%;
     padding: 5vh 0;
   }
   .contact-page-infos-and-map {
+    justify-content: space-between;
+    min-height: 25vh;
     .contact-page-infos-and-map-left {
       width: 50%
     }
     .contact-page-infos-and-map-right {
-      width: 50%;
+      width: 47%;
     }
+  }
+  .contact-bottom {
+
+  }
+  .contact-page-form {
+    width: 47%;
+  }
+  .contact-page-address {
+    text-align: right;
+    width: 47%;
   }
   .contact-sml {
     display: none;
@@ -115,7 +143,6 @@
 }
 
 .contact-page-infos-and-map {
-  min-height: 25vh;
   display: flex;
   margin-bottom: 2vh;
   // margin-top: 5vh;
@@ -135,7 +162,6 @@
   display: flex;
   justify-content: space-between;
   .contact-page-form {
-    width: 47%;
     background-color: rgba(255, 255, 255, 0.01);
 
     .form-last-line {
@@ -167,8 +193,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    text-align: right;
-    width: 47%;
     p {
       margin-bottom: 0;
       font-size: 1.2rem;

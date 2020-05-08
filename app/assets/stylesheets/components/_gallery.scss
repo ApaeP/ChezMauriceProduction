@@ -82,7 +82,8 @@
     font-size: 1rem;
   }
   .category-links-container {
-
+    display: flex;
+    justify-content: space-evenly;
   }
 }
 
