@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :first_time_visit, unless: -> { cookies[:first_visit] }
+  # before_action :first_time_visit, unless: -> { cookies[:first_visit] }
   # before_action :authenticate_user!
   # before_action :cors_set_access_control_headers
 
