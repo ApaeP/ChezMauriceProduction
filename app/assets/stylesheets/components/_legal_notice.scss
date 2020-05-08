@@ -1,3 +1,15 @@
+@media (max-width:600px) {
+  .legal-container {
+    width: 100vw;
+  }
+}
+
+@media (min-width:601px) {
+  .legal-container {
+    width: 70vw;
+  }
+}
+
 .return-from-legal {
   cursor: pointer;
   color: black;
@@ -12,7 +24,6 @@
 }
 
 .legal-container {
-  width: 70vw;
   padding: 3vh;
   max-width: 850px;
   min-height: 85vh;
