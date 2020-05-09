@@ -21,7 +21,6 @@ const openCloseVideoModal = () => {
   // OPEN
   modalButtons.forEach((videoButton) => {
     videoButton.addEventListener('click', (event) => {
-      console.log('je clique sur un bouton dopen');
     // $(document).on('click', videoButton, function(event){
       // $('.video-modal-background').toggleClass('modal-hidden');
       // $('.video-modal-background').toggleClass('modal-visible');
@@ -29,9 +28,7 @@ const openCloseVideoModal = () => {
       videoModalBackground.classList.toggle('modal-visible');
 
       if (!document.querySelector('.edit-video-modal-background.modal-visible')) {
-        console.log('la modale est visible');
         if (document.querySelector('#vimeo-video-player > iframe')) {
-          console.log('l"iframe est présent');
         // If player already exists (after first click) => replace the src attribute of the iframe
 
         // document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
@@ -46,18 +43,22 @@ const openCloseVideoModal = () => {
             switch (error.name) {
                 case 'TypeError':
                     // The ID isn't a number
+                    console.log(`L'ID de la video (${videoButton.dataset.videoid}) n'est pas un nombre`);
                     break;
 
                 case 'PasswordError':
                     // The video is password-protected
+                    console.log('La vidéo est protégée par un mot de passe')
                     break;
 
                 case 'PrivacyError':
                     // The video is private
+                    console.log('la vidéo est privée')
                     break;
 
                 default:
                     // Some other error occurred
+                    console.log('Une erreur a survenu, merci de contacter votre administrateur')
                     break;
             }
           });
