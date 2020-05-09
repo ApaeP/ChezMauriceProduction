@@ -21,12 +21,17 @@ const openCloseVideoModal = () => {
   // OPEN
   modalButtons.forEach((videoButton) => {
     videoButton.addEventListener('click', (event) => {
+      console.log('je clique sur un bouton dopen');
     // $(document).on('click', videoButton, function(event){
       // $('.video-modal-background').toggleClass('modal-hidden');
       // $('.video-modal-background').toggleClass('modal-visible');
+      videoModalBackground.classList.toggle('modal-hidden');
+      videoModalBackground.classList.toggle('modal-visible');
 
       if (!document.querySelector('.edit-video-modal-background.modal-visible')) {
+        console.log('la modale est visible');
         if (document.querySelector('#vimeo-video-player > iframe')) {
+          console.log('l"iframe est présent');
         // If player already exists (after first click) => replace the src attribute of the iframe
 
         document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
@@ -39,10 +44,11 @@ const openCloseVideoModal = () => {
           setTimeout(play, 500, videoPlayer);
 
         } else {
+          console.log('liframe nest pas presrtn');
         // If player doesnt exist yet (on first click) => create the player
 
         const playerOptions = {
-          id: videoButton.dataset.videoid,
+          id: videoButton.dataset.videourl,
           height: document.querySelector('.video-modal-content').offsetHeight,
           // height: $('.video-modal-content').offsetHeight,
           autoplay: true
@@ -59,8 +65,6 @@ const openCloseVideoModal = () => {
       modalDescription.innerHTML = videoButton.dataset.videodesc;
 
       // toggle modal
-      videoModalBackground.classList.toggle('modal-hidden');
-      videoModalBackground.classList.toggle('modal-visible');
 
     }); // End of click event
 

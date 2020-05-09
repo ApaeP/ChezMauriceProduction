@@ -14,13 +14,16 @@ const openCloseVideoModal = () => {
 
   // OPEN
   document.querySelector('html').addEventListener('click', (event) => {
+    console.log('je rentre dans le open de video modal')
     if (event.target.classList.contains('thumbnail-overlay') || event.target.classList.contains('thumbnail-overlay-title')) {
       if (!document.querySelector('.edit-video-modal-background.modal-visible')) {
         if (document.querySelector('#vimeo-video-player > iframe')) {
+          console.log('je reattribue le lecteur');
           document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${event.target.dataset.videoid}?autoplay=1?app_id=122963`);
           const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
           setTimeout(play, 500, videoPlayer);
         } else {
+          console.log('je construis le lecteur');
           const playerOptions = {
             id: event.target.dataset.videoid,
             height: document.querySelector('.video-modal-content').offsetHeight,

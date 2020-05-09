@@ -7,8 +7,8 @@
     <% else %>
       <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
     <% end %>
-    <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
-      <p class="thumbnail-overlay-title" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>"><%= video.title.upcase %></p>
+    <div class="thumbnail-overlay" data-videourl="<%= video.url %>" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
+      <p class="thumbnail-overlay-title" data-videourl="<%= video.url %>" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>"><%= video.title.upcase %></p>
       <% if user_signed_in? %>
         <div class="admin-buttons">
           <p class="modify-video-button" data-videoid="<%= i %>"><i class="far fa-edit"></i></p>
