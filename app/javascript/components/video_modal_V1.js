@@ -34,30 +34,50 @@ const openCloseVideoModal = () => {
           console.log('l"iframe est présent');
         // If player already exists (after first click) => replace the src attribute of the iframe
 
-        document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
+        // document.querySelector('#vimeo-video-player > iframe').setAttribute('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
         // $('#vimeo-video-player > iframe').attr('src', `https://player.vimeo.com/video/${videoButton.dataset.videoid}?autoplay=1?app_id=122963`);
 
           // set the player in the scope
           const videoPlayer = new Vimeo.Player(document.querySelector('#vimeo-video-player > iframe'));
           // const videoPlayer = new Vimeo.Player($('#vimeo-video-player > iframe'));
+          videoPlayer.loadVideo(videoButton.dataset.videoid).then(function(id) {
+            videoPlayer.play()
+          }).catch(function(error) {
+            switch (error.name) {
+                case 'TypeError':
+                    // The ID isn't a number
+                    break;
 
-          setTimeout(play, 500, videoPlayer);
+                case 'PasswordError':
+                    // The video is password-protected
+                    break;
+
+                case 'PrivacyError':
+                    // The video is private
+                    break;
+
+                default:
+                    // Some other error occurred
+                    break;
+            }
+          });
+
+          // setTimeout(play, 100, videoPlayer);
 
         } else {
-          console.log('liframe nest pas presrtn');
         // If player doesnt exist yet (on first click) => create the player
-          console.log(videoButton.dataset.videourl);
-          console.log(videoButton.dataset.videoid)
-        const playerOptions = {
-          id: videoButton.dataset.videourl,
-          height: document.querySelector('.video-modal-content').offsetHeight,
-          // height: $('.video-modal-content').offsetHeight,
-          autoplay: true
-        };
-        const videoPlayer = new Vimeo.Player('vimeo-video-player', playerOptions);
 
-          setTimeout(play, 500, videoPlayer);
+          const playerOptions = {
+            id: videoButton.dataset.videourl,
+            height: document.querySelector('.video-modal-content').offsetHeight,
+            // height: $('.video-modal-content').offsetHeight,
+            autoplay: true
+          };
+          const videoPlayer = new Vimeo.Player('vimeo-video-player', playerOptions);
 
+          videoPlayer.ready().then(function() {
+            videoPlayer.play();
+          });
         }; // End of condition
       }
 
