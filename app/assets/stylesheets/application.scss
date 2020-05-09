@@ -12,10 +12,97 @@
 @import "components/index";
 @import "pages/index";
 
+// body {
+//   background-color: rgba(255, 255, 255, 0.03);
+//   overflow-x: hidden;
+//   color: rgba(0, 0, 0, 0.8);
+// }
+
+// a {
+//   color: lightgrey;
+//   text-decoration: none;
+//   &:hover {
+//     color: grey;
+//   }
+// }
+
+// .main-container {
+//   overflow-x: hidden;
+// }
+
+// .main-container-home {
+//   overflow-x: hidden;
+// }
+
+// html, body {
+//   overflow-x: hidden;
+// }
+
+// html {
+//     scrollbar-width: none; /* For Firefox */
+//     -ms-overflow-style: none; /* For Internet Explorer and Edge */
+//     overflow-x: hidden;
+// }
+
+// html::-webkit-scrollbar {
+//     width: 0px; /* For Chrome, Safari, and Opera */
+// }
+
+// body {
+//     scrollbar-width: none; /* For Firefox */
+//     -ms-overflow-style: none; /* For Internet Explorer and Edge */
+// }
+
+// body::-webkit-scrollbar {
+//     width: 0px; /* For Chrome, Safari, and Opera */
+// }
+
+// .log-in-container {
+//   min-height: 85vh;
+//   width: 100vw;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
+
+// .log-in-content {
+//   margin: 0 auto;
+//   max-width: 400px;
+//   width: 100%;
+//   h2 {
+//     text-align: center;
+//     margin-bottom: 2vh;
+//   }
+// }
+
+// #log-in-btn {
+//   color: white;
+//   width: 50%;
+//   margin: auto;
+//   background-color: rgba(80, 122, 234, 0.5);
+//   margin-top: 2vh;
+//   &:hover {
+//     background-color: rgba(80, 122, 234, 0.8);
+//     transition: background-color 0.5s ease;
+//   }
+// }
+
+// .log-in-btn-container {
+//   display: flex;
+//   justify-content: center;
+// }
+
+
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 body {
   background-color: rgba(255, 255, 255, 0.03);
   overflow-x: hidden;
-  // overflow-y: hidden;
   color: rgba(0, 0, 0, 0.8);
 }
 
@@ -28,7 +115,6 @@ a {
 }
 
 .main-container {
-  // min-height: calc(100vh - 20vh)
   overflow-x: hidden;
 }
 
@@ -62,9 +148,16 @@ body::-webkit-scrollbar {
 .log-in-container {
   min-height: 85vh;
   width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .log-in-content {
@@ -85,11 +178,17 @@ body::-webkit-scrollbar {
   margin-top: 2vh;
   &:hover {
     background-color: rgba(80, 122, 234, 0.8);
+    -webkit-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
     transition: background-color 0.5s ease;
   }
 }
 
 .log-in-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }

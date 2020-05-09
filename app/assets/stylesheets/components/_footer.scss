@@ -1,39 +1,211 @@
-@media (max-width:900px) {
-  .footer-lrg {
-    display: none;
-  }
-  // .footer-med {
-  //   display: none;
-  // }
-  .footer-sml {
-    display: block;
-  }
-}
-
-// @media (min-width: 426px) and (max-width: 850px) { // 600 pour tous autres
+// @media (max-width:900px) {
 //   .footer-lrg {
 //     display: none;
 //   }
-//   .footer-med {
+//   // .footer-med {
+//   //   display: none;
+//   // }
+//   .footer-sml {
 //     display: block;
 //   }
+// }
+
+// // @media (min-width: 426px) and (max-width: 850px) { // 600 pour tous autres
+// //   .footer-lrg {
+// //     display: none;
+// //   }
+// //   .footer-med {
+// //     display: block;
+// //   }
+// //   .footer-sml {
+// //     display: none;
+// //   }
+// // }
+
+// @media (min-width:901px) { // 601 pour tous autres
+//   .footer-lrg {
+//     display: block;
+//   }
+//   // .footer-med {
+//   //   display: none;
+//   // }
 //   .footer-sml {
 //     display: none;
 //   }
 // }
+// // ======================================== FOOTER LARGE ============================================
+// .footer-lrg {
+//   height: 15vh;
+//   min-height: 150px;
+//   width: 100vw;
+//   background-color: rgba(0, 0, 0, 0.03);
+//   font-weight: 300;
+// }
 
-@media (min-width:901px) { // 601 pour tous autres
+// .footer-lrg-top {
+//   height: 13vh;
+//   min-height: 130px;
+//   display: flex;
+//   justify-content: space-evenly;
+//   p {
+//     margin-bottom: 0 !important;
+//   }
+//   .footer-lrg-right {
+//     display: flex;
+//     width: 50%;
+//     justify-content: center;
+//   }
+//   .footer-lrg-left {
+//     width: 50%;
+//     display: flex;
+//     justify-content: center;
+//     .footer-lrg-left-content {
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       h5 {
+//         font-weight: 300;
+//       }
+//     }
+//   }
+// }
+
+// .footer-lrg-bottom {
+//   height: 2vh;
+//   min-height: 20px;
+//   font-size: 0.85rem;
+//   text-align: right;
+//   p {
+//     margin-right: 1vw;
+//     margin-bottom: 0 !important;
+//   }
+// }
+
+// .sn-links-footer-lrg {
+//   font-size: 1rem;
+//   color: black;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   margin: 10px 25px 10px 25px;
+//   white-space: nowrap;
+//   &:hover {
+//     color: rgba(0, 0, 0, 0.8);
+//     text-decoration: none;
+//   }
+// }
+
+// .frl {
+//   width: 50%;
+// }
+
+// .frr {
+//   width: 50%;
+// }
+// .legal-link-footer {
+//   color: black;
+//   text-decoration: none;
+//   &:hover {
+//     color: rgba(0, 0, 0, 0.8);
+//     text-decoration: none;
+//   }
+// }
+// // ======================================== FOOTER LARGE END ========================================
+
+
+// // // ======================================== FOOTER MEDIUM ============================================
+// // .footer-med {
+// //   height: 200px;
+// //   background-color: rgba(0, 0, 0, 0.03);
+// //   width: 100vw;
+// // }
+// // // ======================================== FOOTER MEDIUM END ========================================
+
+
+// // ======================================== FOOTER SMALL ============================================
+// .footer-sml {
+//   height: 210px;
+//   background-color: rgba(0, 0, 0, 0.03);
+//   width: 100vw;
+//   padding-top: 7px;
+// }
+
+// .footer-sml-address {
+
+// }
+
+// #title-sml {
+//   color: black;
+//   font-weight: 300;
+//   margin-bottom: 0;
+//   font-size: 1.3rem;
+//   text-align: center;
+// }
+
+// #title-address {
+//   color: black;
+//   font-weight: 300;
+//   font-size: 0.9rem;
+//   text-align: center;
+//   // width: max-content;
+//   // margin: 5px auto;
+//   a {
+//     color: black;
+//   }
+// }
+
+// .footer-sml-sn-links {
+//   color: black;
+//   display: flex;
+//   justify-content: center;
+//   font-weight: 300;
+//   a {
+//     font-size: 0.9rem;
+//   }
+// }
+
+// .footer-sml-copyright {
+//   color: black;
+//   font-weight: 100;
+//   font-size: 0.7rem;
+//   text-align: center;
+//   position: absolute;
+//   // margin: 23px 0 0 0;
+//   p {
+//     text-align: center;
+//     width: 100vw;
+//   }
+// }
+// // ======================================== FOOTER SMALL END ========================================
+
+
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+@media (max-width:900px) {
+  .footer-lrg {
+    display: none;
+  }
+
+  .footer-sml {
+    display: block;
+  }
+}
+
+
+@media (min-width:901px) {
   .footer-lrg {
     display: block;
   }
-  // .footer-med {
-  //   display: none;
-  // }
+
   .footer-sml {
     display: none;
   }
 }
-// ======================================== FOOTER LARGE ============================================
 .footer-lrg {
   height: 15vh;
   min-height: 150px;
@@ -45,24 +217,43 @@
 .footer-lrg-top {
   height: 13vh;
   min-height: 130px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   p {
     margin-bottom: 0 !important;
   }
   .footer-lrg-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 50%;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .footer-lrg-left {
     width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     .footer-lrg-left-content {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
       h5 {
         font-weight: 300;
       }
@@ -84,9 +275,16 @@
 .sn-links-footer-lrg {
   font-size: 1rem;
   color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 10px 25px 10px 25px;
   white-space: nowrap;
   &:hover {
@@ -110,19 +308,7 @@
     text-decoration: none;
   }
 }
-// ======================================== FOOTER LARGE END ========================================
 
-
-// // ======================================== FOOTER MEDIUM ============================================
-// .footer-med {
-//   height: 200px;
-//   background-color: rgba(0, 0, 0, 0.03);
-//   width: 100vw;
-// }
-// // ======================================== FOOTER MEDIUM END ========================================
-
-
-// ======================================== FOOTER SMALL ============================================
 .footer-sml {
   height: 210px;
   background-color: rgba(0, 0, 0, 0.03);
@@ -147,8 +333,7 @@
   font-weight: 300;
   font-size: 0.9rem;
   text-align: center;
-  // width: max-content;
-  // margin: 5px auto;
+
   a {
     color: black;
   }
@@ -156,8 +341,12 @@
 
 .footer-sml-sn-links {
   color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-weight: 300;
   a {
     font-size: 0.9rem;
@@ -170,13 +359,97 @@
   font-size: 0.7rem;
   text-align: center;
   position: absolute;
-  // margin: 23px 0 0 0;
+
   p {
     text-align: center;
     width: 100vw;
   }
 }
-// ======================================== FOOTER SMALL END ========================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
