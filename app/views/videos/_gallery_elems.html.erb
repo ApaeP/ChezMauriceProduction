@@ -10,8 +10,12 @@
     <div class="thumbnail-overlay" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
       <p class="thumbnail-overlay-title" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>"><%= video.title.upcase %></p>
       <% if user_signed_in? %>
-        <p class="modify-video-button" data-videoid="<%= i %>">Modifier</p>
-        <%= link_to "Supprimer", video_path(video), class: 'delete-video-btn', method: :delete, data: { confirm: "Voulez-vous vraiment supprimer la vidéo \"#{video.title}\"?" } %>
+        <div class="admin-buttons">
+          <p class="modify-video-button" data-videoid="<%= i %>"><i class="far fa-edit"></i></p>
+          <%= link_to video_path(video), class: 'delete-video-btn', method: :delete, data: { confirm: "Voulez-vous vraiment supprimer la vidéo \"#{video.title}\"?" } do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </div>
       <% end %>
     </div>
 
