@@ -41,7 +41,7 @@
   </div>
 
   <% if user_signed_in? %>
-    <h3 style="text-align: center; margin: 1.5rem 0;">Réorganiser les vidéos</h3>
+    <h3  id="sortable-title" style="text-align: center; margin: 1.5rem 0;">Réorganiser les vidéos</h3>
     <div class="sortable-list-container">
       <ol id="sortable-ul">
         <% @videos.order(:number).each_with_index do |video, i| %>

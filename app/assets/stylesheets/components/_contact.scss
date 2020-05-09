@@ -16,6 +16,7 @@
   }
   .contact-bottom {
     flex-direction: column;
+    margin-bottom: 8vh;
   }
   .contact-page-form {
 
@@ -28,7 +29,7 @@
     display: block;
     width: 100%;
     height: 20vh;
-    margin-top: 3vh;
+    margin-top: 7vh;
     margin-bottom: 2vh;
   }
   .contact-lg {
@@ -40,7 +41,7 @@
   }
 
   #contact-catchphrase {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
   }
 }
