@@ -46,7 +46,8 @@ const openCloseVideoModal = () => {
         } else {
           console.log('liframe nest pas presrtn');
         // If player doesnt exist yet (on first click) => create the player
-
+          console.log(videoButton.dataset.videourl);
+          console.log(videoButton.dataset.videoid)
         const playerOptions = {
           id: videoButton.dataset.videourl,
           height: document.querySelector('.video-modal-content').offsetHeight,
@@ -84,27 +85,6 @@ const openCloseVideoModal = () => {
 };
 
 export { openCloseVideoModal };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //   Redimmensionner la video par rapport a la div#vimeo-video-player:
 //    1 - ecouter les changements de taille d'ecran si la div est affichée
