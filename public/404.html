@@ -1,1 +1,94 @@
-404
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>(Erreur 404) L'adresse n'existe pas</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" charset=UTF-8>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        background-color: rgba(230, 230, 230, 1);
+      }
+      .content {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .error-card-container {
+        width: 80vw;
+        margin: 2vh auto;
+      }
+      .card {
+        background-color: white;
+        max-height: 90vh;
+        margin: auto;
+        border: 1px solid black;
+        border-radius: 10px;
+      }
+      .error-logo-container {
+        display: flex;
+        justify-content: center;
+        height: 25vh;
+        margin: 0 auto;
+      }
+      .error-logo {
+        height: 22.5vh;
+        margin: 1.25vh;
+      }
+      .error-hr {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .error-title {
+        font-family: 'Lato', sans-serif;
+        height: 17.5%;
+        margin: 0;
+        text-align: center;
+        padding: 15px 15px;
+      }
+      .error-paragraph {
+        font-family: 'Lato', sans-serif;
+        height: 25%;
+        margin: 0;
+        text-align: center;
+        padding: 20px 30px;
+      }
+      .error-link {
+        height: 7.5%;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.6);
+        font-family: "Lato", sans-serif;
+        padding: 1.5vh;
+        font-weight: 300;
+      }
+      .error-link:hover {
+        color: rgba(0, 0, 0, 1);
+        text-decoration: underline;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="error-card-container">
+        <div class="card">
+          <div class="error-logo-container">
+            <img src="images/404logo.png" alt="Logo" class="error-logo">
+          </div>
+          <hr class="error-hr">
+          <h1 class="error-title">ERREUR 404</h1>
+          <p class="error-paragraph">Une erreur (code: 404) est survenue. <br>
+            Cette erreur indique que l'adresse demandée n'existe pas. <br></p>
+          <a href="http://chezmauriceproduction.com/" class="error-link">RETOUR VERS LE SITE</a>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
