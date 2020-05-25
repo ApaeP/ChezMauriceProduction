@@ -114,9 +114,9 @@ a {
   }
 }
 
-// .main-container {
-//   overflow-x: hidden;
-// }
+.main-container {
+  min-height: calc(100vh - 250px);
+}
 
 // .main-container-home {
 //   // overflow-x: hidden;

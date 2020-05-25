@@ -33,6 +33,7 @@ import { authorizeForm, contentFieldHasContent } from '../components/form_valida
 import { focusContactForm } from '../components/focus_contact';
 import { filterIndex } from '../components/filter_index';
 import { changeNavbarBackgroundOnScroll } from '../components/navbar_bckgrnd_scroll'
+import { scrollToInfoDiv } from '../components/information_scroll'
 // import { togglePage } from '../components/toggle_page';
 // import { setPageOnReload } from '../components/set_page_on_reload';
 // import { mouseWheelActions } from '../components/mousewheel_actions';
@@ -45,51 +46,10 @@ const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
 
   changeNavbarBackgroundOnScroll();
+  scrollToInfoDiv();
 
-    // if (document.querySelector('#home-div')) {
-    //   $("#info-link").click(function() {
-    //     $('html,body').animate({
-    //       scrollTop: window.innerHeight - document.querySelector('.navbar-height').offsetHeight},
-    //       1200
-    //     );
-    //   });
-    //   $("#accueil-link").click(function() {
-    //     $('html,body').animate({
-    //       scrollTop: $("#home-div").offset().top},
-    //       1200
-    //     );
-    //   });
-    // }
-
-  // const searchLabels = document.querySelectorAll('.search-labels');
-  // const searchRadioBtns = document.querySelectorAll('.search-radio-btns');
-
-  // madeUpBtns.forEach((label) => {
-  //   label.addEventListener('click', (event) => {
-  //   // $(document).on('click', label, function(e){
-  //     let id = label.dataset.cat;
-  //     document.querySelector(`#${id}-radio-btn`).click();
-  //     document.querySelector('#search-button').click();
-  //   });
-  // });
   if (document.querySelectorAll('.video-card')) {
     filterIndex();
-  }
-
-  if (document.querySelector('.main-container')) {
-    document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
-    // if (window.innerHeight >= 850) {
-    //   document.querySelector('.main-container-home').style.top = 0;
-    //   // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
-    // }
-
-    window.addEventListener('resize', (event) => {
-      document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
-      // if (window.innerHeight >= 850) {
-      //   document.querySelector('.main-container-home').style.top = 0;
-      //   // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offssetHeight}px`
-      // }
-    });
   }
 
   autoplayVideoBackground();
@@ -110,10 +70,6 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelector('.edit-video-modal-background')) {
     openCloseEditVideoModal();
   }
-
-  // if (document.querySelector('#welcome-video-container')) {
-  //   setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
-  // }
 
   if (document.querySelector('#sortable-ul')) {
     initSortable();
@@ -193,6 +149,32 @@ document.addEventListener('turbolinks:load', () => {
   //   }
   // }
 
+  // if (document.querySelector('.main-container')) {
+  //   document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
+  //   // if (window.innerHeight >= 850) {
+  //   //   document.querySelector('.main-container-home').style.top = 0;
+  //   //   // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offsetHeight}px`
+  //   // }
+
+  //   window.addEventListener('resize', (event) => {
+  //     document.querySelector('.main-container').style.minHeight = `${window.innerHeight - (document.querySelector('.footer').offsetHeight + document.querySelector('.navbar-height').offsetHeight)}px`;
+  //     // if (window.innerHeight >= 850) {
+  //     //   document.querySelector('.main-container-home').style.top = 0;
+  //     //   // document.querySelector('.main-container').style.marginTop = `${document.querySelector('.navbar-height').offssetHeight}px`
+  //     // }
+  //   });
+  // }
+  // const searchLabels = document.querySelectorAll('.search-labels');
+  // const searchRadioBtns = document.querySelectorAll('.search-radio-btns');
+
+  // madeUpBtns.forEach((label) => {
+  //   label.addEventListener('click', (event) => {
+  //   // $(document).on('click', label, function(e){
+  //     let id = label.dataset.cat;
+  //     document.querySelector(`#${id}-radio-btn`).click();
+  //     document.querySelector('#search-button').click();
+  //   });
+  // });
 });
 // =============================================================================
 //                          END OF ON TURBOLINKS LOAD
