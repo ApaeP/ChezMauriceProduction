@@ -24,7 +24,7 @@
           <% if current_page?(root_path) %>
             <p id="info-link" class="menu-link">À PROPOS</p>
           <% else %>
-            <%= link_to "À PROPOS", "http://www.chezmauriceproduction.com/#info-div", class: 'menu-link', id: 'info-link' %>
+            <%= link_to "À PROPOS", root_path(anchor: 'informations'), class: 'menu-link', id: 'info-link' %>
           <% end %>
           <%= link_to "CONTACT", contacter_path, class: 'menu-link', id: 'contact-link' %>
           <% if user_signed_in? %>
@@ -66,9 +66,10 @@
         <li><%= link_to "ACCUEIL", root_path %></li>
         <li><%= link_to "RÉALISATIONS", realisations_path %></li>
         <% if current_page?(root_path) %>
-            <li><%= link_to "À PROPOS", "#info-div" %></li>
+            <p id="info-link-phone" class="menu-link">À PROPOS</p>
+            <!-- <li><%#= link_to "À PROPOS", "#info-content" %></li> -->
           <% else %>
-            <li><%= link_to "À PROPOS", "http://www.chezmauriceproduction.com/#info-div" %></li>
+            <li><%= link_to "À PROPOS", root_path(anchor: 'informations') %></li>
           <% end %>
         <li><%= link_to "CONTACT", contacter_path %></li>
         <% if user_signed_in? %>
