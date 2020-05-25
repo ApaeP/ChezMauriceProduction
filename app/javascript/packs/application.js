@@ -32,6 +32,7 @@ import { initSortable } from '../components/sortable';
 import { authorizeForm, contentFieldHasContent } from '../components/form_validation';
 import { focusContactForm } from '../components/focus_contact';
 import { filterIndex } from '../components/filter_index';
+import { changeNavbarBackgroundOnScroll } from '../components/navbar_bckgrnd_scroll'
 // import { togglePage } from '../components/toggle_page';
 // import { setPageOnReload } from '../components/set_page_on_reload';
 // import { mouseWheelActions } from '../components/mousewheel_actions';
@@ -42,6 +43,8 @@ import { filterIndex } from '../components/filter_index';
 // =============================================================================
 const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
+
+  changeNavbarBackgroundOnScroll();
 
     // if (document.querySelector('#home-div')) {
     //   $("#info-link").click(function() {
