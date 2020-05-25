@@ -66,7 +66,7 @@
         <li><%= link_to "ACCUEIL", root_path %></li>
         <li><%= link_to "RÉALISATIONS", realisations_path %></li>
         <% if current_page?(root_path) %>
-            <p id="info-link-phone" class="menu-link">À PROPOS</p>
+            <li><p id="info-link-phone" class="menu-link">À PROPOS</p></li>
             <!-- <li><%#= link_to "À PROPOS", "#info-content" %></li> -->
           <% else %>
             <li><%= link_to "À PROPOS", root_path(anchor: 'informations') %></li>

@@ -1,0 +1,191 @@
+.made-up-srch-btns {
+  position: relative;
+  margin: auto 0;
+  font-family: "Poppins", sans-serif;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+.made-up-srch-btns:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.made-up-srch-btns:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.srch-all:before {
+  background-color: rgba(0, 198, 194, 0.7);
+}
+
+.srch-all:hover:before {
+  background-color: rgba(0, 198, 194, 0.7);
+}
+
+.filter-btn-active.made-up-srch-btns:before {
+  visibility: visible !important;
+  transform: scaleX(1) !important;
+}
+
+.srch-bran:before {
+background-color: rgba(211, 0, 191, 0.7);
+}
+
+.srch-bran:hover:before {
+background-color: rgba(211, 0, 191, 0.7);
+}
+
+.srch-corp:before {
+background-color: rgba(0, 204, 0, 0.7);
+}
+
+.srch-corp:hover:before {
+background-color: rgba(0, 204, 0, 0.7);
+}
+
+.srch-even:before {
+background-color: rgba(207, 0, 0, 0.7);
+}
+
+.srch-even:hover:before {
+background-color: rgba(207, 0, 0, 0.7);
+}
+
+.srch-inte:before {
+background-color: rgba(80, 122, 234, 0.7);
+}
+
+.srch-inte:hover:before {
+background-color: rgba(80, 122, 234, 0.7);
+}
+
+.srch-prod:before {
+background-color: rgba(187, 198, 35, 0.7);
+}
+
+.srch-prod:hover:before {
+background-color: rgba(187, 198, 35, 0.7);
+}
+
+
+// .made-up-srch-btns {
+//   cursor: pointer;
+//   font-weight: 300;
+//   padding: 0.3rem 1rem;
+//   border-radius: 3px;
+//   // background-color: rgba(255, 255, 255, 0);
+//   // box-shadow: 0 0 0 rgba(0, 0, 0, 0.12);
+//   transition: background-color 0.5s ease;
+//   transition: box-shadow 0.5s ease;
+//   &:hover {
+//     transition: background-color 0.5s ease;
+//     // background-color: lightgrey;
+//     // box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.12);
+//   }
+// }
+
+// .srch-all {
+//   border: 1px solid rgba(0, 198, 194, 0.7);
+//   background-color: rgba(0, 198, 194, 0);
+//   &:hover {
+//   background-color: rgba(0, 198, 194, 0.7);
+//   }
+// }
+
+// .srch-all.filter-btn-active {
+//   transition: background-color 0.5s ease;
+//   background-color: rgba(0, 198, 194, 0.7);
+//   box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.12);
+//   transition: box-shadow 0.5s ease;
+// }
+
+
+// .srch-bran {
+//   border: 1px solid rgba(211, 0, 191, 0.7);
+//   background-color: rgba(211, 0, 191, 0);
+//   &:hover {
+//   background-color: rgba(211, 0, 191, 0.7);
+//   }
+// }
+
+// .srch-bran.filter-btn-active {
+//   transition: background-color 0.5s ease;
+//   background-color: rgba(211, 0, 191, 0.7);
+//   box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.12);
+//   transition: box-shadow 0.5s ease;
+// }
+
+
+// .srch-corp {
+//   border: 1px solid rgba(0, 204, 0, 0.7);
+//   background-color: rgba(0, 204, 0, 0);
+//   &:hover {
+//   background-color: rgba(0, 204, 0, 0.7);
+//   }
+// }
+
+// .srch-corp.filter-btn-active {
+//   transition: background-color 0.5s ease;
+//   background-color: rgba(0, 204, 0, 0.7);
+//   box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.12);
+//   transition: box-shadow 0.5s ease;
+// }
+
+
+// .srch-even {
+//   border: 1px solid rgba(207, 0, 0, 0.7);
+//   background-color: rgba(207, 0, 0, 0);
+//   &:hover {
+//   background-color: rgba(207, 0, 0, 0.7);
+//   }
+// }
+
+// .srch-even.filter-btn-active {
+//   transition: background-color 0.5s ease;
+//   background-color: rgba(207, 0, 0, 0.7);
+//   box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.12);
+//   transition: box-shadow 0.5s ease;
+// }
+
+
+// .srch-inte {
+//   border: 1px solid rgba(80, 122, 234, 0.7);
+//   background-color: rgba(80, 122, 234, 0);
+//   &:hover {
+//   background-color: rgba(80, 122, 234, 0.7);
+//   }
+// }
+
+// .srch-inte.filter-btn-active {
+//   transition: background-color 0.5s ease;
+//   background-color: rgba(80, 122, 234, 0.7);
+//   box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.12);
+//   transition: box-shadow 0.5s ease;
+// }
+
+
+// .srch-prod {
+//   border: 1px solid rgba(187, 198, 35, 0.7);
+//   background-color: rgba(187, 198, 35, 0);
+//   &:hover {
+//   background-color: rgba(187, 198, 35, 0.7);
+//   }
+// }
+
+// .srch-prod.filter-btn-active {
+//   transition: background-color 0.5s ease;
+//   background-color: rgba(187, 198, 35, 0.7);
+//   box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.12);
+//   transition: box-shadow 0.5s ease;
+// }
