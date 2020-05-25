@@ -43,20 +43,20 @@ import { filterIndex } from '../components/filter_index';
 const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
 
-    if (document.querySelector('#home-div')) {
-      $("#info-link").click(function() {
-        $('html,body').animate({
-          scrollTop: window.innerHeight - document.querySelector('.navbar-height').offsetHeight},
-          1200
-        );
-      });
-      $("#accueil-link").click(function() {
-        $('html,body').animate({
-          scrollTop: $("#home-div").offset().top},
-          1200
-        );
-      });
-    }
+    // if (document.querySelector('#home-div')) {
+    //   $("#info-link").click(function() {
+    //     $('html,body').animate({
+    //       scrollTop: window.innerHeight - document.querySelector('.navbar-height').offsetHeight},
+    //       1200
+    //     );
+    //   });
+    //   $("#accueil-link").click(function() {
+    //     $('html,body').animate({
+    //       scrollTop: $("#home-div").offset().top},
+    //       1200
+    //     );
+    //   });
+    // }
 
   // const searchLabels = document.querySelectorAll('.search-labels');
   // const searchRadioBtns = document.querySelectorAll('.search-radio-btns');
@@ -108,9 +108,9 @@ document.addEventListener('turbolinks:load', () => {
     openCloseEditVideoModal();
   }
 
-  if (document.querySelector('#welcome-video-container')) {
-    setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
-  }
+  // if (document.querySelector('#welcome-video-container')) {
+  //   setTimeout('document.querySelector("#welcome-video-container").classList.add("welcome-video-hide")', 5000);
+  // }
 
   if (document.querySelector('#sortable-ul')) {
     initSortable();

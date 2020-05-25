@@ -102,7 +102,7 @@
 
 body {
   background-color: rgba(255, 255, 255, 0.03);
-  overflow-x: hidden;
+  // overflow-x: hidden;
   color: rgba(0, 0, 0, 0.8);
 }
 
@@ -114,22 +114,19 @@ a {
   }
 }
 
-.main-container {
-  overflow-x: hidden;
-}
+// .main-container {
+//   overflow-x: hidden;
+// }
 
-.main-container-home {
-  overflow-x: hidden;
-}
+// .main-container-home {
+//   // overflow-x: hidden;
+// }
 
-html, body {
-  overflow-x: hidden;
-}
 
 html {
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none; /* For Internet Explorer and Edge */
-    overflow-x: hidden;
+    // overflow-x: hidden;
 }
 
 html::-webkit-scrollbar {
