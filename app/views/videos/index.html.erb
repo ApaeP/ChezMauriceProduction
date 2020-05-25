@@ -69,7 +69,7 @@
     <h2 id="create-video-button">AJOUTER UNE VIDEO</h2>
 
     <div class="add-form">
-      <%= simple_form_for(@video) do |f| %>
+      <%= simple_form_for @video, remote: true do |f| %>
         <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
         <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
         <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
