@@ -45,6 +45,12 @@ import { scrollToInfoDiv } from '../components/information_scroll'
 const startTime = Date.now();
 document.addEventListener('turbolinks:load', () => {
 
+  if (document.querySelector('.main-container')) {
+    document.querySelector('.main-container').style.minHeight = window.innerHeight - ( document.querySelector('.navbar-container').offsetHeight + document.querySelector('.footer-lrg').offsetHeight ) + 'px';
+  } else if (document.querySelector('.info-container')) {
+    document.querySelector('.info-container').style.minHeight = window.innerHeight - ( document.querySelector('.navbar-container').offsetHeight + document.querySelector('.footer-lrg').offsetHeight ) + 'px';
+  }
+
   changeNavbarBackgroundOnScroll();
   scrollToInfoDiv();
 
