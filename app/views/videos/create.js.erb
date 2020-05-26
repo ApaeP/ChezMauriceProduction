@@ -1,6 +1,8 @@
 <% if @video.errors.any? %>
+  document.querySelector('#create-modal-loader').classList.remove('create-loader-visible');
+  document.querySelector('#create-modal-loader').classList.add('create-loader-hidden');
   alert("Erreur(s):\n - <%= @video.errors.full_messages.join('\n - ') %>");
 <% else %>
-
+  document.location.reload(true);
 <% end %>
 

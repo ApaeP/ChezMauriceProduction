@@ -18,32 +18,31 @@
         </div>
       <% end %>
     </div>
-
-    <!-- <div data-vimeo-url="<%#= video.url %>" data-vimeo-width="640" data-vimeo-dnt="true" data-vimeo-responsive="true" data-vimeo-controls="false" id="<%#= video.name %>"></div> -->
   </div>
 <% end %>
 
-
-<!-- MODAL EDIT VIDEO -->
-<% videos.each_with_index do |video, i| %>
-  <div class="edit-video-modal-background modal-hidden" id="edit-video-id-<%= i %>">
-    <div class="edit-video">
-      <div class="close-edit-button">
-        <p class="close-edit-btn-p" id="close-edit-modal-<%= i %>"><i class="far fa-times-circle close-edit-btn-i"></i></p>
-      </div>
-      <div class="edit-form">
-        <%= simple_form_for video, remote: true do |f| %>
-          <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
-          <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
-          <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
-          <%= f.association :categories, as: :check_boxes %>
-          <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (idéalement : PNG - 16/9 - 700px de large - 72ppp)' %>
-          <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
-          <%= f.submit 'Enregistrer' %>
-        <% end %>
+<% if user_signed_in? %>
+<!-- EDIT VIDEO MODALS -->
+  <% videos.each_with_index do |video, i| %>
+    <div class="edit-video-modal-background modal-hidden" id="edit-video-id-<%= i %>">
+      <div class="edit-video">
+        <div class="close-edit-button">
+          <p class="close-edit-btn-p" id="close-edit-modal-<%= i %>"><i class="far fa-times-circle close-edit-btn-i"></i></p>
+        </div>
+        <div class="edit-form">
+          <%= simple_form_for video, remote: true do |f| %>
+            <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
+            <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
+            <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
+            <%= f.association :categories, as: :check_boxes %>
+            <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (idéalement : PNG - 16/9 - 700px de large - 72ppp)' %>
+            <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
+            <%= f.submit 'Enregistrer' %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+<!-- END EDIT VIDEO MODALS -->
 <% end %>
-<!-- END MODAL EDIT VIDEO -->
 

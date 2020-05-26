@@ -32,3 +32,5 @@ const scrollToInfoDiv = () => {
 };
 
 export { scrollToInfoDiv };
+
+// navigator.userAgent.includes('Safari') && navigator.userAgent.includes('Mobi')

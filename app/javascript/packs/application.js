@@ -39,6 +39,7 @@ import { setMainContainerMinHeight } from '../components/set_main_container_minh
 import { deleteVideoButton } from '../components/delete_video_btn';
 import { returnFromLegalNotice } from '../components/return_from_legal_notice';
 import { underlineNavbarLinks } from '../components/underline_navbar_links';
+import { setLoader, displayHideLoaderNotice } from '../components/loader_notice';
 
 // =============================================================================
 //                              ON TURBOLINKS LOAD
@@ -60,11 +61,12 @@ document.addEventListener('turbolinks:load', () => {
   deleteVideoButton();
   returnFromLegalNotice();
   underlineNavbarLinks();
+  setLoader();
+  displayHideLoaderNotice();
 
   window.onload = function(){
     const timeToLOad = Date.now() - startTime;
     console.log("Time to load DOM & JS: " + timeToLOad + "ms");
-    // document.querySelector('#loading-hider').classList.add('load-hide')
   }
 });
 // =============================================================================

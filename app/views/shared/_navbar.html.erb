@@ -20,7 +20,6 @@
             <%= link_to "ACCUEIL", root_path, class: 'menu-link', id: 'accueil-link' %>
           <% end %>
           <%= link_to "RÉALISATIONS", realisations_path, class: 'menu-link', id: 'prod-link' %>
-          <%#= link_to "À PROPOS", a_propos_path, class: 'menu-link', id: 'info-link' %>
           <% if current_page?(root_path) %>
             <p id="info-link" class="menu-link">À PROPOS</p>
           <% else %>
@@ -34,12 +33,6 @@
 
         <div class="right-menu-elements">
           <div id="social-links">
-            <%#= link_to "https://facebook.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
-              <!-- <p><i class="fab fa-facebook"></i></p> -->
-            <%# end %>
-            <%#= link_to "https://www.instagram.com/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
-              <!-- <p><i class="fab fa-instagram"></i></p> -->
-            <%# end %>
             <%= link_to "https://www.linkedin.com/company/chezmauriceproduction/", target: '_blank', class: 'sn-links' do %>
             <p><i class="fab fa-linkedin"></i></p>
             <% end %>
@@ -67,7 +60,6 @@
         <li><%= link_to "RÉALISATIONS", realisations_path %></li>
         <% if current_page?(root_path) %>
             <li><p id="info-link-phone" class="menu-link">À PROPOS</p></li>
-            <!-- <li><%#= link_to "À PROPOS", "#info-content" %></li> -->
           <% else %>
             <li><%= link_to "À PROPOS", root_path(anchor: 'informations') %></li>
           <% end %>
