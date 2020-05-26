@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# puts "Creating a user"
-# User.create!(email: 'bite@test.com', password: 'azerty')
-# puts "User created"
+puts "Creating a user"
+User.create!(email: 'corbierpa@gmail.com', password: 'azerty')
+puts "User created"
 
 videos_from_vimeo = [["https://vimeo.com/396446791", "Veolia", '"Les héros de l’eau" Ep 1 - Veolia'],
  ["https://vimeo.com/380593500", "UrbanEra", "Manifeste pour le renouvellement Urbain - Urbanera"],
@@ -45,9 +45,17 @@ videos_from_vimeo = [["https://vimeo.com/396446791", "Veolia", '"Les héros de l
  ["https://vimeo.com/225828198", "rodolphe", "Rodolphe & Co Vannes"],
  ["https://vimeo.com/225827294", "toptech", "Top tech challenge 2017 pour Fraikin"]]
 
-puts "Create #{videos_from_vimeo.length} videos"
+categories = ["Brand Content", "Corporate", "Événementiel", "Interview", "Produit"]
 
-  videos_from_vimeo.each_with_index do |video, i|
-    puts "\n creating video n°#{i+1}"
-    Video.create!(name: video[1], title: video[2], url: video[0], number: i+1)
-  end
+puts 'Create 5 categories'
+categories.each { |cat| Category.create!(name: cat) }
+
+puts "Create #{videos_from_vimeo.length} videos"
+videos_from_vimeo.each_with_index do |video, i|
+  puts "\n creating video n°#{i+1}"
+  vid = Video.new(name: video[1], title: video[2], url: video[0], number: i+1)
+  vid.categories = Category.all.sample((1..3).to_a.sample)
+  vid.save!
+end
+
+
