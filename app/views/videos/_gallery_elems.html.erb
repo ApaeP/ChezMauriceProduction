@@ -1,3 +1,9 @@
+<% content_for :meta_title, "Chez Maurice Production - Nos Réalisations" %>
+Nous sommes créateurs de contenus audiovisuels : film corporate, brand content, vidéo produit...
+Nous abordons avec passion et créativité tous vos projets, des plus conventionnels aux plus décalés.
+Réactifs et agiles, nous intervenons à chaque étape de la conception de votre film : conseil, scénarisation, tournage, et postproduction.
+Chez Maurice, vous trouverez une équipe aux petits soins et l’expertise technique pour donner vie à tous vos projets !" %>
+
 <% videos.each_with_index do |video, i| %>
   <% arr = [] %>
   <% video.categories.each { |cat| arr << cat.name.downcase.first(4) } %>
