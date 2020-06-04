@@ -29,7 +29,7 @@ const underlineNavbarLinks = () => {
     }
     window.addEventListener('scroll', (e) => {
       if (document.querySelector('#home-video')) {
-        if (window.scrollY >= (document.querySelector('#home-video').offsetHeight - document.querySelector('.navbar-container').offsetHeight)) {
+        if (window.scrollY >= (document.querySelector('#home-video').offsetHeight - document.querySelector('.navbar-container').offsetHeight - 1)) {
           document.querySelector('#accueil-link').classList.remove('current-menu-link');
           document.querySelector('#info-link').classList.remove('menu-link');
           document.querySelector('#info-link').classList.add('current-menu-link');
