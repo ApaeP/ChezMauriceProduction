@@ -190,6 +190,8 @@
   // background-repeat: no-repeat;
   // background-color: black;
   background-size: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .thumbnail-overlay {

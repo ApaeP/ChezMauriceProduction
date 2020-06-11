@@ -5,7 +5,8 @@
   <div class="video-card card-<%= i %>" data-cats="all <%= arr.join(' ') %>">
     <% if video.photo.attached? %>
       <!-- <div class="thumbnail-div" style="background-image: url(<%#= url_for(video.photo) %>)"></div> -->
-      <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.name}", secure: true, class: 'thumbnail-div' %>
+      <%#= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.name}", secure: true, quality: 'auto:low', class: 'thumbnail-div' %>
+      <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.name}", secure: true, quality: 'auto:low', fetch_format: 'auto', transformation: [ {:width=>"auto", :dpr=>"auto", :crop=>"scale"} ], class: 'thumbnail-div' %>
     <% else %>
       <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
     <% end %>
