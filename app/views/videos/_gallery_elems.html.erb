@@ -4,7 +4,8 @@
   <% video.categories.each { |cat| arr << cat.name.downcase.first(4) } %>
   <div class="video-card card-<%= i %>" data-cats="all <%= arr.join(' ') %>">
     <% if video.photo.attached? %>
-      <div class="thumbnail-div" style="background-image: url(<%= url_for(video.photo) %>)"></div>
+      <!-- <div class="thumbnail-div" style="background-image: url(<%#= url_for(video.photo) %>)"></div> -->
+      <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.name}", secure: true, class: 'thumbnail-div' %>
     <% else %>
       <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
     <% end %>
