@@ -41,14 +41,24 @@ Rails.application.configure do
   host = 'localhost:3000' #replace with your own url
   config.action_mailer.default_url_options = { host: 'localhost:3000', protocol: 'http' }
 
-  # SMTP settings for gmail
+  # # SMTP settings for gmail
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "smtp.gmail.com",
+  #   :port                 => 587,
+  #   :user_name            => ENV['GMAIL_USER'],
+  #   :password             => ENV['GMAIL_PASSWORD'],
+  #   :authentication       => "plain",
+  #   :enable_starttls_auto => true
+  # }
+
+  # SMTP for namecheap
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :user_name            => ENV['GMAIL_USER'],
-    :password             => ENV['GMAIL_PASSWORD'],
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+    address:                'mail.privateemail.com',
+    port:                   587,
+    user_name:              ENV['CONTACT_EMAIL'],
+    password:               ENV['CONTACT_PWD'],
+    authentication:         'plain',
+    enable_starttls_auto:   true
   }
 
   config.action_mailer.perform_deliveries = true
