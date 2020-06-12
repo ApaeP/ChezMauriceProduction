@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    if @contact.save
+    if verify_recaptcha(model: @contact) && @contact.save
       ContactMailer.with(contact: @contact).mail_to_client.deliver_later
       ContactMailer.with(contact: @contact).mail_to_prod.deliver_later
     else
