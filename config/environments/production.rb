@@ -119,7 +119,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.default_options = { from: 'contact@chezmauriceproduction.com' }
+  config.action_mailer.default_options = { from: ENV['CONTACT_EMAIL'] }
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector

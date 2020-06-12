@@ -63,7 +63,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.default_options = { from: 'chezmauriceproddev@gmail.com' }
+  config.action_mailer.default_options = { from: ENV['CONTACT_EMAIL'] }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
