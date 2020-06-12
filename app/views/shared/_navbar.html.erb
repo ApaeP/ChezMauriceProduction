@@ -25,7 +25,7 @@
           <% else %>
             <%= link_to "À PROPOS", root_path(anchor: 'informations'), class: 'menu-link', id: 'info-link' %>
           <% end %>
-          <%= link_to "CONTACT", contacter_path, class: 'menu-link', id: 'contact-link' %>
+          <%= link_to "CONTACT", contact_path, class: 'menu-link', id: 'contact-link' %>
           <% if user_signed_in? %>
             <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete, id: "log-out-link", class: 'menu-link' %>
           <% end %>
@@ -63,7 +63,7 @@
           <% else %>
             <li><%= link_to "À PROPOS", root_path(anchor: 'informations') %></li>
           <% end %>
-        <li><%= link_to "CONTACT", contacter_path %></li>
+        <li><%= link_to "CONTACT", contact_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "DECONNEXION", destroy_user_session_path %></li>
         <% end %>

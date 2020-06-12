@@ -8,7 +8,7 @@ const underlineNavbarLinks = () => {
       document.querySelector('#prod-link').classList.remove('menu-link');
       document.querySelector('#prod-link').classList.add('current-menu-link');
     }
-  } else if (window.location.href.includes('contacter')) {
+  } else if (window.location.href.includes('contact')) {
     if (document.querySelector('.current-menu-link')) {
       document.querySelector('.current-menu-link').classList.remove('.current-menu-link');
       document.querySelector('#contact-link').classList.remove('menu-link');

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :contacts
+  resources :contacts, only: [:create]
   resources :videos do
     member do
       post 'update_rank'
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'mentions-legales', to: 'pages#legal'
   # get 'a-propos', to: 'pages#infos'
   get 'realisations', to: 'videos#index'
-  get 'contacter', to: 'pages#contact'
+  get 'contact', to: 'pages#contact'
 
   # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
     # match '*unmatched_route', :to => 'api/v1/api#route_options', via: [:options]
