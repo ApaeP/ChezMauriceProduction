@@ -167,11 +167,12 @@
 
     .form-last-line {
       display: flex;
-      .mandatory-notice {
-        margin: 0 1vw;
-        font-weight: 300;
-        font-size: 0.6rem;
-      }
+      justify-content: space-between;
+    }
+    .mandatory-notice {
+      margin: 0.5rem 0 0 0;
+      font-weight: 300;
+      font-size: 0.6rem;
     }
     input {
       padding: 0;
@@ -184,7 +185,7 @@
     .legal-notice {
       font-size: 0.5rem;
       font-weight: 300;
-      margin: 1rem 0 0 0;
+      margin: 0.2rem 0 0 0;
     }
   }
   .contact-page-address {
@@ -208,6 +209,10 @@
 
 }
 
+#send-contact-btn {
+  height: 2.25rem;
+  margin: auto 0;
+}
 
 .legal-link {
   color: rgba(0, 0, 0, 1);
