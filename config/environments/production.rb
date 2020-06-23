@@ -116,6 +116,9 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: "https://www.chezmauriceproduction.com/" }
 
+  config.action_controller.asset_host = 'https://www.chezmauriceproduction.com'
+  config.action_mailer.asset_host = config.action_controller.asset_host
+
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.default_options = { from: ENV['CONTACT_EMAIL'] }
