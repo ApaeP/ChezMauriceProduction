@@ -2,7 +2,7 @@ const scrollToInfoDiv = () => {
   if (document.querySelector('#home-div')) {
     $("#info-link").click(function() {
       $('html,body').animate({
-        scrollTop: window.innerHeight - document.querySelector('.navbar-height').offsetHeight},
+        scrollTop: (window.innerHeight - document.querySelector('.navbar-height').offsetHeight) + 1},
         1000
       );
     });
@@ -11,7 +11,7 @@ const scrollToInfoDiv = () => {
         $('#menuToggle > div > input').click()
       }
       $('html,body').animate({
-        scrollTop: window.innerHeight - document.querySelector('.navbar-height').offsetHeight},
+        scrollTop: (window.innerHeight - document.querySelector('.navbar-height').offsetHeight) + 1},
         1000
       );
     });
@@ -25,7 +25,7 @@ const scrollToInfoDiv = () => {
 
   if (window.location.href.includes('#informations')) {
     $('html,body').animate({
-      scrollTop: window.innerHeight - document.querySelector('.navbar-height').offsetHeight},
+      scrollTop: (window.innerHeight - document.querySelector('.navbar-height').offsetHeight) + 1},
       1000
     );
   }
