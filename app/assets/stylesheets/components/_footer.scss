@@ -260,6 +260,10 @@
       h5 {
         font-weight: 300;
       }
+      .footer-phone-numbers {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 }
@@ -320,7 +324,10 @@
 }
 
 .footer-sml-address {
-
+  .title-address {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .title-sml {

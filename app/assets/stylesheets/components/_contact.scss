@@ -19,7 +19,12 @@
     margin-bottom: 8vh;
   }
   .contact-page-form {
-
+    .form-last-line {
+      flex-direction: column-reverse;
+      .center-captcha {
+        margin: 1vh auto 2.5vh auto;
+      }
+    }
   }
   .contact-page-address {
     text-align: center;
