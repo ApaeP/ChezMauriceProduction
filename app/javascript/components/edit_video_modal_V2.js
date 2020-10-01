@@ -11,13 +11,13 @@ const openCloseEditVideoModal = () => {
     }
   });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && document.querySelector('.edit-video-modal-background.modal-visible')) {
-        // const openedEditModal = document.querySelector('.edit-video-modal-background.modal-visible');
-        document.querySelector('.edit-video-modal-background.modal-visible').classList.toggle('modal-hidden');
-        document.querySelector('.edit-video-modal-background.modal-visible').classList.toggle('modal-visible');
-      }
-    });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && document.querySelector('.edit-video-modal-background.modal-visible')) {
+      // const openedEditModal = document.querySelector('.edit-video-modal-background.modal-visible');
+      document.querySelector('.edit-video-modal-background.modal-visible').classList.toggle('modal-hidden');
+      document.querySelector('.edit-video-modal-background.modal-visible').classList.toggle('modal-visible');
+    }
+  });
 
 };
 
