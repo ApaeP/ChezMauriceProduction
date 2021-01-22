@@ -6,8 +6,8 @@ const initMap = () => {
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v10',
-      center: [2.391959, 48.854435],
-      zoom: 11
+      center: [2.184125, 48.87719],
+      zoom: 10
     });
 
     map.on("load", function () {
@@ -30,7 +30,7 @@ const initMap = () => {
                 properties: {},
                 geometry: {
                   type: "Point",
-                  coordinates: [2.391959, 48.854435]
+                  coordinates: [2.184125, 48.87719]
                 }
               }
               ]
@@ -51,8 +51,8 @@ const initMap2 = () => {
     var map = new mapboxgl.Map({
       container: 'map2',
       style: 'mapbox://styles/mapbox/light-v10',
-      center: [2.391959, 48.854435],
-      zoom: 11
+      center: [2.184125, 48.87719],
+      zoom: 10
     });
 
     map.on("load", function () {
@@ -75,7 +75,7 @@ const initMap2 = () => {
                 properties: {},
                 geometry: {
                   type: "Point",
-                  coordinates: [2.391959, 48.854435]
+                  coordinates: [2.184125, 48.87719]
                 }
               }
               ]
