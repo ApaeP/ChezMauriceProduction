@@ -1,8 +1,5 @@
 <div class="home-container" id="home-div">
-
-  <!-- HOME PAGE -->
   <div class="homepage">
-
     <%= video_tag 'bckgrnd_video.mp4',
                    # poster: 'PA-LOGO_2020_poster_3072x1920.png',
                    autoplay: false,
@@ -13,21 +10,9 @@
                    controls: false,
                    type: 'video/mp4',
                    id: 'home-video' %>
-    <!-- <div id="video-opacity"></div> -->
-
-    <!-- <div id="home-banner-overlay"> -->
-
-      <!-- <h1 id="home-banner-title">CHEZ MAURICE PRODUCTION</h1> -->
-      <%#= image_tag "PA-LOGO_2020_900px_50p.png", alt: "Logo homepage", id: 'homepage-logo' %>
-      <!-- <h2 id="home-banner-catchphrase">SUBLIMEZ VOS IDÉES</h2> -->
-
-    <!-- </div> -->
-
-
   </div>
-  <!-- END OF HOME PAGE -->
+</div>
 
-</div> <!-- END GENERAL LAYOUT -->
 <div class="info-container" id="info-content">
   <h1 id="info-page-title">CHEZ MAURICE PRODUCTION</h1>
   <h2 class="info-h2">Conseil & Production audiovisuelle</h2>
@@ -41,7 +26,6 @@
   donner vie à tous vos projets !</p>
 
   <div class="info-lists">
-    <!-- <div class="lists-container"> -->
         <div class="card-container">
           <div class="info-card-container">
             <div class="info-card-content">
@@ -111,22 +95,6 @@
 <div id="footer-for-lg">
   <%= render 'shared/footer' %>
 </div>
-
-<!-- FIRST VISIT VIDEO -->
-<%# if @first_visit %>
-  <!-- <div id="welcome-video-container"> -->
-    <%#= video_tag 'geh.mp4',
-                   # poster: 'PA-LOGO_2020_poster_3072x1920.png',
-                   autoplay: true,
-                   playsinline: true,
-                   muted: true,
-                   loop: false,
-                   controls: false,
-                   type: 'video/mp4',
-                   id: 'welcome-video' %>
-  <!-- </div> -->
-<%# end %>
-
 
 
 
