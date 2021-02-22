@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :skip => [:registrations]
   root to: 'pages#home'
   resources :contacts, only: [:create]
   resources :videos do
@@ -8,11 +8,7 @@ Rails.application.routes.draw do
     end
   end
   get 'mentions-legales', to: 'pages#legal'
-  # get 'a-propos', to: 'pages#infos'
   get 'realisations', to: 'videos#index'
   get 'contact', to: 'pages#contact'
-
-  # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
-    # match '*unmatched_route', :to => 'api/v1/api#route_options', via: [:options]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/admin' => redirect('/users/sign_in')
 end

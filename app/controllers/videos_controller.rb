@@ -32,7 +32,6 @@ class VideosController < ApplicationController
           format.js
           format.html { redirect_to realisations_path }
         end
-        # redirect_to realisations_path
       else
         flash[:alert] = "Vous ne pouvez pas créer de vidéo"
       end
@@ -42,11 +41,20 @@ class VideosController < ApplicationController
   def update
     if user_signed_in? && current_user.email == 'corbierpa@gmail.com'
       @video.update(video_params)
-      if @video.save!
-        redirect_to realisations_path
+
+      if @video.save
+        respond_to do |format|
+          format.html { redirect_to realisations_path }
+          # format.js
+        end
       else
-        format.js
+        respond_to do |format|
+          format.html { redirect_to realisations_path }
+          # format.js
+        end
       end
+
+
     end
   end
 
