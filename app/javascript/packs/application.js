@@ -1,4 +1,3 @@
-const startTime = Date.now();
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
@@ -16,59 +15,43 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-// ----------------------------------------------------
-// ABOVE IS RAILS DEFAULT CONFIGURATION
-// ----------------------------------------------------
-
 // External imports
 import "bootstrap";
+import Isotope from 'isotope-layout';
 
 // Internal imports, e.g:
-import { autoplayVideoBackground } from '../components/background_video';
-import { openCloseVideoModal } from '../components/video_modal_V1';
-import { openCloseCreateVideoModal } from '../components/create_video_modal';
-import { openCloseEditVideoModal } from '../components/edit_video_modal_V1';
-import { initMap, initMap2 } from '../components/init_mapbox';
-import { initSortable } from '../components/sortable';
-import { authorizeForm, contentFieldHasContent } from '../components/form_validation';
-import { focusContactForm } from '../components/focus_contact';
-import { filterIndex } from '../components/filter_index';
-import { changeNavbarBackgroundOnScroll } from '../components/navbar_bckgrnd_scroll';
-import { scrollToInfoDiv } from '../components/information_scroll';
-import { setMainContainerMinHeight } from '../components/set_main_container_minheight';
-import { deleteVideoButton } from '../components/delete_video_btn';
-import { returnFromLegalNotice } from '../components/return_from_legal_notice';
-import { underlineNavbarLinks } from '../components/underline_navbar_links';
-import { setLoader, displayHideLoaderNotice } from '../components/loader_notice';
-
-// =============================================================================
-//                              ON TURBOLINKS LOAD
-// =============================================================================
+import { autoplayVideoBackground }                from '../components/background_video';
+import { openCloseCreateVideoModal }              from '../components/create_video_modal';
+// import { deleteVideoButton }                      from '../components/delete_video_btn';
+import { openCloseEditVideoModal }                from '../components/edit_video_modal_V1';
+import { filterIndex }                            from '../components/filter_index';
+// import { focusContactForm }                       from '../components/focus_contact';
+// import { authorizeForm, contentFieldHasContent }  from '../components/form_validation';
+import { scrollToInfoDiv }                        from '../components/information_scroll';
+import { initMap, initMap2 }                      from '../components/init_mapbox';
+// import { setLoader, displayHideLoaderNotice }     from '../components/loader_notice';
+import { changeNavbarBackgroundOnScroll }         from '../components/navbar_bckgrnd_scroll';
+import { returnFromLegalNotice }                  from '../components/return_from_legal_notice';
+import { setMainContainerMinHeight }              from '../components/set_main_container_minheight';
+import { initSortable }                           from '../components/sortable';
+import { underlineNavbarLinks }                   from '../components/underline_navbar_links';
+import { openCloseVideoModal }                    from '../components/video_modal_V1';
 
 document.addEventListener('turbolinks:load', () => {
 
-  setMainContainerMinHeight();
-  changeNavbarBackgroundOnScroll();
-  scrollToInfoDiv();
-  filterIndex();
   autoplayVideoBackground();
+  openCloseCreateVideoModal();
+  // deleteVideoButton();
+  openCloseEditVideoModal();
+  filterIndex();
+  scrollToInfoDiv();
   initMap();
   initMap2();
-  openCloseVideoModal();
-  openCloseCreateVideoModal();
-  openCloseEditVideoModal();
-  initSortable();
-  deleteVideoButton();
+  changeNavbarBackgroundOnScroll();
   returnFromLegalNotice();
+  setMainContainerMinHeight();
+  initSortable();
   underlineNavbarLinks();
-  setLoader();
-  displayHideLoaderNotice();
+  openCloseVideoModal();
 
-  window.onload = function(){
-    const timeToLOad = Date.now() - startTime;
-    console.log("Time to load DOM & JS: " + timeToLOad + "ms");
-  }
 });
-// =============================================================================
-//                          END OF ON TURBOLINKS LOAD
-// =============================================================================

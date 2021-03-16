@@ -22,7 +22,6 @@ const scrollToInfoDiv = () => {
       );
     });
   }
-
   if (window.location.href.includes('#informations')) {
     $('html,body').animate({
       scrollTop: (window.innerHeight - document.querySelector('.navbar-height').offsetHeight) + 1},
@@ -32,5 +31,3 @@ const scrollToInfoDiv = () => {
 };
 
 export { scrollToInfoDiv };
-
-// navigator.userAgent.includes('Safari') && navigator.userAgent.includes('Mobi')
