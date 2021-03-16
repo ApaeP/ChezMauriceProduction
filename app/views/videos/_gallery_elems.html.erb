@@ -1,6 +1,6 @@
 <% videos.each_with_index do |video, i| %>
-  <% arr = [] %>
-  <% video.categories.each { |cat| arr << cat.name.downcase.first(4) } %>
+  <%# arr = [] %>
+  <% arr = video.categories.map { |cat|  cat.name.downcase.first(4) } %>
   <div class="video-card card-<%= i %>" data-cats="all <%= arr.join(' ') %>">
     <% if video.photo.attached? %>
       <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.name}", width: 600, crop: :fill, fetch_format: 'auto', secure: true, quality: 'auto:low', class: 'thumbnail-div' %>

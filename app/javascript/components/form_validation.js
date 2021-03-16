@@ -29,26 +29,22 @@ const contentFieldHasContent = () => {
         contentInput.classList.remove('red');
         contentInput.classList.add('green');
       } else {
-        contentInput.classList.add('green')
+        contentInput.classList.add('green');
       }
     } else {
       if (contentInput.classList.contains('green')) {
         contentInput.classList.remove('green');
         contentInput.classList.add('red');
       } else {
-        contentInput.classList.add('red')
-      }
-    }
-  })
+        contentInput.classList.add('red');
+      };
+    };
+  });
 };
 
-
-
 const authorizeForm = () => {
-
   allInputs.forEach((input) => {
     input.addEventListener('blur', (e) => {
-
       if (isFilled(input) && !input.classList.contains('email-contact')) {
         if (input.classList.contains('red')) {
           input.classList.remove('red');
@@ -59,7 +55,6 @@ const authorizeForm = () => {
           input.classList.add('red');
         }
       }
-
       if (isFilled(input) && input.classList.contains('email-contact') && validEmail()) {
         if (input.classList.contains('red')) {
           input.classList.remove('red');
@@ -70,9 +65,7 @@ const authorizeForm = () => {
           input.classList.add('red');
         }
       }
-
       enableBtn();
-
     })
   });
 
