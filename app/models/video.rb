@@ -1,10 +1,11 @@
 class Video < ApplicationRecord
+  acts_as_list
   has_one_attached :photo
   has_many :video_categories, dependent: :destroy
   has_many :categories, through: :video_categories
 
   validates :name, presence: true, uniqueness: true
-  validates :url, presence: true, uniqueness: true#, format: { with: ( /\Ahttps\:\/\/vimeo\.com\/\d{9}\z/ || /\Ahttps\:\/\/.{3}\.vimeo\.com\/\d{9}\z/ || /\Avimeo\.com\/\d{9}\z/ || /\A.{3}\.vimeo\.com\/\d{9}\z/ ), message: ": Le lien n'est pas correct"}
+  validates :url, presence: true, uniqueness: true
 
   # Gemify has_vimeo
   has_vimeo_video :url, message: "Seulement les liens de videos Vimeo sont acceptés"

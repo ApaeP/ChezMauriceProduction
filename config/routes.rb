@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :contacts, only: [:create]
   resources :videos do
-    member do
-      post 'update_rank'
-    end
+    patch :reorder, on: :member
   end
   get 'mentions-legales', to: 'pages#legal'
   get 'realisations', to: 'videos#index'
