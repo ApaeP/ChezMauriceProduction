@@ -18,6 +18,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import Isotope from 'isotope-layout';
+import 'controllers'
 
 // Internal imports, e.g:
 import { autoplayVideoBackground }                from '../components/background_video';

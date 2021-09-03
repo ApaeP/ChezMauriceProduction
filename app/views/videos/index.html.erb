@@ -19,30 +19,9 @@ Créateurs de contenus audiovisuels : film corporate, brand content, vidéo prod
     <p class="made-up-srch-btns srch-prod" data-cat="prod">PRODUIT</p>
   </div>
 
-  <div class="gallery-grid">
+  <div class="gallery-grid" <%= 'data-controller=reorder data-reorder-url=/videos/:id/reorder' if user_signed_in? %>>
     <%= render 'gallery_elems', videos: @videos %>
   </div>
-
-  <% if user_signed_in? %>
-
-    <h3  id="sortable-title" style="text-align: center; margin: 1.5rem 0;">Réorganiser les vidéos</h3>
-    <div class="sortable-list-container">
-      <ol id="sortable-ul">
-        <% @videos.order(:number).each_with_index do |video, i| %>
-          <li><%= i + 1 %> - <%= video.title %></li>
-        <% end %>
-      </ol>
-    </div>
-    <!-- ------------------------------- Hidden form for reorder ------------------------------- -->
-    <div class="d-none">
-      <%= simple_form_for :numero, url: update_rank_video_path(@videos.last), method: :post, remote: true do |f| %>
-          <%= f.input :oldIndex %>
-          <%= f.input :newIndex %>
-          <%= f.button :submit, class: "update-rank-btn" %>
-      <% end %>
-    </div>
-
-  <% end %>
 
 </div> <!-- end gallery container -->
 
