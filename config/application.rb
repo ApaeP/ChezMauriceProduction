@@ -16,29 +16,14 @@ module ChezMauriceProduction
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # Add the fonts and videos folder to assets compile
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.paths << Rails.root.join("app", "assets", "videos")
-    # config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = :fr
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    # Rails 5
-
-    # config.middleware.insert_before 0, Rack::Cors do
-    #   allow do
-    #     origins '*'
-    #     resource '*',
-    #       headers: :any,
-    #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-    #   end
-    # end
-
   end
 end
-
