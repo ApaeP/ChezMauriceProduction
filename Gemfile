@@ -38,6 +38,7 @@ gem 'devise'
 gem 'simple_form'
 
 # CSS Framework
+gem 'bootstrap', '~> 5.3'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 
