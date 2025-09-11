@@ -2,36 +2,66 @@
 <% content_for :meta_description, "Découvrez les réalisations audiovisuelles des équipes de Chez Maurice Production \n
 Créateurs de contenus audiovisuels : film corporate, brand content, vidéo produit... \n" %>
 
-<div class="gallery-container" style="margin-bottom: 12vh;">
+<div class="gallery-container" style="margin-bottom: 12vh;" data-controller="video-filter video-modal">
   <% if user_signed_in? %>
     <h3 class="gallery-title user">NOS RÉALISATIONS</h3>
-    <h5 id="add-video-button">AJOUTER UNE VIDEO</h5>
+    <h5 id="add-video-button"
+        data-controller="create-modal"
+        data-action="click->create-modal#open">AJOUTER UNE VIDEO</h5>
   <% else %>
     <h3 class="gallery-title visitor">NOS RÉALISATIONS</h3>
   <% end %>
 
   <div class="category-links-container">
-    <p class="made-up-srch-btns srch-all" data-cat="all">TOUTES</p>
-    <p class="made-up-srch-btns srch-bran" data-cat="bran">BRAND CONTENT</p>
-    <p class="made-up-srch-btns srch-corp" data-cat="corp">CORPORATE</p>
-    <p class="made-up-srch-btns srch-even" data-cat="évén">ÉVÉNEMENTIEL</p>
-    <p class="made-up-srch-btns srch-inte" data-cat="inte">INTERVIEW</p>
-    <p class="made-up-srch-btns srch-prod" data-cat="prod">PRODUIT</p>
+    <p class="made-up-srch-btns srch-all"
+       data-cat="all"
+       data-action="click->video-filter#filter"
+       data-video-filter-target="button">TOUTES</p>
+    <p class="made-up-srch-btns srch-bran"
+       data-cat="bran"
+       data-action="click->video-filter#filter"
+       data-video-filter-target="button">BRAND CONTENT</p>
+    <p class="made-up-srch-btns srch-corp"
+       data-cat="corp"
+       data-action="click->video-filter#filter"
+       data-video-filter-target="button">CORPORATE</p>
+    <p class="made-up-srch-btns srch-even"
+       data-cat="évén"
+       data-action="click->video-filter#filter"
+       data-video-filter-target="button">ÉVÉNEMENTIEL</p>
+    <p class="made-up-srch-btns srch-inte"
+       data-cat="inte"
+       data-action="click->video-filter#filter"
+       data-video-filter-target="button">INTERVIEW</p>
+    <p class="made-up-srch-btns srch-prod"
+       data-cat="prod"
+       data-action="click->video-filter#filter"
+       data-video-filter-target="button">PRODUIT</p>
   </div>
 
   <div class="gallery-grid" <%= 'data-controller=reorder data-reorder-url=/videos/:id/reorder' if user_signed_in? %>>
     <%= render 'gallery_elems', videos: @videos %>
   </div>
 
+  <!-- VIDEO MODAL -->
+  <div class="video-modal-background modal-hidden" data-video-modal-target="background">
+    <div class="video-modal-title" data-video-modal-target="title"></div>
+    <div class="video-modal-content" id="vimeo-video-player" data-video-modal-target="player"></div>
+    <div class="video-modal-description" data-video-modal-target="description"></div>
+  </div>
+  <!-- END VIDEO MODAL -->
+
 </div> <!-- end gallery container -->
 
 <% if user_signed_in? %>
 <!-- MODAL CREATE VIDEO -->
-  <div class="create-video-modal-background modal-hidden">
+  <div class="create-video-modal-background modal-hidden"
+       data-create-modal-target="modal">
 
     <div class="add-video">
       <div class="close-add-button">
-        <p class="close-add-btn"><i class="far fa-times-circle" id="close-add-btn-i"></i></p>
+        <p class="close-add-btn"
+           data-action="click->create-modal#close"><i class="far fa-times-circle" id="close-add-btn-i"></i></p>
       </div>
       <h2 id="create-video-button">AJOUTER UNE VIDEO</h2>
 
@@ -54,14 +84,6 @@ Créateurs de contenus audiovisuels : film corporate, brand content, vidéo prod
   </div>
 <!-- END MODAL CREATE VIDEO -->
 <% end %>
-
-<!-- VIDEO MODAL -->
-<div class="video-modal-background modal-hidden">
-  <div class="video-modal-title"></div>
-  <div class="video-modal-content" id="vimeo-video-player"></div>
-  <div class="video-modal-description"></div>
-</div>
-<!-- END VIDEO MODAL -->
 
 
 

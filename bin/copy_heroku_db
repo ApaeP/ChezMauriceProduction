@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+
+local_db_name="chez_maurice_production_development"
+parent_dir=$(dirname "$(dirname "$0")")
+cd $parent_dir
+
+echo "Importing heroku into $local_db_name"
+echo "----------------------------------------"
+
+
+echo "1/8 Cleaning up"
+rm -f latest.dump
+
+echo "2/8 Dumping heroku database..."
+heroku pg:backups:capture -r heroku
+
+echo "3/8 Downloading heroku database..."
+heroku pg:backups:download -r heroku
+
+echo "4/8 Dropping local database..."
+dropdb -h localhost $local_db_name --force
+echo "5/8 Creating local database..."
+createdb -h localhost $local_db_name
+
+echo "6/8 Creating heroku_ext schema..."
+psql -h localhost -d $local_db_name -c "CREATE SCHEMA IF NOT EXISTS heroku_ext"
+psql -h localhost -d $local_db_name -c "ALTER database $local_db_name SET search_path TO heroku_ext,public"
+
+echo "7/8 Restoring local database..."
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -d $local_db_name latest.dump
+
+echo "8/8 Cleaning up..."
+rm -f latest.dump
+
+echo "----------------------------------------"
+echo "Done !"

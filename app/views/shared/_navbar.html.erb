@@ -1,5 +1,5 @@
 <div class="navbar-container">
-  <div id="banner-bckgrnd-white"></div>
+  <div id="banner-bckgrnd-white" data-navbar-target="background"></div>
   <div id="home-menu-banner" class="navbar-height">
     <div id="inner-menu">
       <div class="center-menu-elements">
@@ -15,13 +15,13 @@
         <div id="home-menu-links">
 
           <% if current_page?(root_path) %>
-            <p id="accueil-link" class="menu-link">ACCUEIL</p>
+            <p id="accueil-link" class="menu-link" data-action="click->scroll#scrollToHome">ACCUEIL</p>
           <% else %>
             <%= link_to "ACCUEIL", root_path, class: 'menu-link', id: 'accueil-link' %>
           <% end %>
           <%= link_to "RÉALISATIONS", realisations_path, class: 'menu-link', id: 'prod-link' %>
           <% if current_page?(root_path) %>
-            <p id="info-link" class="menu-link">À PROPOS</p>
+            <p id="info-link" class="menu-link" data-action="click->scroll#scrollToInfo">À PROPOS</p>
           <% else %>
             <%= link_to "À PROPOS", root_path(anchor: 'informations'), class: 'menu-link', id: 'info-link' %>
           <% end %>
@@ -59,7 +59,7 @@
         <li><%= link_to "ACCUEIL", root_path %></li>
         <li><%= link_to "RÉALISATIONS", realisations_path %></li>
         <% if current_page?(root_path) %>
-            <li><p id="info-link-phone" class="menu-link">À PROPOS</p></li>
+            <li><p id="info-link-phone" class="menu-link" data-action="click->scroll#scrollToInfo">À PROPOS</p></li>
           <% else %>
             <li><%= link_to "À PROPOS", root_path(anchor: 'informations') %></li>
           <% end %>

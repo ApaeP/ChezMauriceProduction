@@ -1,71 +1,100 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.3.9'
 
-gem 'has_vimeo_video'
-gem 'cloudinary'
-gem 'turbolinks_render'
-gem 'rack-cors'
-gem "recaptcha"
-gem 'psych', '< 4'
+# Core Rails - Version intermédiaire plus stable
+gem 'rails', '~> 7.2.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
-# Use postgresql as the database for Active Record
+# Database
 gem 'pg', '>= 0.18', '< 2.0'
-# Use Puma as the app server
-gem 'puma', '~> 4.1'
-# Use SCSS for stylesheets
+
+# Server
+gem 'puma', '~> 6.0'
+
+# Asset Pipeline & Frontend
+gem 'sprockets-rails' # Asset pipeline for Rails
 gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'image_processing', '~> 1.2' # Active Storage image processing
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+# JavaScript & CSS - Gardons importmap pour la modernité
+gem 'importmap-rails' # Modern JS without Node.js
+gem 'turbo-rails'     # Hotwire's SPA-like page accelerator
+gem 'stimulus-rails'  # Hotwire's modest JavaScript framework
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+# Build JSON APIs
+gem 'jbuilder'
 
+# Use Redis for Action Cable, caching, and background jobs
+gem 'redis', '~> 5.0'
+
+# Reduces boot times through caching
+gem 'bootsnap', require: false
+
+# Authentication
 gem 'devise'
 
+# Forms & UI
+gem 'simple_form'
+
+# CSS Framework
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
-gem 'simple_form'
-group :development, :test do  gem 'pry-byebug'
+
+# File uploads & processing
+gem 'cloudinary'
+
+# Video integration
+gem 'has_vimeo_video'
+
+# Security & CORS
+gem 'rack-cors'
+
+# Captcha - SUPPRIMÉ : reCAPTCHA c'est de la merde, on utilise un honeypot
+# gem 'recaptcha'
+
+# Ordering/Sorting
+gem 'acts_as_list', '~> 1.0'
+
+# Compatibility - Version plus récente de psych
+gem 'psych', '~> 5.0'
+
+group :development, :test do
+  # Debugging
+  gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'pry-byebug'
   gem 'pry-rails'
+
+  # Environment variables
   gem 'dotenv-rails'
 
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Testing
+  gem 'rspec-rails' # Modern testing framework
+  gem 'factory_bot_rails' # Test data generation
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Development server
+  gem 'web-console'
+
+  # Performance monitoring
+  gem 'listen', '~> 3.3'
+
+  # Spring (development mode acceleration)
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Code quality
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-performance', require: false
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  # System testing
+  gem 'capybara'
   gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "acts_as_list", "~> 1.0"
+# Windows compatibility
+gem 'tzinfo-data', platforms: %i[windows jruby]
