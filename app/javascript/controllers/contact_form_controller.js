@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["input", "submit", "email"]
 
   connect() {
-    console.log("Contact form controller connected")
     this.emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     this.updateSubmitButton()
   }
@@ -46,12 +45,12 @@ export default class extends Controller {
     if (this.hasSubmitTarget) {
       if (this.allFieldsValid()) {
         this.submitTarget.disabled = false
-        this.submitTarget.classList.remove('disabled')
-        this.submitTarget.classList.add('enabled')
+        this.submitTarget.classList.remove('submit-disabled')
+        this.submitTarget.classList.add('submit-enabled')
       } else {
         this.submitTarget.disabled = true
-        this.submitTarget.classList.remove('enabled')
-        this.submitTarget.classList.add('disabled')
+        this.submitTarget.classList.remove('submit-enabled')
+        this.submitTarget.classList.add('submit-disabled')
       }
     }
   }
