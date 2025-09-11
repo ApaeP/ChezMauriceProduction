@@ -4,8 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    lat: { value: Number, default: 48.87719 },
-    lng: { value: Number, default: 2.184125 },
+    lat: { value: Number, default: 48.869434 },
+    lng: { value: Number, default: 2.182081 },
     zoom: { value: Number, default: 10 },
     style: { value: String, default: 'mapbox://styles/mapbox/light-v10' }
   }
