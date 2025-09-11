@@ -87,6 +87,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
+    bootstrap (5.3.5)
+      popper_js (>= 2.11.8, < 3)
     builder (3.3.0)
     byebug (12.0.0)
     capybara (3.40.0)
@@ -256,6 +258,7 @@ GEM
     pg (1.6.2-x86_64-darwin)
     pg (1.6.2-x86_64-linux)
     pg (1.6.2-x86_64-linux-musl)
+    popper_js (2.11.8)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -473,6 +476,7 @@ DEPENDENCIES
   acts_as_list (~> 1.0)
   autoprefixer-rails
   bootsnap
+  bootstrap (~> 5.3)
   capybara
   cloudinary
   debug
