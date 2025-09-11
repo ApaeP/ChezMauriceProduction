@@ -1,16 +1,32 @@
 <% videos.each_with_index do |video, i| %>
   <% arr = video.categories.map { |cat|  cat.name.downcase.first(4) } %>
-  <div class="video-card card-<%= i %> reorder-handle" data-cats="all <%= arr.join(' ') %>" data-reorder-id="<%= video.id %>">
+  <div class="video-card card-<%= i %> reorder-handle"
+       data-cats="all <%= arr.join(' ') %>"
+       data-reorder-id="<%= video.id %>"
+       data-video-filter-target="video">
     <% if video.photo.attached? %>
       <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.name}", width: 600, crop: :fill, fetch_format: 'auto', secure: true, quality: 'auto:low', class: 'thumbnail-div' %>
     <% else %>
       <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
     <% end %>
-    <div class="thumbnail-overlay" data-videourl="<%= video.url %>" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>">
-      <p class="thumbnail-overlay-title" data-videourl="<%= video.url %>" data-videoid="<%= video.vimeo.id %>" data-videotitle="<%= video.title %>" data-videodesc="<%= video.description %>"><%= video.title.upcase %></p>
+    <div class="thumbnail-overlay"
+         data-action="click->video-modal#open"
+         data-videourl="<%= video.url %>"
+         data-videoid="<%= video.vimeo.id %>"
+         data-videotitle="<%= video.title %>"
+         data-videodesc="<%= video.description %>">
+      <p class="thumbnail-overlay-title"
+         data-action="click->video-modal#open"
+         data-videourl="<%= video.url %>"
+         data-videoid="<%= video.vimeo.id %>"
+         data-videotitle="<%= video.title %>"
+         data-videodesc="<%= video.description %>"><%= video.title.upcase %></p>
       <% if user_signed_in? %>
         <div class="admin-buttons">
-          <p class="modify-video-button" data-videoid="<%= i %>"><i class="far fa-edit"></i></p>
+          <p class="modify-video-button"
+             data-controller="edit-modal"
+             data-action="click->edit-modal#open"
+             data-videoid="<%= i %>"><i class="far fa-edit"></i></p>
           <%= link_to video_path(video), class: 'delete-video-btn', method: :delete, data: { confirm: "Voulez-vous vraiment supprimer la vidéo \"#{video.title}\"?" }, remote: true do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
@@ -26,7 +42,9 @@
     <div class="edit-video-modal-background modal-hidden" id="edit-video-id-<%= i %>">
       <div class="edit-video">
         <div class="close-edit-button">
-          <p class="close-edit-btn-p" id="close-edit-modal-<%= i %>"><i class="far fa-times-circle close-edit-btn-i"></i></p>
+          <p class="close-edit-btn-p"
+             data-action="click->edit-modal#close"
+             id="close-edit-modal-<%= i %>"><i class="far fa-times-circle close-edit-btn-i"></i></p>
         </div>
         <div class="edit-form">
           <%= simple_form_for video, remote: true do |f| %>

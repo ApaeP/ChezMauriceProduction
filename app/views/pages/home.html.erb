@@ -1,4 +1,4 @@
-<div class="home-container" id="home-div">
+<div class="home-container" id="home-div" data-scroll-target="homeSection">
   <div class="homepage">
     <%= video_tag 'bckgrnd_video.mp4',
                    # poster: 'PA-LOGO_2020_poster_3072x1920.png',
@@ -9,87 +9,88 @@
                    loop: true,
                    controls: false,
                    type: 'video/mp4',
-                   id: 'home-video' %>
+                   id: 'home-video',
+                   data: { controller: 'video-background' } %>
   </div>
 </div>
 
-<div class="info-container" id="info-content">
+<div class="info-container" id="info-content" data-scroll-target="infoSection">
   <h1 id="info-page-title">CHEZ MAURICE PRODUCTION</h1>
   <h2 class="info-h2">Conseil & Production audiovisuelle</h2>
-  <p class="info-paragraph">Nous sommes créateurs de contenus audiovisuels : film corporate, brand content, vidéo
-  produit... <br>
-  Nous abordons avec passion et créativité tous vos projets, des plus conventionnels
-  aux plus décalés. <br>
-  Réactifs et agiles, nous intervenons à chaque étape de la conception de votre film : conseil,
-  scénarisation, tournage, et postproduction. <br>
-  Chez Maurice, vous trouverez une équipe aux petits soins et l’expertise technique pour
-  donner vie à tous vos projets !</p>
+  <p class="info-paragraph">
+    Nous sommes créateurs de contenus audiovisuels : film corporate, brand content, vidéo
+    produit... <br>
+    Nous abordons avec passion et créativité tous vos projets, des plus conventionnels
+    aux plus décalés. <br>
+    Réactifs et agiles, nous intervenons à chaque étape de la conception de votre film : conseil,
+    scénarisation, tournage, et postproduction. <br>
+    Chez Maurice, vous trouverez une équipe aux petits soins et l’expertise technique pour
+    donner vie à tous vos projets !
+  </p>
 
   <div class="info-lists">
-        <div class="card-container">
-          <div class="info-card-container">
-            <div class="info-card-content">
-              <div class="info-card-top">
-                <%= image_tag "preprod.png", alt: "Chez Maurice Production logo pre-production", class: 'info-logo' %>
-              </div>
-              <div class="info-card-title">
-                <h2>Pré production</h2>
-              </div>
-              <hr class="info-card-hr">
-              <div class="info-card-description">
-                <p>Conseil & conception <br>
-                Scénarisation <br>
-                Story-board <br>
-                Repérage</p>
-              </div>
-            </div>
+    <div class="card-container">
+      <div class="info-card-container">
+        <div class="info-card-content">
+          <div class="info-card-top">
+            <%= image_tag "preprod.png", alt: "Chez Maurice Production logo pre-production", class: 'info-logo' %>
+          </div>
+          <div class="info-card-title">
+            <h2>Pré production</h2>
+          </div>
+          <hr class="info-card-hr">
+          <div class="info-card-description">
+            <p>Conseil & conception <br>
+            Scénarisation <br>
+            Story-board <br>
+            Repérage</p>
           </div>
         </div>
-        <div class="card-container">
-          <div class="info-card-container">
-            <div class="info-card-content">
-              <div class="info-card-top">
-                <%= image_tag "prod.png", alt: "Chez Maurice Production logo production", class: 'info-logo' %>
-              </div>
-              <div class="info-card-title">
-                <h2>Production</h2>
-              </div>
-              <hr class="info-card-hr">
-              <div class="info-card-description">
-                <p>
-                  Mise en scène <br>
-                  Réalisation <br>
-                  Maquillage
-                </p>
-              </div>
-            </div>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="info-card-container">
+        <div class="info-card-content">
+          <div class="info-card-top">
+            <%= image_tag "prod.png", alt: "Chez Maurice Production logo production", class: 'info-logo' %>
+          </div>
+          <div class="info-card-title">
+            <h2>Production</h2>
+          </div>
+          <hr class="info-card-hr">
+          <div class="info-card-description">
+            <p>
+              Mise en scène <br>
+              Réalisation <br>
+              Maquillage
+            </p>
           </div>
         </div>
-        <div class="card-container">
-          <div class="info-card-container">
-            <div class="info-card-content">
-              <div class="info-card-top">
-                <%= image_tag "postprod.png", alt: "Chez Maurice Production logo post-production", class: 'info-logo' %>
-              </div>
-              <div class="info-card-title">
-                <h2>Post production</h2>
-              </div>
-              <hr class="info-card-hr">
-              <div class="info-card-description">
-                <p>
-                  Encodage <br>
-                  Montage <br>
-                  Motion design & sound design <br>
-                  Transcription & sous-titrage <br>
-                  Voix-off <br>
-                  Étalonnage, mixage
-                </p>
-              </div>
-            </div>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="info-card-container">
+        <div class="info-card-content">
+          <div class="info-card-top">
+            <%= image_tag "postprod.png", alt: "Chez Maurice Production logo post-production", class: 'info-logo' %>
+          </div>
+          <div class="info-card-title">
+            <h2>Post production</h2>
+          </div>
+          <hr class="info-card-hr">
+          <div class="info-card-description">
+            <p>
+              Encodage <br>
+              Montage <br>
+              Motion design & sound design <br>
+              Transcription & sous-titrage <br>
+              Voix-off <br>
+              Étalonnage, mixage
+            </p>
           </div>
         </div>
-
-
+      </div>
+    </div>
   </div>
 </div>
 <div id="footer-for-lg">

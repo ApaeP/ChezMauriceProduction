@@ -1,18 +1,27 @@
 class ContactsController < ApplicationController
-
   def create
-    @contact = Contact.new(contact_params)
-    if verify_recaptcha(model: @contact) && @contact.save
-      ContactMailer.with(contact: @contact).mail_to_client.deliver_later
-      ContactMailer.with(contact: @contact).mail_to_prod.deliver_later
-    else
+    if params[:contact][:website].present?
+      Rails.logger.info "Spam détecté via honeypot pour #{params[:contact][:email]}"
+      head :ok
+      return
+    end
 
+    @contact = Contact.new(contact_params)
+
+    respond_to do |format|
+      if @contact.save
+        format.turbo_stream { render turbo_stream: turbo_stream.update("contact-form", partial: "contacts/success") }
+        format.html { redirect_to contact_path, notice: 'Message envoyé!' }
+      else
+        format.turbo_stream { render turbo_stream: turbo_stream.update("contact-form", partial: "contacts/form") }
+        format.html { render 'pages/contact' }
+      end
     end
   end
 
   private
 
   def contact_params
-    params.require(:contact).permit(:name, :email, :content, :phone, :company, :known_from)
+    params.require(:contact).permit(:name, :email, :content, :website)
   end
 end

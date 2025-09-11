@@ -4,6 +4,8 @@
     margin: 0 auto;
     width: 100%;
     max-width: 100vw !important;
+    display: flex;
+    justify-content: center;
     iframe {
       width: 100%;
     }
@@ -19,6 +21,8 @@
     margin: 0 auto;
     width: 100%;
     max-width: 100vw !important;
+    display: flex;
+    justify-content: center;
     iframe {
       width: 100%;
     }
@@ -28,17 +32,17 @@
   }
 }
 
-
 @media (min-width:801px) {
   #vimeo-video-player {
     height: 60vh;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
   .video-modal-title {
     font-size: 2rem;
   }
 }
-
 
 .video-modal-background {
   position: fixed;
@@ -86,13 +90,10 @@
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: scroll;
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .video-modal-description::-webkit-scrollbar {
-  width: 0px; /* For Chrome, Safari, and Opera */
+  width: 0px;
 }
-
-// transition: background-color 1s linear 2s, color 1s;
-// transition: property name | duration | timing function | delay
