@@ -31,8 +31,6 @@ CyclomaticComplexity:
   Enabled: false
 MissingRespondToMissing:
   Enabled: false
-MethodMissingSuper:
-  Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
 LineLength:
