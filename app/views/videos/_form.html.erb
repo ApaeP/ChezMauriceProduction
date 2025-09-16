@@ -1,0 +1,30 @@
+<%= simple_form_for video, remote: true, html: { id: 'create-video-form' } do |f| %>
+  <%= f.input :title,
+              label: "<strong>Titre</strong>".html_safe,
+              placeholder: '...',
+              wrapper_html: { class: 'mb-2' } %>
+  <%= f.input :description,
+              label: "<strong>Description</strong>".html_safe,
+              placeholder: '...',
+              wrapper_html: { class: 'mb-2' } %>
+  <%= f.input :url,
+              label: "<strong>Lien vimeo</strong>".html_safe,
+              placeholder: '...',
+              wrapper_html: { class: 'mb-2' } %>
+  <%= f.association :categories,
+                    as: :check_boxes,
+                    label: "<strong>Catégories</strong>".html_safe,
+                    wrapper_html: { class: 'mb-2' },
+                    item_wrapper_class: 'form-check d-flex gap-2' %>
+  <%= f.input :photo,
+              as: :file,
+              label: '<strong>Vignette</strong>'.html_safe,
+              hint: "<em>idéalement : PNG - 16/9 - 700px de large - 72ppp</em>".html_safe,
+              wrapper_html: { class: 'd-flex flex-column mb-2' } %>
+  <%= f.input :name,
+              label: "<strong>Nom</strong>".html_safe,
+              placeholder: '...',
+              hint: "<em>Un mot unique pour identifier la video (ne sera jamais affiché)</em>".html_safe,
+              wrapper_html: { class: 'mb-2' } %>
+  <%= f.submit 'Enregistrer' %>
+<% end %>

@@ -1,6 +1,5 @@
-import { Controller } from 'stimulus'
-import Rails from '@rails/ujs'
-import Sortable from 'sortablejs'
+import { Controller } from '@hotwired/stimulus'
+import { Sortable } from 'sortablejs'
 
 export default class extends Controller {
 
@@ -18,10 +17,17 @@ export default class extends Controller {
     let id = event.item.dataset.reorderId
     var data = new FormData()
     data.append('position', event.newIndex + 1)
-    Rails.ajax({
-      url: this.data.get('url').replace(":id", id),
-      type: 'PATCH',
-      data: data
-    })
+
+    const url = this.data.get('url').replace(":id", id)
+    const csrfToken = document.querySelector('[name="csrf-token"]').content
+    const params = {
+      method: 'PATCH',
+      body: data,
+      headers: {
+        'X-CSRF-Token': csrfToken
+      }
+    }
+
+    fetch(url, params)
   }
 }

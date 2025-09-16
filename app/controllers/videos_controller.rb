@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :find_video, only: [:update, :update_rank, :destroy, :reorder]
 
   def index
@@ -13,37 +14,33 @@ class VideosController < ApplicationController
   end
 
   def create
-    if user_signed_in?
-      @video = Video.new(video_params)
-      if @video.save
-        respond_to do |format|
-          format.js
-          format.html { redirect_to realisations_path }
-        end
-      else
-        flash[:alert] = "Vous ne pouvez pas créer de vidéo"
+    @video = Video.new(video_params)
+    if @video.save
+      respond_to do |format|
+        format.js
+        format.html { redirect_to realisations_path }
       end
+    else
+      flash[:alert] = "Vous ne pouvez pas créer de vidéo"
     end
   end
 
   def update
-    if user_signed_in?
-      @video.update(video_params)
-      if @video.save
-        redirect_to realisations_path
-      end
+    @video.update(video_params)
+    if @video.save
+      redirect_to realisations_path
     end
   end
 
   def destroy
-    if user_signed_in?
-      if @video.destroy
-        flash.now[:success] = 'Video was deleted'
-      else
-        flash.now[:success] = 'Video could not be deleted'
-      end
-      redirect_back(fallback_location: root_path)
+    if @video.destroy
+      result = :ok
+      flash[:success] = 'La vidéo a été supprimée'
+    else
+      result = :error
+      flash[:warning] = 'La vidéo n\'a pas été supprimée'
     end
+    render json: { result: result }, status: result
   end
 
   private

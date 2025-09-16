@@ -2,11 +2,10 @@
 <% content_for :meta_description, "Découvrez les réalisations audiovisuelles des équipes de Chez Maurice Production \n
 Créateurs de contenus audiovisuels : film corporate, brand content, vidéo produit... \n" %>
 
-<div class="gallery-container" style="margin-bottom: 12vh;" data-controller="video-filter video-modal">
+<div class="gallery-container" style="margin-bottom: 12vh;" data-controller="video-filter video-modal create-modal">
   <% if user_signed_in? %>
     <h3 class="gallery-title user">NOS RÉALISATIONS</h3>
     <h5 id="add-video-button"
-        data-controller="create-modal"
         data-action="click->create-modal#open">AJOUTER UNE VIDEO</h5>
   <% else %>
     <h3 class="gallery-title visitor">NOS RÉALISATIONS</h3>
@@ -49,41 +48,27 @@ Créateurs de contenus audiovisuels : film corporate, brand content, vidéo prod
     <div class="video-modal-content" id="vimeo-video-player" data-video-modal-target="player"></div>
     <div class="video-modal-description" data-video-modal-target="description"></div>
   </div>
-  <!-- END VIDEO MODAL -->
 
-</div> <!-- end gallery container -->
+  <% if user_signed_in? %>
+    <!-- MODAL CREATE VIDEO -->
+    <div class="create-video-modal-background modal-hidden"
+        data-create-modal-target="modal">
 
-<% if user_signed_in? %>
-<!-- MODAL CREATE VIDEO -->
-  <div class="create-video-modal-background modal-hidden"
-       data-create-modal-target="modal">
+      <div class="add-video">
+        <div class="close-add-button">
+          <p class="close-add-btn"
+            data-action="click->create-modal#close"><i class="far fa-times-circle" id="close-add-btn-i"></i></p>
+        </div>
+        <h2 id="create-video-button">AJOUTER UNE VIDEO</h2>
 
-    <div class="add-video">
-      <div class="close-add-button">
-        <p class="close-add-btn"
-           data-action="click->create-modal#close"><i class="far fa-times-circle" id="close-add-btn-i"></i></p>
+        <div class="add-form">
+          <%= render 'videos/form', video: @video %>
+        </div>
       </div>
-      <h2 id="create-video-button">AJOUTER UNE VIDEO</h2>
 
-      <div class="add-form">
-        <%= simple_form_for @video, remote: true, html: { id: 'create-video-form' } do |f| %>
-          <%= f.input :title, label: false, placeholder: 'Titre de la vidéo' %>
-          <%= f.input :description, label: false, placeholder: 'Description de la vidéo' %>
-          <%= f.input :url, label: false, placeholder: 'Lien vimeo de la video' %>
-          <%= f.association :categories, as: :check_boxes %>
-          <%= f.input :photo, as: :file, label: 'Vignette de la vidéo (idéalement : PNG - 16/9 - 700px de large - 72ppp)' %>
-          <%= f.input :name, label: false, placeholder: 'Un mot unique pour identifier la video (ne sera jamais affiché)' %>
-          <%= f.submit 'Enregistrer' %>
-        <% end %>
+      <div id="create-modal-loader" class="create-loader-hidden">
+        <%= render 'shared/loader_svg' %>
       </div>
     </div>
-
-    <div id="create-modal-loader" class="create-loader-hidden">
-      <%= render 'shared/loader_svg' %>
-    </div>
-  </div>
-<!-- END MODAL CREATE VIDEO -->
-<% end %>
-
-
-
+  <% end %>
+</div>
