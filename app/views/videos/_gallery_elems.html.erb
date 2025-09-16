@@ -1,11 +1,10 @@
 <% videos.each_with_index do |video, i| %>
-  <% arr = video.categories.map { |cat|  cat.name.downcase.first(4) } %>
   <div class="video-card card-<%= i %> reorder-handle"
-       data-cats="all <%= arr.join(' ') %>"
+       data-cats="all <%= video.categories.map { |cat| cat.name.downcase.first(4) }.join(' ') %>"
        data-reorder-id="<%= video.id %>"
        data-video-filter-target="video">
     <% if video.photo.attached? %>
-      <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.name}", width: 600, crop: :fill, fetch_format: 'auto', secure: true, quality: 'auto:low', class: 'thumbnail-div' %>
+      <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.title.parameterize.underscore.first(10)}", width: 600, crop: :fill, fetch_format: 'auto', secure: true, quality: 'auto:low', class: 'thumbnail-div' %>
     <% else %>
       <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
     <% end %>
@@ -53,7 +52,7 @@
              id="close-edit-modal-<%= i %>"><i class="far fa-times-circle close-edit-btn-i"></i></p>
         </div>
         <div class="edit-form">
-          <%= render 'videos/form', video: video %>
+          <%= render 'videos/form', video: video, categories: categories %>
         </div>
       </div>
     </div>

@@ -4,8 +4,8 @@ class VideosController < ApplicationController
 
   def index
     @video = Video.new
-    @videos = Video.all.order(:position)
-    @allcategories = Category.all
+    @videos = Video.includes(:categories, photo_attachment: :blob).all.order(:position)
+    @categories = Category.all
   end
 
   def reorder
@@ -50,6 +50,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:name, :title, :url, :description, :photo, category_ids: [])
+    params.require(:video).permit(:title, :url, :description, :photo, category_ids: [])
   end
 end

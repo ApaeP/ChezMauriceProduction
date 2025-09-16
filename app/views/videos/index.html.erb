@@ -39,7 +39,7 @@ Créateurs de contenus audiovisuels : film corporate, brand content, vidéo prod
   </div>
 
   <div class="gallery-grid" <%= 'data-controller=reorder data-reorder-url=/videos/:id/reorder' if user_signed_in? %>>
-    <%= render 'gallery_elems', videos: @videos %>
+    <%= render 'gallery_elems', videos: @videos, categories: @categories %>
   </div>
 
   <!-- VIDEO MODAL -->
@@ -62,7 +62,7 @@ Créateurs de contenus audiovisuels : film corporate, brand content, vidéo prod
         <h2 id="create-video-button">AJOUTER UNE VIDEO</h2>
 
         <div class="add-form">
-          <%= render 'videos/form', video: @video %>
+          <%= render 'videos/form', video: @video, categories: @categories %>
         </div>
       </div>
 

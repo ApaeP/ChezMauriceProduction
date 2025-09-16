@@ -1,30 +1,56 @@
-<%= simple_form_for video, remote: true, html: { id: 'create-video-form' } do |f| %>
-  <%= f.input :title,
-              label: "<strong>Titre</strong>".html_safe,
-              placeholder: '...',
-              wrapper_html: { class: 'mb-2' } %>
-  <%= f.input :description,
-              label: "<strong>Description</strong>".html_safe,
-              placeholder: '...',
-              wrapper_html: { class: 'mb-2' } %>
-  <%= f.input :url,
-              label: "<strong>Lien vimeo</strong>".html_safe,
-              placeholder: '...',
-              wrapper_html: { class: 'mb-2' } %>
-  <%= f.association :categories,
-                    as: :check_boxes,
-                    label: "<strong>Catégories</strong>".html_safe,
-                    wrapper_html: { class: 'mb-2' },
-                    item_wrapper_class: 'form-check d-flex gap-2' %>
-  <%= f.input :photo,
-              as: :file,
-              label: '<strong>Vignette</strong>'.html_safe,
-              hint: "<em>idéalement : PNG - 16/9 - 700px de large - 72ppp</em>".html_safe,
-              wrapper_html: { class: 'd-flex flex-column mb-2' } %>
-  <%= f.input :name,
-              label: "<strong>Nom</strong>".html_safe,
-              placeholder: '...',
-              hint: "<em>Un mot unique pour identifier la video (ne sera jamais affiché)</em>".html_safe,
-              wrapper_html: { class: 'mb-2' } %>
-  <%= f.submit 'Enregistrer' %>
+<%= simple_form_for video, remote: true, html: { id: 'create-video-form', class: 'needs-validation', novalidate: true } do |f| %>
+  <div class="mb-3">
+    <%= f.input :title,
+                label: "<strong>Titre</strong>".html_safe,
+                placeholder: 'Entrez le titre de la vidéo',
+                wrapper_html: { class: 'mb-3' },
+                input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :description,
+                label: "<strong>Description</strong>".html_safe,
+                placeholder: 'Décrivez le contenu de la vidéo',
+                wrapper_html: { class: 'mb-3' },
+                input_html: { class: 'form-control', rows: 3 } %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :url,
+                label: "<strong>Lien Vimeo</strong>".html_safe,
+                placeholder: 'https://vimeo.com/...',
+                wrapper_html: { class: 'mb-3' },
+                input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"><strong>Catégories</strong></label>
+    <div class="d-flex flex-column gap-2">
+      <% categories.each do |category| %>
+        <div class="form-check">
+          <%= check_box_tag "video[category_ids][]",
+                            category.id,
+                            video.category_ids.include?(category.id),
+                            class: "form-check-input",
+                            id: "video_#{video.persisted? ? video.id : "create"}_category_ids_#{category.id}" %>
+          <%= label_tag "video_#{video.persisted? ? video.id : "create"}_category_ids_#{category.id}",
+                        category.name,
+                        class: "form-check-label" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :photo,
+                as: :file,
+                label: '<strong>Vignette</strong>'.html_safe,
+                hint: "<small class='form-text text-muted'>Idéalement : PNG - 16/9 - 700px de large - 72ppp</small>".html_safe,
+                wrapper_html: { class: 'mb-3' },
+                input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="d-grid">
+    <%= f.submit 'Enregistrer', class: 'btn btn-primary btn-lg' %>
+  </div>
 <% end %>
