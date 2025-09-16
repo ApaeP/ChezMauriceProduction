@@ -35,10 +35,7 @@
                     contact_form_target: 'email input'
                   }
                 } %>
-
-    <div style="position: absolute; left: -50000px;" aria-hidden="true">
-      <%= f.input :website, label: false, placeholder: 'Website', input_html: { autocomplete: 'off', tabindex: -1 } %>
-    </div>
+    <%= cloudflare_turnstile %>
 
     <div class="form-last-line">
       <%= f.submit "Envoyer", id: "send-contact-btn", class: 'submit-form-btn contact-form-element', 'data-contact-form-target': 'submit' %>

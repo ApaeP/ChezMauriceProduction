@@ -1,6 +1,4 @@
 class Contact < ApplicationRecord
-  attr_accessor :website
-
   validates :email, presence: true, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
   validates :content, presence: true
   validates :name, presence: true

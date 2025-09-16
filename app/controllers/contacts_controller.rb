@@ -1,11 +1,7 @@
 class ContactsController < ApplicationController
-  def create
-    if params[:contact][:website].present?
-      Rails.logger.info "Spam détecté via honeypot pour #{params[:contact][:email]}"
-      head :ok
-      return
-    end
+  before_action :validate_cloudflare_turnstile, only: :create
 
+  def create
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
