@@ -13,13 +13,15 @@ export default class extends Controller {
   connect() {
     this.vimeoPlayer = null
     this.isModalOpen = false
+    this.currentPlayerToken = null
 
     this.handleEscapeKey = this.handleEscapeKey.bind(this)
     this.handleBackgroundClick = this.handleBackgroundClick.bind(this)
   }
 
-  disconnect() {
-    this.cleanup()
+  async disconnect() {
+    this.currentPlayerToken = null
+    await this.cleanup()
     document.removeEventListener('keydown', this.handleEscapeKey)
   }
 
@@ -30,7 +32,7 @@ export default class extends Controller {
     const videoId = videoElement.dataset.videoid
     const videoUrl = videoElement.dataset.videourl
     const videoTitle = videoElement.dataset.videotitle
-    const videoDescription = videoElement.dataset.videodesc
+    const videoDescription = videoElement.dataset.videodesc.replaceAll('\n', '<br>')
 
     if (document.querySelector('.edit-video-modal-background.modal-visible')) {
       return
@@ -38,18 +40,21 @@ export default class extends Controller {
 
     this.updateModalContent(videoTitle, videoDescription)
     this.showModal()
-    this.initializeVideoPlayer(videoId, videoUrl)
     this.addEventListeners()
+    const playerToken = Symbol('video-modal-player')
+    this.currentPlayerToken = playerToken
+    this.initializeVideoPlayer(videoUrl, videoId, playerToken)
   }
 
-  close(event) {
+  async close(event) {
     if (event) {
       event.preventDefault()
     }
 
-    this.pauseVideo()
     this.hideModal()
     this.removeEventListeners()
+    this.currentPlayerToken = null
+    await this.cleanup()
   }
 
   updateModalContent(title, description) {
@@ -77,75 +82,81 @@ export default class extends Controller {
     }
   }
 
-  initializeVideoPlayer(videoId, videoUrl) {
-    if (!videoId) {
-      console.error('No video ID provided')
+  async initializeVideoPlayer(videoUrl, videoId, token) {
+    if (!videoUrl && !videoId) {
+      console.error('No video identifier provided')
       return
     }
 
     try {
-      const existingIframe = document.querySelector('#vimeo-video-player > iframe')
+      await this.cleanup()
 
-      if (existingIframe) {
-        this.cleanup()
-        this.createNewPlayer(videoUrl)
-      } else {
-        this.createNewPlayer(videoUrl)
+      if (this.hasPlayerTarget) {
+        this.playerTarget.innerHTML = ''
       }
+
+      const playerOptions = {
+        autoplay: true,
+        width: this.playerTarget.offsetWidth || 960,
+        height: this.calculatePlayerHeight()
+      }
+
+      if (videoUrl) {
+        playerOptions.url = videoUrl
+      } else {
+        playerOptions.id = videoId
+      }
+
+      if (!this.isModalOpen || this.currentPlayerToken !== token) {
+        return
+      }
+
+      this.vimeoPlayer = new Player(this.playerTarget, playerOptions)
+
+      await this.vimeoPlayer.ready()
+
+      if (!this.isModalOpen || this.currentPlayerToken !== token) {
+        return
+      }
+
+      await this.vimeoPlayer.play()
     } catch (error) {
-      console.error('Error initializing video player:', error)
+      this.handleVimeoError(error)
     }
-  }
-
-  createNewPlayer(videoUrl) {
-    const playerOptions = {
-      id: videoUrl,
-      height: document.querySelector('.video-modal-content').offsetHeight,
-      autoplay: true
-    }
-
-    this.vimeoPlayer = new Player('vimeo-video-player', playerOptions)
-
-    this.vimeoPlayer.ready().then(() => {
-      return this.vimeoPlayer.play()
-    }).catch(this.handleVimeoError.bind(this))
-
-    // this.vimeoPlayer.on('ended', () => {
-    // })
   }
 
   calculatePlayerHeight() {
-    const containerWidth = this.playerTarget.offsetWidth || 800
+    const containerWidth = this.playerTarget.offsetWidth || 960
     return Math.floor(containerWidth * 9 / 16)
   }
 
-  pauseVideo() {
+  async cleanup() {
     if (this.vimeoPlayer) {
       try {
-        this.vimeoPlayer.pause().catch(error => {
-          console.log('Error pausing video:', error)
-        })
+        await this.vimeoPlayer.unload()
       } catch (error) {
-        console.log('Error accessing vimeo player:', error)
+        console.log('Error unloading player:', error)
       }
-    }
-  }
 
-  cleanup() {
-    if (this.vimeoPlayer) {
       try {
-        this.vimeoPlayer.destroy().then(() => {
-        }).catch(error => {
-          console.log('Error destroying player:', error)
-        })
+        await this.vimeoPlayer.destroy()
       } catch (error) {
-        console.log('Error during cleanup:', error)
+        console.log('Error destroying player:', error)
       }
+
       this.vimeoPlayer = null
+    }
+
+    if (this.hasPlayerTarget) {
+      this.playerTarget.innerHTML = ''
     }
   }
 
   handleVimeoError(error) {
+    if (error?.name === 'PlayInterrupted') {
+      return
+    }
+
     console.error('Vimeo player error:', error)
 
     let errorMessage = 'Une erreur est survenue lors du chargement de la vidéo.'

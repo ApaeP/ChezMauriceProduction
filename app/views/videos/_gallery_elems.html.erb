@@ -19,7 +19,9 @@
          data-videourl="<%= video.url %>"
          data-videoid="<%= video.vimeo.id %>"
          data-videotitle="<%= video.title %>"
-         data-videodesc="<%= video.description %>"><%= video.title.upcase %></p>
+         data-videodesc="<%= video.description %>">
+        <%= video.title.upcase %>
+      </p>
       <% if user_signed_in? %>
         <div class="admin-buttons">
           <p class="modify-video-button"
