@@ -1,4 +1,4 @@
-<%= simple_form_for video, remote: true, html: { id: 'create-video-form', class: 'needs-validation', novalidate: true } do |f| %>
+<%= simple_form_for video, remote: false, html: { id: 'create-video-form', class: 'needs-validation', novalidate: true, data: { turbo: false } } do |f| %>
   <div class="mb-3">
     <%= f.input :title,
                 label: "<strong>Titre</strong>".html_safe,
