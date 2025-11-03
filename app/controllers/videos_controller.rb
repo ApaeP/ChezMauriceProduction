@@ -26,8 +26,14 @@ class VideosController < ApplicationController
   end
 
   def update
-    @video.update(video_params)
-    if @video.save
+    if params.dig(:video, :photo).size > 10485760 # 10MB
+      flash[:alert] = "La taille de la vignette ne peut pas excéder 10MB"
+      redirect_to realisations_path
+    elsif @video.update(video_params)
+      flash[:success] = "La vidéo a été mise à jour"
+      redirect_to realisations_path
+    else
+      flash[:alert] = @video.errors.full_messages.join(", ")
       redirect_to realisations_path
     end
   end

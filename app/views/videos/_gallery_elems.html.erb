@@ -4,7 +4,7 @@
        data-reorder-id="<%= video.id %>"
        data-video-filter-target="video">
     <% if video.photo.attached? %>
-      <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.title.parameterize.underscore.first(10)}", width: 600, crop: :fill, fetch_format: 'auto', secure: true, quality: 'auto:low', class: 'thumbnail-div' %>
+      <%= cl_image_tag video.photo.key, alt: "video_thumbnail_#{video.title.parameterize.underscore.first(10)}", width: 450, crop: :fill, fetch_format: 'auto', secure: true, quality: 'auto:best', class: 'thumbnail-div' %>
     <% else %>
       <div class="thumbnail-div" style="background-image: url(<%= asset_path('videofiller.png') %>);"></div>
     <% end %>
@@ -44,7 +44,7 @@
 <% end %>
 
 <% if user_signed_in? %>
-<!-- EDIT VIDEO MODALS -->
+  <!-- EDIT VIDEO MODALS -->
   <% videos.each_with_index do |video, i| %>
     <div class="edit-video-modal-background modal-hidden" id="edit-video-id-<%= i %>">
       <div class="edit-video">
@@ -59,6 +59,6 @@
       </div>
     </div>
   <% end %>
-<!-- END EDIT VIDEO MODALS -->
+  <!-- END EDIT VIDEO MODALS -->
 <% end %>
 
