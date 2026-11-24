@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   draw :owner_connections
+  post "webhooks/frame-io", to: MediaApi::FrameIoWebhook, as: :frame_io_webhook
   root "pages#studio"
   resources :realisations, only: %i[index show], constraints: { id: /\d+/ }
   get "studio", to: redirect("/")

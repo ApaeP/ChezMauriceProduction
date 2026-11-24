@@ -54,10 +54,9 @@ bin/jobs check
 
 Le site utilise SQLite en développement, en test et en production. En développement, lancer `bin/jobs` dans un second terminal pour traiter les tâches persistantes. En production, le rôle Kamal dédié lance un seul worker à un thread. Le superviseur, le dispatcher des tâches différées et le worker s’exécutent dans le même processus Ruby en mode async. Le dispatcher permet les reprises différées. Les tâches réussies sont supprimées à la fin de leur exécution. Les échecs restent consultables. Aucun scheduler périodique ni worker dans Puma n’est configuré.
 
-- [Frame.io V4](docs/frame-io.md) fournit la lecture des métadonnées et le téléchargement en flux de l’original. L’accès est désactivé tant que le mode de connexion du studio reste à confirmer. Le guide distingue les deux profils OAuth conservés dans le code et le cas des comptes Legacy auto-migrés pouvant encore utiliser un ancien jeton Frame.io.
-- [Google et YouTube](docs/youtube.md) couvrent le consentement du propriétaire, le contrôle de la chaîne et le protocole d’envoi reprenable. Le client rend l’URL de session à l’appelant avant le premier envoi d’octets. Elle doit rester confidentielle.
+- La [recette du transfert privé](docs/recette-transfert-prive.md) utilise le projet Frame.io « Publications ». Une fois la recette ouverte, y déposer ou y copier un film déclenche son transfert par le worker vers la chaîne YouTube prévue, en privé. Rails conserve la fiche en brouillon. Les fichiers déjà présents avant l’ouverture sont exclus. Le transfert reste désactivé par défaut.
+- Le [guide Frame.io V4](docs/frame-io.md) décrit les droits de lecture de l’original et des métadonnées, ainsi que les modes de connexion pris en charge.
+- Le [guide YouTube](docs/youtube.md) décrit le consentement du propriétaire, le contrôle de la chaîne et la reprise du transfert.
 - [Déploiement et sauvegarde](docs/deploiement.md) décrit le proxy partagé, les secrets, le volume persistant, les deux rôles et la répétition de restauration.
 
-Les deux clients peuvent se tester séparément. Le webhook Frame.io et la tâche persistante qui reliera la lecture de l’original, la session YouTube et la mise à jour de la fiche restent à réaliser. La reprise du protocole YouTube est disponible pour cette future tâche.
-
-Un même export pourra viser « Site », « Bande démo » ou les deux. Avec le propriétaire, il reste à identifier les champs et options du projet réel, le signal d’export final et la visibilité YouTube voulue. Paul précisera le parcours de la bande démo. Pour la recette de bout en bout, il faudra l’accès au projet Frame.io, l’autorisation de la chaîne YouTube, les textes et légendes des films, et un original dont l’envoi est autorisé.
+Le parcours éditorial de publication sur le site et l’expérience de la bande démo restent à définir avec Paul. La recette privée peut être validée indépendamment de ces choix.

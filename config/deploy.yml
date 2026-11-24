@@ -40,6 +40,14 @@ env:
     RAILS_ENV: production
     APP_HOST: <%= ENV.fetch("APP_HOST").inspect %>
     LOG_REQUESTS: "0"
+<% if ENV["FRAME_IO_PRIVATE_TRIAL"] == "1" %>
+    FRAME_IO_PRIVATE_TRIAL: "1"
+<% %w[FRAME_IO_TITLE_FIELD_ID FRAME_IO_DESCRIPTION_FIELD_ID].each do |key| %>
+<% unless ENV[key].to_s.empty? %>
+    <%= key %>: <%= ENV.fetch(key).inspect %>
+<% end %>
+<% end %>
+<% end %>
 <% unless frame_io_mode.empty? %>
     FRAME_IO_AUTH_MODE: <%= frame_io_mode.inspect %>
 <% if ENV["FRAME_IO_MEDIA_HOSTS"].to_s != "" %>
@@ -48,6 +56,9 @@ env:
 <% end %>
   secret:
     - SECRET_KEY_BASE
+<% if ENV["FRAME_IO_PRIVATE_TRIAL"] == "1" %>
+    - FRAME_IO_WEBHOOK_SECRET
+<% end %>
 <% if ENV["DEPLOY_YOUTUBE"] == "1" %>
     - YOUTUBE_CLIENT_ID
     - YOUTUBE_CLIENT_SECRET

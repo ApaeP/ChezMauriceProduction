@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_24_185003) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_24_200100) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -63,6 +63,31 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_185003) do
     t.check_constraint "id = 1", name: "single_active_frame_io_connection"
   end
 
+  create_table "frame_io_publications", force: :cascade do |t|
+    t.string "account_id", null: false
+    t.string "project_id", null: false
+    t.string "file_id", null: false
+    t.integer "realisation_id", null: false
+    t.string "state", default: "pending", null: false
+    t.string "source_sha256"
+    t.text "session_url"
+    t.string "review_reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "project_id", "file_id"], name: "idx_on_account_id_project_id_file_id_84da1ec23e", unique: true
+    t.index ["realisation_id"], name: "index_frame_io_publications_on_realisation_id", unique: true
+    t.check_constraint "state IN ('pending', 'creating_session', 'uploading', 'completed', 'review')", name: "frame_io_publication_state"
+  end
+
+  create_table "frame_io_trials", force: :cascade do |t|
+    t.string "account_id", null: false
+    t.string "project_id", null: false
+    t.json "existing_file_ids", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "project_id"], name: "index_frame_io_trials_on_account_id_and_project_id", unique: true
+  end
+
   create_table "owner_invitations", force: :cascade do |t|
     t.string "provider", null: false
     t.string "code_digest", null: false
@@ -105,4 +130,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_185003) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "categories_realisations", "categories"
   add_foreign_key "categories_realisations", "realisations"
+  add_foreign_key "frame_io_publications", "realisations"
 end

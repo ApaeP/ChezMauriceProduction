@@ -88,10 +88,11 @@ les transmet au web et au worker.
 
 | Fonction | Sélection au déploiement | Références du coffre |
 | --- | --- | --- |
-| Vitrine seule | Laisser les deux sélecteurs absents | `.kamal/production.env` |
+| Vitrine seule | Laisser tous les sélecteurs absents | `.kamal/production.env` |
 | Connexion YouTube du propriétaire | `DEPLOY_YOUTUBE=1` | `.kamal/youtube.env` et `.kamal/encryption.env` |
 | Connexion Frame.io du propriétaire | `FRAME_IO_AUTH_MODE=user` | `.kamal/frame-io-user.env` et `.kamal/encryption.env` |
 | Compte de service Frame.io | `FRAME_IO_AUTH_MODE=server_to_server` | `.kamal/frame-io-server-to-server.env` |
+| Transfert privé après dépôt ou copie | `FRAME_IO_PRIVATE_TRIAL=1`, en plus des connexions Frame.io et YouTube | `.kamal/frame-io-private-trial.env` pour `FRAME_IO_WEBHOOK_SECRET` |
 
 La connexion YouTube se combine avec chacun des deux modes Frame.io. Le mode
 Adobe détermine la paire de credentials et le compte utilisés. Les clés
@@ -102,7 +103,9 @@ conserver dans le coffre et les réutiliser lors d’un changement de profil ou
 d’une restauration. Les références 1Password se trouvent dans
 `.kamal/encryption.env`.
 
-Le mode de connexion Frame.io du studio est en suspens. Laisser `FRAME_IO_AUTH_MODE` vide dans le profil de livraison courant. Les instructions suivantes documentent les profils optionnels conservés pour un futur essai autorisé.
+Le profil vitrine démarre sans connexion média. Avant toute souscription de recette, `bin/rails frame_io:ouvrir_recette` enregistre sur le volume les identifiants des fichiers préexistants du projet. Conserver cet inventaire lors des redémarrages, sauvegardes et restaurations. Les variables facultatives `FRAME_IO_TITLE_FIELD_ID` et `FRAME_IO_DESCRIPTION_FIELD_ID` désignent les champs texte réels du projet. Le guide précise l’ordre d’ouverture, la souscription, la vérification dans Studio et le contrôle du brouillon. [Recette du transfert privé](recette-transfert-prive.md)
+
+Les références 1Password livrées ciblent l’élément `production`. La configuration ci-dessus utilise aussi un nom fixe de service et de volume. Pour une recette distante, vérifier la configuration effective de **la cible de recette** et ses propres références aux secrets avant de s’en servir. Changer uniquement `APP_HOST` réutiliserait le service et les données de production.
 
 Pour un compte Frame.io dont le propriétaire choisirait le mode OAuth utilisateur, créer un credential **OAuth Web App**,
 autoriser le callback HTTPS exact `https://DOMAINE/connexion-frame-io/retour`

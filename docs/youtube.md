@@ -6,6 +6,8 @@ reprise commence par interroger Google sur les octets reçus. Le client accepte
 les fichiers binaires lisibles et repositionnables, comme un `File` ouvert en
 `rb`. [Protocole de transfert YouTube](https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol)
 
+Le worker de la recette Frame.io impose la chaîne `UCnuO-797M605z7yuAjaitpg` et la visibilité YouTube `private`. Pendant la recette, choisir une autre chaîne au retour de Google laisse la connexion précédente en place. La fiche de réalisation reste en brouillon après l’envoi. Pour un test réel, suivre le fichier de son dépôt jusqu’à sa vérification dans YouTube Studio. [Recette du transfert privé](recette-transfert-prive.md)
+
 ## Autoriser la chaîne
 
 ### Préparer le projet Google
@@ -23,7 +25,7 @@ Le propriétaire ouvre `/connexion-youtube`, saisit ce code, puis choisit **Auto
 
 Pour changer de chaîne ou rétablir une autorisation expirée ou révoquée, émettre un nouveau code puis choisir **Reconnecter avec Google**. Une fois les deux permissions accordées et la chaîne identifiée, cette connexion devient celle des prochains transferts. Un refus, une permission manquante ou une chaîne ambiguë laisse la connexion précédente en place. **Quitter l’espace de connexion** ferme l’accès de gestion du navigateur et conserve l’autorisation de transfert.
 
-## Contrat pour l’appelant
+## Utiliser le client Ruby séparément
 
 1. Enregistrer pour l’export l’identifiant de la chaîne choisie lors du
    consentement. Le client le compare à la connexion active et à la chaîne
@@ -33,9 +35,8 @@ Pour changer de chaîne ou rétablir une autorisation expirée ou révoquée, é
    fichier immuable sur toute la durée du transfert. Fournir sa taille en
    octets et son type MIME, par exemple `video/mp4`.
 2. Choisir le titre, la description, la catégorie officielle YouTube et la
-   visibilité. `public`, `unlisted` et `private` sont acceptés. Une validation
-   de chaîne peut utiliser `private`. Le projet décide séparément quels films
-   apparaissent dans la galerie. L’API conserve son comportement par défaut
+   visibilité. Le client générique accepte `public`, `unlisted` et `private`.
+   Le worker de recette impose `private` à chaque transfert. L’API conserve son comportement par défaut
    pour les notifications d’abonnés.
 3. Appeler une seule fois `start_session`, puis enregistrer durablement l’URL
    renvoyée pour **cet export** avant de transférer le premier octet. Traiter

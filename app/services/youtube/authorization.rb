@@ -37,6 +37,9 @@ module Youtube
       end
 
       channel = Youtube::Client.channel_for(access_token: response.fetch("access_token"))
+      if FrameIoPublication.enabled? && channel.fetch(:id) != FrameIoPublication::CHANNEL_ID
+        raise MediaApi::Error, "Pour cet essai privé, sélectionnez la chaîne Chez Maurice Production dans Google."
+      end
       invitation.with_current_authorization do
         YoutubeConnection.upsert({ id: 1, channel_id: channel.fetch(:id), channel_title: channel.fetch(:title),
           refresh_token: response.fetch("refresh_token") })

@@ -1,6 +1,6 @@
 # Lecture d’un export Frame.io V4
 
-Le client Ruby `MediaApi::FrameIo` lit la fiche d’un fichier, les valeurs de ses champs personnalisés et les octets de son original. Le projet peut démarrer sans identifiants. Les opérations s’exécutent uniquement lorsqu’un appelant invoque le client.
+Le client Ruby `MediaApi::FrameIo` lit la fiche d’un fichier, les valeurs de ses champs personnalisés et les octets de son original. Le site peut démarrer sans identifiants. Dans la recette privée, le worker le sollicite après une notification de dépôt ou de copie dans le projet « Publications ». [Recette du transfert privé](recette-transfert-prive.md)
 
 ## Statut pour le compte du studio
 
@@ -45,16 +45,23 @@ Après obtention des accès, préparer un véritable identifiant de fichier acce
 ```ruby
 client = MediaApi::FrameIo.from_env; nil
 file_id = ENV.fetch("FRAME_IO_TEST_FILE_ID")
-details = client.file(file_id)
-details.slice("id", "name", "type", "file_size", "media_type")
-fields = client.metadata(file_id)
-fields.map { |field| field.slice("field_definition_id", "field_type", "value") }
+project_id = ENV.fetch("FRAME_IO_TEST_PROJECT_ID")
+source = client.publication_export(file_id, project_id: project_id)
+raise "Fichier hors projet ou type non vidéo" unless source
+raise "Traitement Frame.io en cours" unless source.ready?
+puts [source.title, source.content_type, source.byte_size].inspect
 Tempfile.create("maurice-original", binmode: true) do |file|
-  bytes = client.download_original(file_id, output: file)
+  bytes = client.download_original(source.file_id, output: file, expected: source)
   puts "#{bytes} octets reçus"
 end
 ```
 
-Le téléchargement accepte un `File`, `Tempfile` ou `StringIO` binaire positionné en fin de fichier. Il écrit par morceaux et compare la taille reçue à celle annoncée par Frame.io lorsqu’elle est présente. Une erreur restaure la longueur initiale du fichier de destination. Le tableau de métadonnées conserve les identifiants, les types de champ et les valeurs tels que Frame.io les retourne. Le paramétrage métier des champs éditoriaux et des destinations « Site » et « Bande démo » reste à déterminer avec le propriétaire. [Fiche fichier](https://developer.frame.io/platform/v4/api-reference/files/show) · [Champs de métadonnées](https://developer.frame.io/platform/v4/api-reference/metadata/show)
+Le lecteur interroge le fichier référencé et vérifie son identité, son projet et son type vidéo. Par défaut, le nom de fichier fournit le titre et la description reste vide. Les arguments facultatifs `title_field_id:` et `description_field_id:` permettent de lire deux champs Frame.io de type `text` par leur identifiant stable. Un titre vide reprend le nom de fichier. Les méthodes de lecture brute `client.file(file_id)` et `client.metadata(file_id)` permettent d’inspecter les valeurs lors de la recette. [Fiche fichier](https://developer.frame.io/platform/v4/api-reference/files/show) · [Champs de métadonnées](https://developer.frame.io/platform/v4/api-reference/metadata/show)
+
+Le client reconnaît les deux statuts de fin de traitement cités par Adobe, `ready` dans le guide des médias et `transcoded` dans la référence de la fiche fichier. L’appel avec `expected: source` vérifie de nouveau l’identité, le projet, le type, le statut et la taille du fichier avant d’utiliser le lien temporaire de l’original. Le téléchargement accepte un `File`, `Tempfile` ou `StringIO` binaire positionné en fin de fichier. Il écrit par morceaux et compare la taille reçue à la taille annoncée. Une erreur restaure la longueur initiale du fichier de destination. [Disponibilité des médias](https://developer.frame.io/platform/v4/docs/guides/media-links) · [Fiche fichier](https://developer.frame.io/platform/v4/api-reference/files/show)
+
+À l’ouverture de la recette, `client.project_file_ids(project_id)` part du dossier racine du projet, parcourt les pages de chaque dossier et de chaque pile de versions, puis retourne les identifiants de fichiers visibles du compte. Un refus d’accès à un dossier ou une réponse incomplète interrompt l’inventaire. Vérifier avec le studio que l’identité connectée voit bien tous les films préexistants. [Dossier racine du projet](https://developer.frame.io/platform/v4/api-reference/projects/show) · [Contenu d’un dossier](https://developer.frame.io/platform/v4/api-reference/folders/index) · [Fichiers d’une pile](https://developer.frame.io/platform/v4/api-reference/version-stacks/index)
+
+Le worker écarte les identifiants de fichiers présents dans l’inventaire d’ouverture du projet. Une copie ultérieure possède son propre identifiant de destination et peut donc être admissible même si l’original est ancien. La référence V4 liste l’événement `file.copied`. La recette sur le compte du studio doit confirmer que le signal natif sur une copie interprojets désigne bien le nouveau fichier dans « Publications ». [Webhooks disponibles](https://developer.frame.io/platform/v4/api-reference/webhooks/create) · [Réponse de copie](https://developer.frame.io/platform/v4/api-reference/files/copy)
 
 Les tests HTTP simulent l’échange IMS, la liste des comptes avec pagination, les deux modes d’authentification, le renouvellement concurrent, la révocation et le téléchargement en flux. Les tests de contrôleur couvrent le parcours du propriétaire. Depuis la racine du dépôt, vérifier les clients avec `bin/rails test test/services/adobe test/services/media_api`. La validation du consentement sur le vrai compte, de ses droits de lecture et du fichier d’essai reste à faire avec le propriétaire.

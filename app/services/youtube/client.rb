@@ -62,6 +62,8 @@ module Youtube
         status: { privacyStatus: privacy_status }
       }
       api = connection_for(expected_channel_id)
+      # The workflow records its intent only after authentication and channel checks.
+      yield if block_given?
       response = api.request(:post, CREATE_URL, headers: {
         "Content-Type" => "application/json; charset=utf-8",
         "X-Upload-Content-Type" => content_type,
@@ -71,14 +73,14 @@ module Youtube
     end
 
     # The caller must persist the session URL and keep the original file immutable.
-    def resume(expected_channel_id:, session_url:, io:, byte_size:, content_type:)
+    def resume(expected_channel_id:, session_url:, io:, byte_size:, content_type:, expected_privacy: nil)
       validate_session!(session_url)
       validate_media!(byte_size, content_type)
       raise ArgumentError, "La taille du fichier source a changé." unless io.size == byte_size
 
       api = connection_for(expected_channel_id)
       response = put(api, session_url, { "Content-Length" => "0", "Content-Range" => "bytes */#{byte_size}" })
-      return video_id(response) unless response.status == 308
+      return video_id(response, expected_channel_id, expected_privacy) unless response.status == 308
 
       offset = next_offset(response, byte_size)
       loop do
@@ -96,7 +98,7 @@ module Youtube
         }, chunk)
         if response.status != 308
           raise ProtocolError, "YouTube a terminé avant le dernier fragment." unless offset + length == byte_size
-          return video_id(response)
+          return video_id(response, expected_channel_id, expected_privacy)
         end
 
         confirmed = next_offset(response, byte_size)
@@ -167,12 +169,20 @@ module Youtube
         offset
       end
 
-      def video_id(response)
-        resource = response.json
-        if resource.is_a?(Hash) && resource["id"].is_a?(String) && resource["id"].present?
-          return resource.fetch("id")
+      def video_id(response, expected_channel_id, expected_privacy)
+        begin
+          resource = response.json
+        rescue MediaApi::Error
+          raise ProtocolError, "Réponse vidéo finale illisible.", cause: nil
         end
-        raise ProtocolError, "YouTube a terminé sans identifiant vidéo."
+        unless resource.is_a?(Hash) && resource["id"].is_a?(String) && /\A[a-zA-Z0-9_-]{11}\z/.match?(resource["id"])
+          raise ProtocolError, "YouTube a terminé sans identifiant vidéo valide."
+        end
+        if expected_privacy && !(resource["status"].is_a?(Hash) && resource["status"]["privacyStatus"] == expected_privacy &&
+            resource["snippet"].is_a?(Hash) && resource["snippet"]["channelId"] == expected_channel_id)
+          raise ProtocolError, "La réponse finale ne confirme pas la visibilité et la chaîne attendues."
+        end
+        resource.fetch("id")
       end
   end
 end

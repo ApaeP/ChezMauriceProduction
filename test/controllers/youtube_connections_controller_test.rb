@@ -51,6 +51,23 @@ class YoutubeConnectionsControllerTest < ActionDispatch::IntegrationTest
     assert_not_includes second.response.body, "channel-test"
   end
 
+  test "la recette refuse une autre chaîne et conserve le consentement précédent" do
+    previous = ENV["FRAME_IO_PRIVATE_TRIAL"]
+    ENV["FRAME_IO_PRIVATE_TRIAL"] = "1"
+    YoutubeConnection.create!(id: 1, channel_id: FrameIoPublication::CHANNEL_ID, channel_title: "Chez Maurice Production", refresh_token: "previous")
+    post youtube_connection_path, params: { invitation_code: OwnerInvitation.issue!(provider: "youtube") }
+    oauth = start_google_consent
+    successful_exchange(oauth)
+    lookup_channel
+    post youtube_callback_path, params: { code: "one-use-code", state: oauth.fetch("state") }
+    follow_redirect!
+    assert_select "[role=alert]", text: /sélectionnez la chaîne Chez Maurice Production/
+    assert_equal "previous", YoutubeConnection.current.refresh_token
+    assert_equal FrameIoPublication::CHANNEL_ID, YoutubeConnection.current.channel_id
+  ensure
+    ENV["FRAME_IO_PRIVATE_TRIAL"] = previous
+  end
+
   test "unauthorized, expired, mismatched and declined attempts preserve the previously connected channel" do
     YoutubeConnection.create!(id: 1, channel_id: "old", channel_title: "Ancienne chaîne", refresh_token: "previous")
     post authorize_youtube_path

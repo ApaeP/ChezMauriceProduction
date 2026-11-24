@@ -1,7 +1,13 @@
 <% if @connection %>
   <p>La chaîne active est <strong><%= @connection.channel_title %></strong> (<%= @connection.channel_id %>).</p>
-  <p>Si vous choisissez une autre chaîne dans Google, elle remplacera celle-ci pour les prochains transferts.</p>
+  <% unless FrameIoPublication.enabled? %>
+    <p>Si vous choisissez une autre chaîne dans Google, elle remplacera celle-ci pour les prochains transferts.</p>
+  <% end %>
 <% else %>
   <p>Aucune chaîne YouTube connectée.</p>
 <% end %>
-<p class="my-4 max-w-prose">Choisissez le compte et la chaîne de production dans Google. Vous autorisez le site à identifier votre chaîne et à y envoyer des vidéos, y compris lorsque vous êtes hors connexion.</p>
+<% if FrameIoPublication.enabled? %>
+  <p class="my-4 max-w-prose">Pour l’essai, choisissez Chez Maurice Production dans Google. Le site pourra y envoyer la vidéo en privé lorsque vous serez hors connexion. Sa fiche restera en brouillon.</p>
+<% else %>
+  <p class="my-4 max-w-prose">Choisissez le compte et la chaîne de production dans Google. Vous autorisez le site à identifier votre chaîne et à y envoyer des vidéos, y compris lorsque vous êtes hors connexion.</p>
+<% end %>
