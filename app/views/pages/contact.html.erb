@@ -1,48 +1,11 @@
-<% content_for :meta_title, "Contact | Chez Maurice Production" %>
-<% content_for :meta_description, "Contactez-nous via notre site \n
-Nous sommes créateurs de contenus audiovisuels : film corporate, brand content, vidéo produit... \n
-Nous abordons avec passion et créativité tous vos projets, des plus conventionnels aux plus décalés. \n
-Réactifs et agiles, nous intervenons à chaque étape de la conception de votre film : conseil, scénarisation, tournage, et postproduction. \n
-Chez Maurice, vous trouverez une équipe aux petits soins et l’expertise technique pour donner vie à tous vos projets !" %>
-
-<div class="contact-container">
-  <div class="contact-page-infos-and-map">
-    <div class="contact-page-infos-and-map-left">
-      <h2 id="contact-catchtitle">Cher Maurice,</h2>
-      <h4 id="contact-catchphrase">Je voudrais te parler de mon projet...</h4>
-    </div>
-    <div class="contact-lg contact-page-infos-and-map-right">
-      <div id='map'
-           data-controller="map"
-           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-           style='width: 100%; height: 100%;'></div>
-    </div>
-  </div>
-  <div class="contact-bottom">
-    <%= turbo_frame_tag "contact-form", class: "contact-page-form" do %>
-      <%= render 'contacts/form' %>
-      <p class="legal-notice">
-        Les informations recueillies sur ce formulaire sont uniquement utilisées pour traiter votre demande et vous apporter une
-        réponse adaptée. Conformément à la loi « informatique et libertés », vous pouvez exercer votre droit d'accès aux données
-        vous concernant et les faire rectifier en contactant par email à <%= mail_to "contact@chezmauriceproduction.com", "contact@chezmauriceproduction.com", class: "legal-link" %>. Vous pouvez également,
-        pour des motifs légitimes, vous opposer au traitement des données vous concernant. <br>
-        En savoir plus sur la <%= link_to "politique de confidentialité des données", mentions_legales_path, target: '_blank', rel: 'nofollow', class: 'legal-link' %>.
-      </p>
-    <% end %>
-
-    <div class="contact-sml contact-page-infos-and-map-right">
-      <div id='map2' style='width: 100%; height: 100%;'></div>
-    </div>
-
-    <div class="contact-page-address">
-      <p>
-        2, rue Carnot<br>
-        92500 Rueil-Malmaison<br>
-        <a href="tel:0033661738763" class="title-contact-link">06 61 73 87 63</a><br>
-        <%= mail_to "contact@chezmauriceproduction.com", "contact@chezmauriceproduction.com", class: "title-contact-link" %>
-      </p>
-    </div>
-  </div>
-</div>
-
-
+<% content_for :title, "Contacter le studio" %>
+<% content_for :description, "Parlez de votre projet audiovisuel à Chez Maurice Production. Retrouvez l’adresse du studio à Rueil-Malmaison, son numéro de téléphone et son adresse e-mail." %>
+<section class="page-shell info-page">
+  <h1 class="page-title">Cher Maurice,</h1>
+  <p class="contact-intro">Je voudrais te parler de mon projet…</p>
+  <address class="contact-details">
+    <%= mail_to "contact@chezmauriceproduction.com", class: "text-link" %>
+    <a href="tel:+33661738763">06 61 73 87 63</a>
+    <p>2, rue Carnot<br>92500 Rueil-Malmaison</p>
+  </address>
+</section>

@@ -1,48 +1,17 @@
-<% content_for :meta_title, "Mentions Légales | Chez Maurice Production" %>
-<% content_for :meta_description, "Apprenez-en plus sur Chez Maurice Production" %>
-
-<div class="legal-container">
-  <h1 style="visibility: hidden;">Mentions Légales - Chez Maurice Production</h1>
-  <h1 id="legal-title">MENTIONS LÉGALES</h1>
-  <h5 class="return-from-legal"><i class="fas fa-arrow-left"></i> Retour vers le site</h5>
-  <p id="legal-paragraph">Ce site est édité par la SARL CHEZ MAURICE PRODUCTION au capital de 2 000€ immatriculée
-  sous le numéro 881 292 676 au RCS de PARIS, et dont le siège social est situé au 2 rue Carnot,
-  92500 Rueil-Malmaison.<br><br>
-
-  <strong>DIRECTION DE LA PUBLICATION</strong><br>
-  Pierre-Alexandre CORBIER<br><br>
-
-  <strong>HÉBERGEUR DU SITE</strong> <br>
-  Heroku<br>
-  www.heroku.com<br>
-  Namecheap<br>
-  www.namecheap.com<br>
-
-  <br><br>
-
-  <strong>PROPRIÉTÉ ET DROIT D’AUTEUR</strong><br>
-  L’ensemble de ce site relève des législations française et internationale sur le droit d’auteur
-  et la propriété intellectuelle. Toute reproduction, modification, publication totale ou
-  partielle du site et/ou des éléments se trouvant sur ce site est strictement interdite. Toute
-  exploitation non autorisée du Site ou de son contenu, des informations qui y sont
-  divulguées, sous quelque forme ou par quelque procédé que ce soit, engagerait la
-  responsabilité de l’utilisateur et constituerait une contrefaçon sanctionnée par les articles L-
-  335-2 et suivants du code de la propriété intellectuelle.<br><br>
-
-  <strong>LIMITATIONS DE RESPONSABILITÉ</strong><br>
-  Les informations diffusées sur le site sont données à titre purement informatif et indicatif.
-  Chez Maurice Production se réserve le droit de corriger, à tout moment et sans préavis, le
-  contenu.<br><br>
-
-  <strong>DONNÉES PERSONNELLES</strong><br>
-  L’internaute dispose d’un droit d’accès, de rectification, de suppression, d’interrogation en
-  cas de données erronées et/ou incomplètes, ainsi qu’un droit d’opposition pour motif
-  légitime ou ne plus recevoir de prospection. Ainsi, vous pouvez demander à ce que nous
-  modifions et/ou supprimions les informations vous concernant par simple courrier
-  électronique adressé à notre Directeur de la Publication
-  à contact@chezmauriceproduction.com.
-  </p>
-
-  <h5 class="return-from-legal"><i class="fas fa-arrow-left"></i> Retour vers le site</h5>
-
-</div>
+<% content_for :title, "Mentions légales et données personnelles" %>
+<% content_for :description, "Identité de l’éditeur de Chez Maurice Production, direction de la publication, propriété des contenus et contact pour les questions relatives aux données personnelles." %>
+<article class="page-shell info-page legal-copy">
+  <h1 class="page-title">Mentions légales</h1>
+  <h2>Éditeur</h2>
+  <p>La SARL Chez Maurice Production, au capital de 2 000 €, est immatriculée au RCS de Paris sous le numéro 881 292 676. Son siège social se situe au 2 rue Carnot, 92500 Rueil-Malmaison.</p>
+  <h2>Direction de la publication</h2>
+  <p>Pierre-Alexandre Corbier.</p>
+  <h2>Propriété intellectuelle</h2>
+  <p>Les textes, films et images du site sont protégés par le droit d’auteur. Leur reproduction ou leur publication nécessite l’autorisation des titulaires des droits.</p>
+  <h2>Informations du site</h2>
+  <p>Chez Maurice Production peut corriger ou mettre à jour les informations publiées.</p>
+  <h2>Données personnelles</h2>
+  <p>Les fiches de réalisation utilisent le lecteur intégré de YouTube. L’affichage d’une fiche établit une connexion à YouTube pour charger le lecteur.</p>
+  <p>Quand le propriétaire connecte une chaîne YouTube, le studio utilise son identifiant et son nom pour vérifier la destination des films. Un jeton chiffré permet les envois autorisés en son absence. Le propriétaire peut retirer l’accès dans <%= link_to "les autorisations de son compte Google", "https://myaccount.google.com/connections" %>.</p>
+  <p>Pour exercer vos droits d’accès, de rectification, d’opposition ou de suppression, écrivez à <%= mail_to "contact@chezmauriceproduction.com" %>.</p>
+</article>
