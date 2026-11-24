@@ -1,0 +1,7 @@
+<% if @connection %>
+  <p>La chaîne active est <strong><%= @connection.channel_title %></strong> (<%= @connection.channel_id %>).</p>
+  <p>Si vous choisissez une autre chaîne dans Google, elle remplacera celle-ci pour les prochains transferts.</p>
+<% else %>
+  <p>Aucune chaîne YouTube connectée.</p>
+<% end %>
+<p class="my-4 max-w-prose">Choisissez le compte et la chaîne de production dans Google. Vous autorisez le site à identifier votre chaîne et à y envoyer des vidéos, y compris lorsque vous êtes hors connexion.</p>

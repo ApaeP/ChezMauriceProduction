@@ -1,0 +1,26 @@
+<% content_for :title, @realisation.title %>
+<% content_for :description, @realisation.description.presence&.squish || "Découvrez « #{@realisation.title} », une réalisation de Chez Maurice Production." %>
+<% content_for :canonical, realisation_url(@realisation) %>
+<% content_for :og_type, "video.other" %>
+<% content_for :share_image, rails_storage_proxy_url(@realisation.thumbnail) if @realisation.thumbnail.attached? && @realisation.thumbnail.image? %>
+
+<% if turbo_frame_request_id == "film_details" %>
+  <%= turbo_frame_tag "film_details" do %>
+    <dialog class="film-dialog" aria-labelledby="film-title" data-controller="film-dialog"
+            data-action="cancel->film-dialog#back click->film-dialog#backdrop">
+      <div class="dialog-panel">
+        <button type="button" class="dialog-close" autofocus aria-label="Fermer la fiche" data-action="film-dialog#back">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <%= render "film", film: @realisation %>
+      </div>
+    </dialog>
+  <% end %>
+<% else %>
+  <div class="page-shell film-page">
+    <%= link_to realisations_path, class: "text-link" do %>
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Toutes les réalisations
+    <% end %>
+    <%= render "film", film: @realisation %>
+  </div>
+<% end %>

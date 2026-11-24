@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Retour OAuth · <%= connection_label %> · Chez Maurice Production</title>
+    <%= javascript_include_tag "owner_callback", defer: true %>
+  </head>
+  <body>
+    <main>
+      <h1>Connexion <%= connection_label %></h1>
+      <p id="status" role="status">Traitement de votre autorisation…</p>
+      <noscript>Activez JavaScript puis recommencez la connexion pour transmettre votre autorisation.</noscript>
+      <%= form_with url: { action: :callback }, method: :post, local: true, id: "oauth-response" do %>
+        <%= hidden_field_tag :state, nil %>
+        <%= hidden_field_tag :code, nil %>
+        <%= hidden_field_tag :error, nil %>
+      <% end %>
+      <%= link_to "Retour à la gestion de la connexion", { action: :show } %>
+    </main>
+  </body>
+</html>

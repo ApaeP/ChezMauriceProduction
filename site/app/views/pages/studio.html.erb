@@ -1,0 +1,35 @@
+<% content_for :title, "Conseil et production audiovisuelle" %>
+<% content_for :description, "Chez Maurice Production accompagne vos films corporate, contenus de marque et vidéos produit, de la conception au tournage et à la postproduction." %>
+<% content_for :head do %>
+  <%= tag.script type: "application/ld+json" do %>
+    <%= raw json_escape({
+      "@context" => "https://schema.org", "@type" => "Organization", "@id" => "#{root_url}#studio",
+      name: "Chez Maurice Production", url: root_url, logo: image_url("chez-maurice-logo.png"),
+      email: "contact@chezmauriceproduction.com", telephone: "+33661738763",
+      address: { "@type" => "PostalAddress", streetAddress: "2 rue Carnot", postalCode: "92500", addressLocality: "Rueil-Malmaison", addressCountry: "FR" },
+      sameAs: ["https://www.linkedin.com/company/chezmauriceproduction/"]
+    }.to_json) %>
+  <% end %>
+<% end %>
+
+<section class="studio-hero">
+  <%= image_tag "studio-1440.webp", alt: "", width: 1440, height: 810, sizes: "100vw",
+    srcset: "#{image_path('studio-800.webp')} 800w, #{image_path('studio-1440.webp')} 1440w",
+    fetchpriority: "high", class: "studio-still" %>
+  <div class="page-shell studio-hero-copy">
+    <h1>Conseil &amp;<br>production<br><em>audiovisuelle.</em></h1>
+    <%= link_to realisations_path, class: "studio-cta" do %>
+      Voir les réalisations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</section>
+
+<section class="page-shell studio-intro" id="informations" aria-labelledby="studio-title">
+  <h2 id="studio-title">Le studio</h2>
+  <p>Films corporate, contenus de marque, vidéos produit. Chez Maurice Production accompagne vos projets de la première idée au film fini.</p>
+</section>
+<section class="page-shell studio-services" aria-label="Les métiers du studio">
+  <div><h2>Préproduction</h2><p>Conseil et conception, scénarisation, story-board et repérage.</p></div>
+  <div><h2>Production</h2><p>Mise en scène, réalisation et maquillage.</p></div>
+  <div><h2>Postproduction</h2><p>Montage, motion design et sound design, voix-off, étalonnage, mixage, encodage, transcription et sous-titrage.</p></div>
+</section>

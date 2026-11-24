@@ -1,0 +1,36 @@
+.studio-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  color: white;
+  background: #25352d;
+  min-height: clamp(29rem, 72svh, 49rem);
+}
+.studio-still, .studio-hero::before {
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover;
+}
+.studio-hero::before {
+  content: ""; z-index: -1;
+  background: linear-gradient(92deg, rgba(8, 19, 16, .78), rgba(8, 19, 16, .38) 60%, rgba(8, 19, 16, .12));
+}
+.studio-hero-copy { padding-block: clamp(3rem, 6vw, 6rem); }
+.studio-hero h1 { font: 700 clamp(3.2rem, 7vw, 7.75rem)/.98 Lato, sans-serif; letter-spacing: -.055em; }
+.studio-hero h1 em { font-style: normal; color: #cdeab6; }
+.studio-cta { display: inline-flex; align-items: center; gap: 1.5rem; margin-top: 2rem; padding: .8em 1.35em; border: 1px solid #e6e9df; border-radius: 2em; font-weight: 700; }
+.studio-cta:hover { color: var(--ink); background: white; }
+.studio-intro { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; padding-block: clamp(3rem, 7vw, 7rem); }
+.studio-intro h2, .studio-services h2, .legal-copy h2 { font: 600 1.3rem/1.25 Poppins, sans-serif; }
+.studio-intro p { font-size: clamp(1.6rem, 3.5vw, 3.25rem); line-height: 1.12; letter-spacing: -.035em; max-width: 30ch; }
+.studio-services { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.4rem; padding-bottom: 5rem; }
+.studio-services div { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.studio-services p, .legal-copy p { max-width: 70ch; line-height: 1.65; margin-top: .7rem; }
+.info-page { padding-block: clamp(3rem, 7vw, 8rem); }
+.contact-intro { margin-top: 1.5rem; font-size: clamp(1.4rem, 3vw, 2.6rem); }
+.contact-details { margin-top: 3rem; display: grid; gap: 1rem; justify-items: start; font-style: normal; font-size: clamp(1rem, 2vw, 1.5rem); overflow-wrap: anywhere; }
+.legal-copy h2 { margin-top: 2.3rem; }
+.legal-copy a { text-decoration: underline; text-underline-offset: .2em; }
+@media (max-width: 42rem) {
+  .studio-intro, .studio-services { grid-template-columns: 1fr; }
+  .studio-still { object-position: 58% 50%; }
+}

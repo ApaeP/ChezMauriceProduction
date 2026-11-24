@@ -1,0 +1,14 @@
+body {
+  display: grid;
+  place-items: center;
+  min-height: 95vh;
+  margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: #f7f6f2;
+  color: #171817;
+  font: 1.1rem/1.5 system-ui, sans-serif;
+}
+main { max-width: 45rem; }
+h1 { font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.02; letter-spacing: -.035em; }
+a { color: inherit; text-underline-offset: .2em; }

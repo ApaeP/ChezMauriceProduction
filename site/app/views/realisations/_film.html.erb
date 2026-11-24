@@ -1,0 +1,16 @@
+<article class="film-detail">
+  <h1 id="film-title"><%= film.title %></h1>
+  <% if film.categories.any? %>
+    <p class="film-categories"><%= film.categories.map(&:name).sort.join(" / ") %></p>
+  <% end %>
+  <iframe class="film-player" title="Lire le film « <%= film.title %> » sur YouTube"
+          src="<%= youtube_embed_url(film) %>"
+          allow="encrypted-media; picture-in-picture; fullscreen"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <% if film.description.present? %>
+    <p class="film-description"><%= film.description %></p>
+  <% end %>
+</article>
+<% if (video_data = video_structured_data(film)) %>
+  <script type="application/ld+json"><%= raw json_escape(video_data.to_json) %></script>
+<% end %>

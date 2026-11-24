@@ -1,0 +1,20 @@
+<% if @connection %>
+  <p>Le compte Frame.io actif est <strong><%= @connection.account_name %></strong> (<%= @connection.account_id %>).</p>
+  <% if @connection.reconnect_required? %>
+    <p>Une nouvelle autorisation Adobe est nécessaire pour reprendre les lectures de Frame.io.</p>
+  <% end %>
+  <p>Choisir un autre compte remplacera la connexion utilisée pour les prochaines lectures de Frame.io.</p>
+<% else %>
+  <p>Aucun compte Frame.io connecté par un utilisateur.</p>
+<% end %>
+
+<% if @invitation.adobe_accounts.any? %>
+  <%= form_with url: frame_io_account_path, class: "my-4" do |form| %>
+    <%= form.hidden_field :selection_id, value: @invitation.pending_adobe_grant.fetch("selection_id") %>
+    <%= form.label :account_id, "Compte Frame.io à utiliser", class: "block" %>
+    <%= form.select :account_id, @invitation.adobe_accounts.map { |account| ["#{account.fetch("name")} (#{account.fetch("id")})", account.fetch("id")] },
+        { prompt: "Sélectionnez un compte" }, required: true, class: "my-3 block rounded border p-2" %>
+    <%= form.submit "Connecter ce compte", class: "contact-link cursor-pointer" %>
+  <% end %>
+<% end %>
+<p class="my-4 max-w-prose">Choisissez votre identifiant Adobe associé à Frame.io pour autoriser le site à lire les informations et les exports accessibles à votre compte, y compris hors connexion.</p>

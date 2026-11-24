@@ -1,0 +1,51 @@
+<% content_for :title, "Réalisations" %>
+<% content_for :description, "Découvrez les réalisations audiovisuelles de Chez Maurice Production." %>
+<% content_for :canonical, realisations_url %>
+<% if @category %>
+  <% content_for :head do %><meta name="robots" content="noindex,follow"><% end %>
+<% end %>
+
+<section class="page-shell gallery" data-controller="gallery" aria-labelledby="gallery-title">
+  <h1 class="page-title" id="gallery-title">Réalisations</h1>
+  <% if @categories.any? %>
+    <nav class="category-list flex flex-wrap gap-2" aria-label="Filtrer les réalisations par catégorie">
+      <%= link_to "Toutes", realisations_path, aria: { current: ("page" unless @category) } %>
+      <% @categories.each do |category| %>
+        <%= link_to category.name, realisations_path(categorie: category.id), aria: { current: ("page" if category == @category) } %>
+      <% end %>
+    </nav>
+  <% end %>
+
+  <% if @realisations.any? %>
+    <ul class="film-grid grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      <% @realisations.each_with_index do |film, index| %>
+        <li>
+          <%= link_to realisation_path(film), id: dom_id(film), class: "film-card", data: { turbo_frame: "film_details", turbo_action: "advance", action: "gallery#remember" } do %>
+            <div class="poster">
+              <% if film.thumbnail.attached? && film.thumbnail.variable? %>
+                <%= image_tag rails_storage_proxy_path(film.thumbnail.variant(resize_to_limit: [ 800, 450 ], format: :webp)), alt: "",
+                    width: 800, height: 450, loading: (index.zero? ? "eager" : "lazy"), fetchpriority: ("high" if index.zero?) %>
+              <% end %>
+              <span class="play-icon" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+            </div>
+            <h2 class="film-name"><%= film.title %></h2>
+            <% if film.categories.any? %>
+              <p class="film-categories"><%= film.categories.map(&:name).sort.join(" / ") %></p>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="gallery-empty">
+      <div class="empty-copy">
+        <p>Aucun film en ligne pour le moment.</p>
+        <%= link_to root_path, class: "text-link" do %>
+          Découvrir le studio <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <%= image_tag "chez-maurice-logo.png", class: "empty-logo", alt: "", width: 300, height: 300 %>
+    </div>
+  <% end %>
+  <%= turbo_frame_tag "film_details" %>
+</section>

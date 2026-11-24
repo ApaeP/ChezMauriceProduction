@@ -1,0 +1,22 @@
+<% content_for :title, "Connexion #{connection_label}" %>
+<% content_for :head do %>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="turbo-cache-control" content="no-cache">
+<% end %>
+<section class="page-shell py-12" aria-labelledby="connection-title" data-turbo="false">
+  <h1 id="connection-title" class="mb-6 text-3xl font-bold">Connexion <%= connection_label %></h1>
+  <% if @error || alert %><p role="alert" class="mb-4"><%= @error || alert %></p><% end %>
+  <% if notice %><p role="status" class="mb-4"><%= notice %></p><% end %>
+
+  <% if @invitation %>
+    <%= render "#{controller_path}/details" %>
+    <%= button_to "#{@connection ? "Reconnecter" : "Autoriser"} avec #{provider_label}", { action: :authorize }, class: "contact-link cursor-pointer" %>
+    <%= button_to "Quitter l’espace de connexion", { action: :close }, method: :delete, class: "text-link mt-4 cursor-pointer" %>
+  <% else %>
+    <%= form_with url: { action: :unlock } do |form| %>
+      <%= form.label :invitation_code, "Code de gestion fourni par l’exploitant", class: "block" %>
+      <%= form.password_field :invitation_code, required: true, autocomplete: "one-time-code", class: "my-3 block rounded border p-2" %>
+      <%= form.submit "Continuer", class: "contact-link cursor-pointer" %>
+    <% end %>
+  <% end %>
+</section>
