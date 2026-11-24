@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
-  has_many :video_categories
-  has_many :videos, through: :video_categories
+  has_and_belongs_to_many :realisations
+
+  validates :name, presence: true, uniqueness: true
 end

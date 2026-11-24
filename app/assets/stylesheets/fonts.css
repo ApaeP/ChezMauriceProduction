@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Lato";
+  src: url("lato-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("lato-latin-700-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("poppins-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("poppins-latin-600-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+.fa-solid, .fa-brands {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -.125em;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.fa-arrow-right { --icon: url("fa-arrow-right.svg"); }
+.fa-arrow-left { --icon: url("fa-arrow-left.svg"); }
+.fa-xmark { --icon: url("fa-xmark.svg"); }
+.fa-play { --icon: url("fa-play.svg"); }
+.fa-linkedin-in { --icon: url("fa-linkedin-in.svg"); }

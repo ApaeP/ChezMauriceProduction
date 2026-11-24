@@ -1,0 +1,87 @@
+<% frame_io_mode = ENV.fetch("FRAME_IO_AUTH_MODE", "") -%>
+<% raise "FRAME_IO_AUTH_MODE doit être vide, user ou server_to_server." unless ["", "user", "server_to_server"].include?(frame_io_mode) -%>
+service: chez-maurice-production
+image: apaep/chez-maurice-production
+
+servers:
+  web:
+    - 141.94.78.79
+  worker:
+    hosts:
+      - 141.94.78.79
+    cmd: flock --no-fork /rails/storage/solid-queue.lock bin/jobs
+
+proxy:
+  host: <%= ENV.fetch("APP_HOST").inspect %>
+  ssl: true
+  forward_headers: true
+  app_port: 80
+  healthcheck:
+    path: /up
+
+registry:
+  server: ghcr.io
+  username: <%= ENV.fetch("GHCR_USERNAME", "apaep").inspect %>
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+
+ssh:
+  user: ubuntu
+  forward_agent: false
+  keys_only: true
+  keys:
+    - <%= ENV.fetch("VPS_SSH_PUBLIC_KEY_FILE", File.expand_path("~/.ssh/chez-maurice-production-ci")).inspect %>
+
+env:
+  clear:
+    RAILS_ENV: production
+    APP_HOST: <%= ENV.fetch("APP_HOST").inspect %>
+    LOG_REQUESTS: "0"
+<% if ENV["FRAME_IO_PRIVATE_TRIAL"] == "1" %>
+    FRAME_IO_PRIVATE_TRIAL: "1"
+<% %w[FRAME_IO_TITLE_FIELD_ID FRAME_IO_DESCRIPTION_FIELD_ID].each do |key| %>
+<% unless ENV[key].to_s.empty? %>
+    <%= key %>: <%= ENV.fetch(key).inspect %>
+<% end %>
+<% end %>
+<% end %>
+<% unless frame_io_mode.empty? %>
+    FRAME_IO_AUTH_MODE: <%= frame_io_mode.inspect %>
+<% if ENV["FRAME_IO_MEDIA_HOSTS"].to_s != "" %>
+    FRAME_IO_MEDIA_HOSTS: <%= ENV.fetch("FRAME_IO_MEDIA_HOSTS").inspect %>
+<% end %>
+<% end %>
+  secret:
+    - SECRET_KEY_BASE
+<% if ENV["FRAME_IO_PRIVATE_TRIAL"] == "1" %>
+    - FRAME_IO_WEBHOOK_SECRET
+<% end %>
+<% if ENV["DEPLOY_YOUTUBE"] == "1" %>
+    - YOUTUBE_CLIENT_ID
+    - YOUTUBE_CLIENT_SECRET
+<% end %>
+<% if frame_io_mode == "user" %>
+    - ADOBE_WEB_CLIENT_ID
+    - ADOBE_WEB_CLIENT_SECRET
+    - ADOBE_WEB_SCOPES
+<% elsif frame_io_mode == "server_to_server" %>
+    - ADOBE_CLIENT_ID
+    - ADOBE_CLIENT_SECRET
+    - ADOBE_SCOPES
+    - FRAME_IO_ACCOUNT_ID
+<% end %>
+<% if ENV["DEPLOY_YOUTUBE"] == "1" || frame_io_mode == "user" %>
+    - ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY
+    - ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT
+<% end %>
+
+volumes:
+  - chez-maurice-production-storage:/rails/storage
+
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  logs: app logs -f --roles web
+  worker-logs: app logs -f --roles worker

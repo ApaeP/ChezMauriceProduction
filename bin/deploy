@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export KAMAL_REGISTRY_PASSWORD="${KAMAL_REGISTRY_PASSWORD:-}"
+env_files=(--env-file .kamal/production.env)
+case "${FRAME_IO_AUTH_MODE:-}" in
+  user) env_files+=(--env-file .kamal/frame-io-user.env) ;;
+  server_to_server) env_files+=(--env-file .kamal/frame-io-server-to-server.env) ;;
+  "") ;;
+  *) echo "FRAME_IO_AUTH_MODE doit être vide, user ou server_to_server." >&2; exit 1 ;;
+esac
+if [[ "${DEPLOY_YOUTUBE:-}" == "1" ]]; then
+  env_files+=(--env-file .kamal/youtube.env)
+fi
+if [[ "${DEPLOY_YOUTUBE:-}" == "1" || "${FRAME_IO_AUTH_MODE:-}" == "user" ]]; then
+  env_files+=(--env-file .kamal/encryption.env)
+fi
+if [[ "${FRAME_IO_PRIVATE_TRIAL:-}" == "1" ]]; then
+  env_files+=(--env-file .kamal/frame-io-private-trial.env)
+fi
+exec op run "${env_files[@]}" -- bundle exec ruby -r./.kamal/docker_config -S kamal "$@"
